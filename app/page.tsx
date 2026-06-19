@@ -1,1 +1,1 @@
-full page with SANTESE ART (with space) in navbar - brand is Santese Art, last name Santese is already attached
+full page with ROCCO SANTESE (last name attached, no space) in chi-siamo section
