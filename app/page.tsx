@@ -15,9 +15,10 @@ interface Exhibit {
   dimensions: string;
   descriptionIt: string;
   descriptionEn: string;
+  image: string; // filename in /public/exhibition/
 }
 
-const services: Service[] = [
+const services: Service[] = [ /* ... same as before ... */ 
   {
     title: "Intaglio Artistico",
     description: "Sculture e decorazioni in legno realizzate a mano con maestria e precisione artigianale.",
@@ -74,92 +75,22 @@ const services: Service[] = [
   }
 ];
 
-// Exhibition pieces from "Giardini del Salento" show - complete bilingual content from the official cards
+// Exhibition pieces from "Giardini del Salento" - complete with real photos from the official cards
 const exhibits: Exhibit[] = [
-  {
-    id: 1,
-    titleIt: "Lampada Wormhole",
-    titleEn: "Wormhole Lamp",
-    dimensions: "25 cm Ø × 16.5 cm h",
-    descriptionIt: "Lampada Wormhole in frassino con inserti di noce mansonia e base in noce nazionale ebanizzato. La radica centrale emette una luce blu che fuoriesce anche dalla base. Un portale di luce e legno tra i mondi.",
-    descriptionEn: "Wormhole lamp in ash with mansonia walnut inlays and ebonized national walnut base. The central burl emits blue light that also glows from under the base. A portal of light and wood between worlds."
-  },
-  {
-    id: 2,
-    titleIt: "Tris di Radiche",
-    titleEn: "Trio of Burls",
-    dimensions: "25 cm Ø × 16 cm h (max)",
-    descriptionIt: "Trio di lampade in radica di ulivo con coni in noce nazionale ebanizzato. Una presenta inserti di gelso e pero. La radica si libra sospesa in un abbraccio di luce e ombra.",
-    descriptionEn: "Trio of lamps in olive burl with ebonized national walnut cones. One features inlays of mulberry and pear. The burl floats suspended in an embrace of light and shadow."
-  },
-  {
-    id: 3,
-    titleIt: "Centrotavola di Radiche",
-    titleEn: "Olive Burl Centerpiece",
-    dimensions: "24 cm Ø × 12 cm h",
-    descriptionIt: "Centrotavola in radica di ulivo con bordo a segmenti di paduk, noce nazionale, limone e wengé. Le venature della radica centrale danzano con i colori del bordo. Un cerchio di essenze che celebra il Salento.",
-    descriptionEn: "Centerpiece in olive burl with segmented rim in paduk, national walnut, lemon and wengé. The central burl grains dance with the colors of the rim. A circle of essences celebrating Salento."
-  },
-  {
-    id: 4,
-    titleIt: "Raggiera Solare",
-    titleEn: "Solar Sunburst Bowl",
-    dimensions: "38 cm Ø × 9 cm h",
-    descriptionIt: "Ciotola con spettacolare raggiera di intarsi in ulivo, frassino, limone, pero, noce nazionale e ciliegio. Il motivo centrale scolpito esalta le venature fluide del legno. Un inno alla luce e alla materia dei giardini del Salento.",
-    descriptionEn: "Bowl featuring a spectacular sunburst inlay of olive, ash, lemon, pear, national walnut and cherry. The carved central motif highlights the flowing wood grains. An ode to the light and matter of the Salento gardens."
-  },
-  {
-    id: 5,
-    titleIt: "Tris di Fiori",
-    titleEn: "Trio of Flower Holders",
-    dimensions: "11 cm Ø × 30 cm h (max)",
-    descriptionIt: "Trio di porta fiori in noce nazionale con inserti circolari di gelso. I due più grandi accolgono fiori secchi mediterranei, il piccolo una candela. Un inno alla semplicità e alla luce del Salento.",
-    descriptionEn: "Trio of flower holders in national walnut with circular inlays of mulberry. The two larger ones hold dried Mediterranean flowers, the small one a candle. An ode to simplicity and light of Salento."
-  },
-  {
-    id: 6,
-    titleIt: "Saturno di Radiche",
-    titleEn: "Saturn of Burls",
-    dimensions: "16 cm Ø × 20 cm h",
-    descriptionIt: "Porta gioie a forma di Saturno in ulivo e pero, con anello in radica di ulivo. La sfera centrale ruota delicatamente tra le braccia della radica. Un piccolo universo di legno sospeso tra luce e memoria.",
-    descriptionEn: "Saturn-shaped jewelry holder in olive and pear wood, with ring in olive burl. The central sphere rotates gently within the arms of the burl. A small wooden universe suspended between light and memory."
-  },
-  {
-    id: 7,
-    titleIt: "Quintetto di Essenze",
-    titleEn: "Quintet of Essences",
-    dimensions: "36 cm Ø × 9 cm h",
-    descriptionIt: "Ciottola tornita con intarsi di ulivo, noce nazionale, limone e albicocca; fondo in frassino. Le venature fluide celebrano l'armonia delle essenze mediterranee.",
-    descriptionEn: "Turned bowl with inlays of olive, national walnut, lemon and apricot; ash base. Fluid grains celebrate the harmony of Mediterranean essences."
-  },
-  {
-    id: 8,
-    titleIt: "Scrigno di Radiche",
-    titleEn: "Burl Treasure Chest",
-    dimensions: "27 cm Ø × 20 cm h",
-    descriptionIt: "Cofanetto in radica di ulivo con coperchio in noce nazionale e raffinati inserti circolari di ulivo, paduk, gelso e noce. Pomolo in radice di ulivo. Un dialogo tra radica e noce ispirato ai giardini del Salento.",
-    descriptionEn: "Lidded vessel in olive burl with national walnut lid featuring refined circular inlays of olive, paduk, mulberry and walnut. Turned knob in olive root. A dialogue between burl and walnut inspired by the gardens of Salento."
-  },
-  {
-    id: 9,
-    titleIt: "Quartetto di Radiche",
-    titleEn: "Quartet of Burls",
-    dimensions: "8 cm Ø × 24 cm h (max)",
-    descriptionIt: "Quartetto di portagioie in radica di ulivo, noce ebanizzato e limone. Ogni pezzo racconta una storia diversa di forma e venature. Un inno alla varietà e alla poesia del legno del Salento.",
-    descriptionEn: "Quartet of jewelry holders in olive burl, ebonized walnut and lemon wood. Each piece tells a different story of form and grain. An ode to the variety and poetry of Salento wood."
-  },
-  {
-    id: 10,
-    titleIt: "Cerchi di Luce",
-    titleEn: "Circles of Light",
-    dimensions: "28 cm Ø × 10 cm h",
-    descriptionIt: "Lampada in noce nazionale di recupero con base decorata da raffinati inserti circolari di paduk e gelso. Le venature antiche si fondono con i cerchi da cui filtra la luce. Un gioco di luce tra le venature del legno recuperato.",
-    descriptionEn: "Lamp in reclaimed national walnut with base decorated by refined circular inlays of paduk and mulberry. The ancient wood grains blend with the circles through which light filters. A play of light through the grains of the reclaimed wood."
-  }
+  { id: 1, titleIt: "Lampada Wormhole", titleEn: "Wormhole Lamp", dimensions: "25 cm Ø × 16.5 cm h", descriptionIt: "Lampada Wormhole in frassino con inserti di noce mansonia e base in noce nazionale ebanizzato. La radica centrale emette una luce blu che fuoriesce anche dalla base. Un portale di luce e legno tra i mondi.", descriptionEn: "Wormhole lamp in ash with mansonia walnut inlays and ebonized national walnut base. The central burl emits blue light that also glows from under the base. A portal of light and wood between worlds.", image: "lampada-wormhole.jpg" },
+  { id: 2, titleIt: "Tris di Radiche", titleEn: "Trio of Burls", dimensions: "25 cm Ø × 16 cm h (max)", descriptionIt: "Trio di lampade in radica di ulivo con coni in noce nazionale ebanizzato. Una presenta inserti di gelso e pero. La radica si libra sospesa in un abbraccio di luce e ombra.", descriptionEn: "Trio of lamps in olive burl with ebonized national walnut cones. One features inlays of mulberry and pear. The burl floats suspended in an embrace of light and shadow.", image: "tris-di-radiche.jpg" },
+  { id: 3, titleIt: "Centrotavola di Radiche", titleEn: "Olive Burl Centerpiece", dimensions: "24 cm Ø × 12 cm h", descriptionIt: "Centrotavola in radica di ulivo con bordo a segmenti di paduk, noce nazionale, limone e wengé. Le venature della radica centrale danzano con i colori del bordo. Un cerchio di essenze che celebra il Salento.", descriptionEn: "Centerpiece in olive burl with segmented rim in paduk, national walnut, lemon and wengé. The central burl grains dance with the colors of the rim. A circle of essences celebrating Salento.", image: "centrotavola-di-radiche.jpg" },
+  { id: 4, titleIt: "Raggiera Solare", titleEn: "Solar Sunburst Bowl", dimensions: "38 cm Ø × 9 cm h", descriptionIt: "Ciotola con spettacolare raggiera di intarsi in ulivo, frassino, limone, pero, noce nazionale e ciliegio. Il motivo centrale scolpito esalta le venature fluide del legno. Un inno alla luce e alla materia dei giardini del Salento.", descriptionEn: "Bowl featuring a spectacular sunburst inlay of olive, ash, lemon, pear, national walnut and cherry. The carved central motif highlights the flowing wood grains. An ode to the light and matter of the Salento gardens.", image: "raggiera-solare.jpg" },
+  { id: 5, titleIt: "Tris di Fiori", titleEn: "Trio of Flower Holders", dimensions: "11 cm Ø × 30 cm h (max)", descriptionIt: "Trio di porta fiori in noce nazionale con inserti circolari di gelso. I due più grandi accolgono fiori secchi mediterranei, il piccolo una candela. Un inno alla semplicità e alla luce del Salento.", descriptionEn: "Trio of flower holders in national walnut with circular inlays of mulberry. The two larger ones hold dried Mediterranean flowers, the small one a candle. An ode to simplicity and light of Salento.", image: "tris-di-fiori.jpg" },
+  { id: 6, titleIt: "Saturno di Radiche", titleEn: "Saturn of Burls", dimensions: "16 cm Ø × 20 cm h", descriptionIt: "Porta gioie a forma di Saturno in ulivo e pero, con anello in radica di ulivo. La sfera centrale ruota delicatamente tra le braccia della radica. Un piccolo universo di legno sospeso tra luce e memoria.", descriptionEn: "Saturn-shaped jewelry holder in olive and pear wood, with ring in olive burl. The central sphere rotates gently within the arms of the burl. A small wooden universe suspended between light and memory.", image: "saturno-di-radiche.jpg" },
+  { id: 7, titleIt: "Quintetto di Essenze", titleEn: "Quintet of Essences", dimensions: "36 cm Ø × 9 cm h", descriptionIt: "Ciottola tornita con intarsi di ulivo, noce nazionale, limone e albicocca; fondo in frassino. Le venature fluide celebrano l'armonia delle essenze mediterranee.", descriptionEn: "Turned bowl with inlays of olive, national walnut, lemon and apricot; ash base. Fluid grains celebrate the harmony of Mediterranean essences.", image: "quintetto-di-essenze.jpg" },
+  { id: 8, titleIt: "Scrigno di Radiche", titleEn: "Burl Treasure Chest", dimensions: "27 cm Ø × 20 cm h", descriptionIt: "Cofanetto in radica di ulivo con coperchio in noce nazionale e raffinati inserti circolari di ulivo, paduk, gelso e noce. Pomolo in radice di ulivo. Un dialogo tra radica e noce ispirato ai giardini del Salento.", descriptionEn: "Lidded vessel in olive burl with national walnut lid featuring refined circular inlays of olive, paduk, mulberry and walnut. Turned knob in olive root. A dialogue between burl and walnut inspired by the gardens of Salento.", image: "scrigno-di-radiche.jpg" },
+  { id: 9, titleIt: "Quartetto di Radiche", titleEn: "Quartet of Burls", dimensions: "8 cm Ø × 24 cm h (max)", descriptionIt: "Quartetto di portagioie in radica di ulivo, noce ebanizzato e limone. Ogni pezzo racconta una storia diversa di forma e venature. Un inno alla varietà e alla poesia del legno del Salento.", descriptionEn: "Quartet of jewelry holders in olive burl, ebonized walnut and lemon wood. Each piece tells a different story of form and grain. An ode to the variety and poetry of Salento wood.", image: "quartetto-di-radiche.jpg" },
+  { id: 10, titleIt: "Cerchi di Luce", titleEn: "Circles of Light", dimensions: "28 cm Ø × 10 cm h", descriptionIt: "Lampada in noce nazionale di recupero con base decorata da raffinati inserti circolari di paduk e gelso. Le venature antiche si fondono con i cerchi da cui filtra la luce. Un gioco di luce tra le venature del legno recuperato.", descriptionEn: "Lamp in reclaimed national walnut with base decorated by refined circular inlays of paduk and mulberry. The ancient wood grains blend with the circles through which light filters. A play of light through the grains of the reclaimed wood.", image: "cerchi-di-luce.jpg" }
 ];
 
-// Note: High-res product photos extracted from the official 14x14cm cards are available in /home/workdir/artifacts/exhibition_images/
-// TODO: Upload them to public/exhibition/ (e.g. lampada-wormhole.jpg) and update cards to use <img src=...> for rich visual gallery.
+// Images: Upload the optimized JPGs from /home/workdir/artifacts/exhibition_web/ to public/exhibition/ 
+// (filenames match the .image property above). Also upload hero-collage.jpg to public/ for the hero background.
 
 export default function SanteseArtWebsite() {
   const [formData, setFormData] = useState({ name: '', email: '', message: '' });
@@ -212,7 +143,7 @@ export default function SanteseArtWebsite() {
 
   return (
     <div className="min-h-screen bg-white text-black overflow-x-hidden">
-      {/* Elegant Minimal Navbar */}
+      {/* Navbar same */}
       <nav className="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-md border-b border-gray-200">
         <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
           <div 
@@ -268,11 +199,7 @@ export default function SanteseArtWebsite() {
 
         {isMobileMenuOpen && (
           <>
-            <div 
-              className="fixed inset-0 bg-black/10 z-30 md:hidden" 
-              style={{ top: '80px' }}
-              onClick={closeMobileMenu}
-            />
+            <div className="fixed inset-0 bg-black/10 z-30 md:hidden" style={{ top: '80px' }} onClick={closeMobileMenu} />
             <div className="md:hidden absolute top-20 left-0 right-0 bg-white border-b border-gray-200 z-40 mobile-menu shadow-lg">
               <div className="max-w-7xl mx-auto px-6 py-8 flex flex-col gap-y-1 text-base font-medium">
                 <button onClick={() => scrollToSection('chi-siamo')} className="nav-link text-left py-3.5 px-1 border-b border-gray-100 last:border-none">Chi siamo</button>
@@ -288,9 +215,17 @@ export default function SanteseArtWebsite() {
         )}
       </nav>
 
-      {/* HERO SECTION */}
-      <section className="relative h-[100dvh] min-h-[640px] flex items-center justify-center pt-20">
-        <div className="hero-bg absolute inset-0 z-0" />
+      {/* HERO with composed exhibition images background */}
+      <section className="relative h-[100dvh] min-h-[640px] flex items-center justify-center pt-20 overflow-hidden">
+        <div 
+          className="absolute inset-0 z-0 bg-cover bg-center"
+          style={{ 
+            backgroundImage: `url('/hero-collage.jpg')`, 
+            backgroundPosition: 'center 40%'
+          }} 
+        />
+        {/* Dark overlay for text readability */}
+        <div className="absolute inset-0 z-0 bg-gradient-to-b from-black/60 via-black/50 to-black/70" />
         
         <div className="relative z-10 max-w-5xl mx-auto px-6 text-center text-white">
           <div className="mb-4 flex justify-center">
@@ -299,15 +234,15 @@ export default function SanteseArtWebsite() {
             </div>
           </div>
           
-          <h1 className="font-serif text-6xl md:text-7xl lg:text-8xl tracking-[-3.5px] leading-[0.9] mb-6">
+          <h1 className="font-serif text-6xl md:text-7xl lg:text-8xl tracking-[-3.5px] leading-[0.9] mb-6 drop-shadow-lg">
             GIARDINI<br />DEL SALENTO
           </h1>
           
-          <p className="text-xl md:text-2xl tracking-tight text-white/90 mb-4 font-light">
+          <p className="text-xl md:text-2xl tracking-tight text-white/95 mb-4 font-light">
             di Rocco Santese
           </p>
           
-          <p className="max-w-lg mx-auto text-lg text-white/80 mb-10 tracking-tight">
+          <p className="max-w-lg mx-auto text-lg text-white/90 mb-10 tracking-tight">
             Opere d’arte in legno per giardini e spazi esterni.<br />Intaglio, sculture e installazioni artistiche.
           </p>
 
@@ -327,13 +262,13 @@ export default function SanteseArtWebsite() {
           </div>
         </div>
 
-        <div className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center text-white/60 text-xs tracking-[2px]">
+        <div className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center text-white/70 text-xs tracking-[2px] z-10">
           <span>SCROLL</span>
-          <div className="h-px w-8 bg-white/40 mt-2" />
+          <div className="h-px w-8 bg-white/50 mt-2" />
         </div>
       </section>
 
-      {/* CHI SIAMO */}
+      {/* CHI SIAMO same */}
       <section id="chi-siamo" className="max-w-6xl mx-auto px-6 pt-20 pb-16">
         <div className="grid md:grid-cols-12 gap-x-12 items-center">
           <div className="md:col-span-7">
@@ -374,7 +309,7 @@ export default function SanteseArtWebsite() {
 
       <div className="section-divider max-w-6xl mx-auto" />
 
-      {/* SERVIZI */}
+      {/* SERVIZI same */}
       <section id="servizi" className="max-w-6xl mx-auto px-6 py-20">
         <div className="text-center mb-14">
           <div className="uppercase tracking-[4px] text-xs text-gray-500 mb-2">ARTIGIANATO D'ECCELLENZA</div>
@@ -399,7 +334,7 @@ export default function SanteseArtWebsite() {
 
       <div className="section-divider max-w-6xl mx-auto" />
 
-      {/* GALLERIA - Now the main exhibition content with all 10 pieces */}
+      {/* GALLERIA with real photos from the PDFs */}
       <section id="galleria" className="max-w-7xl mx-auto px-6 py-20">
         <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-y-4 mb-10">
           <div>
@@ -418,17 +353,15 @@ export default function SanteseArtWebsite() {
               onClick={() => setSelectedExhibit(exhibit)}
               className="group bg-white rounded-3xl border border-gray-100 overflow-hidden cursor-pointer hover:border-gray-300 hover:shadow-xl transition-all duration-300 flex flex-col h-full"
             >
-              {/* Elegant visual placeholder - replace with real photo */}
-              <div className="aspect-[16/10] bg-gradient-to-br from-[#f8f1e3] via-[#f4ebdf] to-[#f8f1e3] relative flex items-center justify-center overflow-hidden">
-                <div className="absolute inset-0 bg-[radial-gradient(#c9b896_0.6px,transparent_1px)] bg-[length:3.5px_3.5px] opacity-40"></div>
-                <div className="relative z-10 text-center px-8">
-                  <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-2xl bg-white/90 shadow-sm">
-                    <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8 text-[#8B5E3C]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.6} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
-                    </svg>
-                  </div>
-                  <div className="text-[10px] tracking-[3px] text-[#8B5E3C]/60 font-medium">OPERA UNICA • SALENTO</div>
-                </div>
+              {/* Real photo from the exhibition card */}
+              <div className="aspect-[16/10] relative overflow-hidden bg-gray-100">
+                <img 
+                  src={`/exhibition/${exhibit.image}`}
+                  alt={exhibit.titleIt}
+                  className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.06]"
+                  loading="lazy"
+                />
+                <div className="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-black/60 to-transparent" />
                 <div className="absolute top-4 right-4 px-3.5 py-1 bg-white/95 text-xs tracking-widest rounded-full text-gray-600 font-mono shadow-sm">
                   {exhibit.dimensions}
                 </div>
@@ -460,8 +393,9 @@ export default function SanteseArtWebsite() {
 
       <div className="section-divider max-w-6xl mx-auto" />
 
-      {/* CONTATTI */}
+      {/* CONTATTI same */}
       <section id="contatti" className="max-w-5xl mx-auto px-6 py-20">
+        {/* ... same contact section ... */}
         <div className="text-center mb-14">
           <div className="uppercase tracking-[4px] text-xs text-gray-500 mb-2">VENITE A TROVARCI</div>
           <h2 className="font-serif text-6xl tracking-[-2px]">Contatti</h2>
@@ -579,7 +513,7 @@ export default function SanteseArtWebsite() {
         </div>
       </section>
 
-      {/* Footer */}
+      {/* Footer same */}
       <footer className="border-t border-gray-200 bg-white">
         <div className="max-w-6xl mx-auto px-6 py-12 text-xs text-gray-500 flex flex-col md:flex-row justify-between items-center gap-y-3">
           <div>© {new Date().getFullYear()} Santese Art — Rocco Santese. Tutti i diritti riservati.</div>
@@ -591,16 +525,10 @@ export default function SanteseArtWebsite() {
         </div>
       </footer>
 
-      {/* Modal for selected exhibit - main detailed view */}
+      {/* Modal same as before */}
       {selectedExhibit && (
-        <div 
-          className="fixed inset-0 z-[100] flex items-center justify-center bg-black/70 p-4 md:p-8" 
-          onClick={() => setSelectedExhibit(null)}
-        >
-          <div 
-            className="bg-white rounded-3xl w-full max-w-4xl max-h-[92vh] overflow-hidden shadow-2xl" 
-            onClick={(e) => e.stopPropagation()}
-          >
+        <div className="fixed inset-0 z-[100] flex items-center justify-center bg-black/70 p-4 md:p-8" onClick={() => setSelectedExhibit(null)}>
+          <div className="bg-white rounded-3xl w-full max-w-4xl max-h-[92vh] overflow-hidden shadow-2xl" onClick={(e) => e.stopPropagation()}>
             <div className="p-8 md:p-12 overflow-auto max-h-[92vh]">
               <div className="flex items-start justify-between gap-4 mb-8">
                 <div>
@@ -608,11 +536,7 @@ export default function SanteseArtWebsite() {
                   <h3 className="font-serif text-4xl md:text-[42px] tracking-[-1.8px] leading-none">{selectedExhibit.titleIt}</h3>
                   <p className="mt-2 text-xl text-gray-500 tracking-tight">{selectedExhibit.titleEn}</p>
                 </div>
-                <button 
-                  onClick={() => setSelectedExhibit(null)}
-                  className="mt-1 p-3 text-gray-400 hover:text-black transition-colors"
-                  aria-label="Chiudi"
-                >
+                <button onClick={() => setSelectedExhibit(null)} className="mt-1 p-3 text-gray-400 hover:text-black transition-colors" aria-label="Chiudi">
                   <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.25} d="M6 18L18 6M6 6l12 12" />
                   </svg>
@@ -635,19 +559,10 @@ export default function SanteseArtWebsite() {
               </div>
 
               <div className="mt-10 pt-8 border-t border-gray-200 flex flex-col sm:flex-row gap-4">
-                <button 
-                  onClick={() => {
-                    setSelectedExhibit(null);
-                    setTimeout(() => scrollToSection('contatti'), 100);
-                  }}
-                  className="btn-primary flex-1 py-4 rounded-2xl text-sm font-medium tracking-[2px]"
-                >
+                <button onClick={() => { setSelectedExhibit(null); setTimeout(() => scrollToSection('contatti'), 100); }} className="btn-primary flex-1 py-4 rounded-2xl text-sm font-medium tracking-[2px]">
                   RICHIEDI INFO O PREVENTIVO PER QUESTO PEZZO
                 </button>
-                <button 
-                  onClick={() => setSelectedExhibit(null)}
-                  className="flex-1 py-4 rounded-2xl text-sm font-medium tracking-[2px] border border-gray-300 hover:bg-gray-50 transition-colors"
-                >
+                <button onClick={() => setSelectedExhibit(null)} className="flex-1 py-4 rounded-2xl text-sm font-medium tracking-[2px] border border-gray-300 hover:bg-gray-50 transition-colors">
                   CHIUDI SCHEDA
                 </button>
               </div>
