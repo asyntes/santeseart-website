@@ -77,6 +77,7 @@ const galleryImages: GalleryImage[] = [];
 export default function SanteseArtWebsite() {
   const [formData, setFormData] = useState({ name: '', email: '', message: '' });
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   const scrollToSection = (id: string) => {
     const element = document.getElementById(id);
@@ -86,6 +87,10 @@ export default function SanteseArtWebsite() {
       const elementPosition = element.getBoundingClientRect().top;
       const offsetPosition = elementPosition - bodyRect - offset;
       window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
+    }
+    // Close mobile menu if open
+    if (isMobileMenuOpen) {
+      setIsMobileMenuOpen(false);
     }
   };
 
@@ -111,18 +116,22 @@ export default function SanteseArtWebsite() {
     }, 2500);
   };
 
-  const openPhone = () => {
+  const openEmail = () => {
     window.location.href = 'mailto:rocco.santese@pec.it';
+  };
+
+  const closeMobileMenu = () => {
+    setIsMobileMenuOpen(false);
   };
 
   return (
     <div className="min-h-screen bg-white text-black overflow-x-hidden">
-      {/* Elegant Minimal Navbar - Mobile First (desktop only for now) */}
+      {/* Elegant Minimal Navbar - Fully responsive with mobile hamburger */}
       <nav className="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-md border-b border-gray-200">
         <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
           {/* Logo with official brand mark */}
           <div 
-            onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+            onClick={() => { window.scrollTo({ top: 0, behavior: 'smooth' }); closeMobileMenu(); }}
             className="flex items-center gap-3.5 cursor-pointer group"
           >
             <img 
@@ -136,24 +145,96 @@ export default function SanteseArtWebsite() {
             </div>
           </div>
 
-          {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center gap-10 text-sm font-medium tracking-wide">
-            <button onClick={() => scrollToSection('chi-siamo')} className="nav-link">Chi siamo</button>
-            <button onClick={() => scrollToSection('servizi')} className="nav-link">Servizi</button>
-            <button onClick={() => scrollToSection('galleria')} className="nav-link">Galleria</button>
-            <button onClick={() => scrollToSection('contatti')} className="nav-link">Contatti</button>
-          </div>
+          {/* Desktop Navigation + CTA + Mobile Hamburger */}
+          <div className="flex items-center gap-4">
+            {/* Desktop Navigation */}
+            <div className="hidden md:flex items-center gap-10 text-sm font-medium tracking-wide">
+              <button onClick={() => scrollToSection('chi-siamo')} className="nav-link">Chi siamo</button>
+              <button onClick={() => scrollToSection('servizi')} className="nav-link">Servizi</button>
+              <button onClick={() => scrollToSection('galleria')} className="nav-link">Galleria</button>
+              <button onClick={() => scrollToSection('contatti')} className="nav-link">Contatti</button>
+            </div>
 
-          {/* CTA Button Desktop */}
-          <div className="hidden md:block">
-            <button 
-              onClick={() => scrollToSection('contatti')}
-              className="btn-primary px-6 py-2.5 rounded-full text-sm font-medium tracking-wide flex items-center gap-2"
+            {/* CTA Button Desktop */}
+            <div className="hidden md:block">
+              <button 
+                onClick={() => scrollToSection('contatti')}
+                className="btn-primary px-6 py-2.5 rounded-full text-sm font-medium tracking-wide flex items-center gap-2"
+              >
+                CONTATTACI
+              </button>
+            </div>
+
+            {/* Mobile Hamburger Button */}
+            <button
+              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+              className="md:hidden p-2 -mr-1 text-black hover:text-gray-700 transition-colors"
+              aria-label={isMobileMenuOpen ? "Chiudi menu" : "Apri menu"}
+              aria-expanded={isMobileMenuOpen}
             >
-              CONTATTACI
+              {isMobileMenuOpen ? (
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.25} d="M6 18L18 6M6 6l12 12" />
+                </svg>
+              ) : (
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.25} d="M4 6h16M4 12h16M4 18h16" />
+                </svg>
+              )}
             </button>
           </div>
         </div>
+
+        {/* Mobile Menu Dropdown */}
+        {isMobileMenuOpen && (
+          <>
+            {/* Backdrop */}
+            <div 
+              className="fixed inset-0 bg-black/10 z-30 md:hidden" 
+              style={{ top: '80px' }}
+              onClick={closeMobileMenu}
+            />
+            
+            {/* Menu Panel */}
+            <div className="md:hidden absolute top-20 left-0 right-0 bg-white border-b border-gray-200 z-40 mobile-menu shadow-lg">
+              <div className="max-w-7xl mx-auto px-6 py-8 flex flex-col gap-y-1 text-base font-medium">
+                <button 
+                  onClick={() => scrollToSection('chi-siamo')} 
+                  className="nav-link text-left py-3.5 px-1 border-b border-gray-100 last:border-none"
+                >
+                  Chi siamo
+                </button>
+                <button 
+                  onClick={() => scrollToSection('servizi')} 
+                  className="nav-link text-left py-3.5 px-1 border-b border-gray-100 last:border-none"
+                >
+                  Servizi
+                </button>
+                <button 
+                  onClick={() => scrollToSection('galleria')} 
+                  className="nav-link text-left py-3.5 px-1 border-b border-gray-100 last:border-none"
+                >
+                  Galleria
+                </button>
+                <button 
+                  onClick={() => scrollToSection('contatti')} 
+                  className="nav-link text-left py-3.5 px-1 border-b border-gray-100 last:border-none"
+                >
+                  Contatti
+                </button>
+                
+                <div className="pt-6 mt-2">
+                  <button 
+                    onClick={() => scrollToSection('contatti')}
+                    className="btn-primary w-full py-4 rounded-2xl text-sm font-medium tracking-[2px]"
+                  >
+                    CONTATTACI
+                  </button>
+                </div>
+              </div>
+            </div>
+          </>
+        )}
       </nav>
 
       {/* HERO SECTION - Focused on Giardini del Salento exhibition (good as is) */}
@@ -354,7 +435,7 @@ export default function SanteseArtWebsite() {
             <div>
               <div className="text-xs tracking-[2px] text-gray-500 mb-3">CONTATTO DIRETTO</div>
               <button 
-                onClick={openPhone}
+                onClick={openEmail}
                 className="flex items-center gap-3 text-left group"
               >
                 <div className="h-12 w-12 rounded-full border border-black flex items-center justify-center group-hover:bg-black group-hover:text-white transition-all">
