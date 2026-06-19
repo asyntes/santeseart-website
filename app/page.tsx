@@ -1,1 +1,1 @@
-the full page with SANTESEART fixed in navbar (no space)
+full page with SANTESE ART (with space) in navbar - brand is Santese Art, last name Santese is already attached
