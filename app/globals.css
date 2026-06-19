@@ -64,12 +64,9 @@ html {
   width: 100%;
 }
 
-/* Hero */
+/* Hero - clean elegant without external image for now */
 .hero-bg {
-  background-image: linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.35)), url('https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?w=2000&q=80');
-  background-size: cover;
-  background-position: center;
-  background-attachment: fixed;
+  background: linear-gradient(180deg, #111111 0%, #1a1a1a 100%);
 }
 
 /* Service cards */
