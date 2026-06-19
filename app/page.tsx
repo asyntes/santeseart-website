@@ -2,26 +2,6 @@
 
 import React, { useState } from 'react';
 
-// SVG Logo - Elegant flower inspired by traditional craftsmanship
-const SanteseLogo = ({ className = "h-8 w-8" }: { className?: string }) => (
-  <svg 
-    viewBox="0 0 48 48" 
-    fill="none" 
-    xmlns="http://www.w3.org/2000/svg" 
-    className={className}
-  >
-    <circle cx="24" cy="24" r="22" stroke="currentColor" strokeWidth="1.5"/>
-    <g fill="currentColor">
-      {/* Central flower petals - minimal elegant */}
-      <circle cx="24" cy="24" r="4"/>
-      <path d="M24 12 Q28 18 24 24 Q20 18 24 12" />
-      <path d="M36 24 Q30 28 24 24 Q30 20 36 24" />
-      <path d="M24 36 Q20 30 24 24 Q28 30 24 36" />
-      <path d="M12 24 Q18 20 24 24 Q18 28 12 24" />
-    </g>
-  </svg>
-);
-
 interface Service {
   title: string;
   description: string;
@@ -158,25 +138,26 @@ export default function SanteseArtWebsite() {
   };
 
   const openPhone = () => {
-    // Since no public phone, open email client or show info
     window.location.href = 'mailto:rocco.santese@pec.it';
   };
 
   return (
     <div className="min-h-screen bg-white text-black overflow-x-hidden">
-      {/* Elegant Minimal Navbar */}
+      {/* Elegant Minimal Navbar - Mobile First */}
       <nav className="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-md border-b border-gray-200">
         <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
-          {/* Logo */}
+          {/* Logo with official brand mark */}
           <div 
             onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-            className="flex items-center gap-3 cursor-pointer group"
+            className="flex items-center gap-3.5 cursor-pointer group"
           >
-            <div className="text-black group-hover:text-gray-700 transition-colors">
-              <SanteseLogo className="h-9 w-9" />
-            </div>
-            <div>
-              <div className="font-serif text-2xl tracking-[-1.5px] font-medium">SANTESE ART</div>
+            <img 
+              src="/logo_santeseart.svg" 
+              alt="Santese Art - Ebanisteria & Falegnameria Artistica" 
+              className="h-9 w-auto transition-transform group-hover:scale-[1.02]" 
+            />
+            <div className="hidden sm:block">
+              <div className="font-serif text-2xl tracking-[-1.5px] font-medium text-black group-hover:text-gray-800 transition-colors">SANTESE ART</div>
               <div className="text-[10px] text-gray-500 -mt-1 tracking-[2px]">EBANISTERIA ARTISTICA</div>
             </div>
           </div>
@@ -229,8 +210,7 @@ export default function SanteseArtWebsite() {
                 className="btn-primary w-full py-3.5 rounded-full text-sm font-medium tracking-widest"
               >
                 CONTATTACI
-              </button>
-            </div>
+            </button>
           </div>
         )}
       </nav>
