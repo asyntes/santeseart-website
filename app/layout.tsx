@@ -17,7 +17,7 @@ const geistMono = Geist_Mono({
 const instrumentSerif = Instrument_Serif({
   variable: "--font-instrument-serif",
   subsets: ["latin"],
-  weight: ["400"], // Only 400 is available for Instrument Serif on Google Fonts
+  weight: ["400"], // FIXED: Only weight 400 exists for this font
   style: ["normal", "italic"],
 });
 
