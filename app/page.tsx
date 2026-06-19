@@ -8,6 +8,12 @@ interface Service {
   icon: React.ReactNode;
 }
 
+interface GalleryImage {
+  url: string;
+  alt: string;
+  caption: string;
+}
+
 const services: Service[] = [
   {
     title: "Intaglio Artistico",
@@ -65,8 +71,8 @@ const services: Service[] = [
   }
 ];
 
-// Gallery temporarily empty - waiting for photos of the "Giardini del Salento" exhibition
-const galleryImages: any[] = [];
+// Gallery temporarily empty - waiting for your photos of the "Giardini del Salento" exhibition
+const galleryImages: GalleryImage[] = [];
 
 export default function SanteseArtWebsite() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -324,8 +330,8 @@ export default function SanteseArtWebsite() {
                 <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/70 to-transparent p-6">
                   <p className="text-white text-sm tracking-wide opacity-90 group-hover:opacity-100 transition-opacity">
                     {image.caption}
-                  </p>
-                </div>
+                </p>
+              </div>
               </a>
             ))}
           </div>
