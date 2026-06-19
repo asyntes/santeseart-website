@@ -17,15 +17,13 @@ const geistMono = Geist_Mono({
 const instrumentSerif = Instrument_Serif({
   variable: "--font-instrument-serif",
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
+  weight: ["400"], // Only 400 is available for Instrument Serif on Google Fonts
   style: ["normal", "italic"],
 });
 
 export const metadata: Metadata = {
   title: "Santese Art | Ebanisteria & Falegnameria Artistica",
   description: "Ebanisteria e falegnameria artistica di Rocco Santese a Oria (BR). Specializzati in intaglio, intarsio, restauro di oggetti antichi d'arte e manufatti artigianali su misura.",
-  // Using default favicon for now to avoid potential build issues with complex SVG
-  // icons: { icon: "/logo_santeseart.svg" },
 };
 
 export default function RootLayout({
