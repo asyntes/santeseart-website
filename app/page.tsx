@@ -65,38 +65,8 @@ const services: Service[] = [
   }
 ];
 
-const galleryImages = [
-  {
-    url: "https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?w=800&q=80",
-    alt: "Artigiano al lavoro nella falegnameria",
-    caption: "Lavoro artigianale nel laboratorio"
-  },
-  {
-    url: "https://images.unsplash.com/photo-1611501275019-9b5cda994e8d?w=800&q=80",
-    alt: "Dettaglio di intaglio su legno",
-    caption: "Particolare di intaglio artistico"
-  },
-  {
-    url: "https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=800&q=80",
-    alt: "Mobili in legno massello",
-    caption: "Mobili realizzati su misura"
-  },
-  {
-    url: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=80",
-    alt: "Porta in legno intagliata",
-    caption: "Portoncino d'ingresso artistico"
-  },
-  {
-    url: "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=800&q=80",
-    alt: "Dettaglio di intarsio in legno",
-    caption: "Intarsio con legni pregiati"
-  },
-  {
-    url: "https://images.unsplash.com/photo-1513519245088-0e12902e35a6?w=800&q=80",
-    alt: "Dettaglio lavorazione legno",
-    caption: "Finitura e cura dei dettagli"
-  }
-];
+// Gallery temporarily empty - waiting for photos of the "Giardini del Salento" exhibition
+const galleryImages: any[] = [];
 
 export default function SanteseArtWebsite() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -215,27 +185,27 @@ export default function SanteseArtWebsite() {
         )}
       </nav>
 
-      {/* HERO SECTION - Elegant & Impactful */}
+      {/* HERO SECTION - Focused on Giardini del Salento exhibition */}
       <section className="relative h-[100dvh] min-h-[640px] flex items-center justify-center pt-20">
         <div className="hero-bg absolute inset-0 z-0" />
         
         <div className="relative z-10 max-w-5xl mx-auto px-6 text-center text-white">
-          <div className="mb-6 flex justify-center">
-            <div className="inline-flex items-center gap-2 px-4 py-1 rounded-full bg-white/10 backdrop-blur border border-white/20 text-xs tracking-[3px] font-medium">
-              ORIA • PUGLIA
+          <div className="mb-4 flex justify-center">
+            <div className="inline-flex items-center gap-2 px-5 py-1.5 rounded-full bg-white/10 backdrop-blur border border-white/20 text-xs tracking-[4px] font-medium">
+              MOSTRA • GIARDINI DEL SALENTO
             </div>
           </div>
           
           <h1 className="font-serif text-6xl md:text-7xl lg:text-8xl tracking-[-3.5px] leading-[0.9] mb-6">
-            EBANISTERIA<br />ARTISTICA
+            GIARDINI<br />DEL SALENTO
           </h1>
           
           <p className="text-xl md:text-2xl tracking-tight text-white/90 mb-4 font-light">
             di Rocco Santese
           </p>
           
-          <p className="max-w-md mx-auto text-lg text-white/80 mb-10 tracking-tight">
-            Intaglio • Intarsio • Restauro • Manufatti su misura
+          <p className="max-w-lg mx-auto text-lg text-white/80 mb-10 tracking-tight">
+            Opere d’arte in legno per giardini e spazi esterni.<br />Intaglio, sculture e installazioni artistiche.
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -243,7 +213,7 @@ export default function SanteseArtWebsite() {
               onClick={() => scrollToSection('galleria')}
               className="btn-secondary border-white text-white hover:bg-white hover:text-black px-8 py-4 rounded-full text-sm font-medium tracking-widest"
             >
-              SCOPRI I LAVORI
+              SCOPRI LE OPERE
             </button>
             <button 
               onClick={() => scrollToSection('contatti')}
@@ -265,18 +235,18 @@ export default function SanteseArtWebsite() {
       <section id="chi-siamo" className="max-w-6xl mx-auto px-6 pt-20 pb-16">
         <div className="grid md:grid-cols-12 gap-x-12 items-center">
           <div className="md:col-span-7">
-            <div className="uppercase text-xs tracking-[3px] text-gray-500 mb-3">DAL 1980 • ORIA</div>
+            <div className="uppercase text-xs tracking-[3px] text-gray-500 mb-3">DAL 1980 • ORIA — MOSTRA GIARDINI DEL SALENTO</div>
             <h2 className="font-serif text-6xl md:text-7xl tracking-[-2.5px] leading-none mb-8">
-              La tradizione<br />dell'ebanisteria<br />pugliese.
+              La tradizione<br />dell'ebanisteria<br />pugliese<br />in giardino.
             </h2>
           </div>
           
           <div className="md:col-span-5 text-lg leading-relaxed text-gray-600">
             <p className="mb-6">
-              Siamo specializzati in <span className="font-medium text-black">intaglio</span>, <span className="font-medium text-black">intarsio</span> e <span className="font-medium text-black">restauro</span> di oggetti antichi d'arte.
+              Per la mostra <span className="font-medium text-black">Giardini del Salento</span> presentiamo una selezione di opere d’arte in legno pensate per giardini, terrazzi e spazi esterni.
             </p>
             <p>
-              Realizziamo anche <span className="font-medium text-black">mobili</span>, <span className="font-medium text-black">porte</span> e altri manufatti artigianali su misura, con la passione e la precisione tramandate da generazioni.
+              Intagli artistici, sculture e installazioni che uniscono la maestria artigianale di Rocco Santese alla bellezza del paesaggio salentino.
             </p>
           </div>
         </div>
@@ -287,12 +257,12 @@ export default function SanteseArtWebsite() {
             <div className="text-gray-500">Maestro ebanista</div>
           </div>
           <div>
-            <div className="font-medium mb-1 tracking-wide">TRADIZIONE</div>
-            <div className="text-gray-500">Tecniche antiche e innovazione</div>
+            <div className="font-medium mb-1 tracking-wide">MOSTRA</div>
+            <div className="text-gray-500">Giardini del Salento</div>
           </div>
           <div>
             <div className="font-medium mb-1 tracking-wide">MATERIALI</div>
-            <div className="text-gray-500">Legni pregiati italiani e internazionali</div>
+            <div className="text-gray-500">Legni pregiati italiani</div>
           </div>
         </div>
       </section>
@@ -324,43 +294,57 @@ export default function SanteseArtWebsite() {
 
       <div className="section-divider max-w-6xl mx-auto" />
 
-      {/* GALLERIA */}
+      {/* GALLERIA - Ready for Giardini del Salento photos */}
       <section id="galleria" className="max-w-7xl mx-auto px-6 py-20">
         <div className="flex justify-between items-end mb-10">
           <div>
             <div className="uppercase tracking-[3px] text-xs text-gray-500">IL NOSTRO LAVORO</div>
-            <h2 className="font-serif text-6xl tracking-[-2px]">Galleria</h2>
+            <h2 className="font-serif text-6xl tracking-[-2px]">Galleria — Giardini del Salento</h2>
           </div>
           <p className="hidden md:block max-w-xs text-right text-sm text-gray-500">
-            Ogni pezzo racconta una storia di passione, pazienza e maestria artigianale.
+            Le opere esposte nella mostra dedicata ai giardini del Salento.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-          {galleryImages.map((image, index) => (
-            <a 
-              key={index} 
-              href={image.url} 
-              target="_blank" 
-              rel="noopener noreferrer"
-              className="group relative aspect-[4/3] overflow-hidden rounded-3xl bg-gray-100 block"
-            >
-              <img 
-                src={image.url} 
-                alt={image.alt}
-                className="gallery-img absolute inset-0 w-full h-full object-cover"
-              />
-              <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/70 to-transparent p-6">
-                <p className="text-white text-sm tracking-wide opacity-90 group-hover:opacity-100 transition-opacity">
-                  {image.caption}
-                </p>
-              </div>
-            </a>
-          ))}
-        </div>
+        {galleryImages.length > 0 ? (
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+            {galleryImages.map((image, index) => (
+              <a 
+                key={index} 
+                href={image.url} 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="group relative aspect-[4/3] overflow-hidden rounded-3xl bg-gray-100 block"
+              >
+                <img 
+                  src={image.url} 
+                  alt={image.alt}
+                  className="gallery-img absolute inset-0 w-full h-full object-cover"
+                />
+                <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/70 to-transparent p-6">
+                  <p className="text-white text-sm tracking-wide opacity-90 group-hover:opacity-100 transition-opacity">
+                    {image.caption}
+                  </p>
+                </div>
+              </a>
+            ))}
+          </div>
+        ) : (
+          <div className="text-center py-20 border border-dashed border-gray-300 rounded-3xl">
+            <div className="mx-auto mb-6 h-16 w-16 rounded-full bg-gray-100 flex items-center justify-center">
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+              </svg>
+            </div>
+            <h3 className="font-serif text-2xl tracking-tight mb-2">Foto in arrivo</h3>
+            <p className="text-gray-500 max-w-md mx-auto">
+              Le immagini delle opere della mostra <span className="font-medium">Giardini del Salento</span> saranno caricate a breve.
+            </p>
+          </div>
+        )}
         
         <p className="text-center text-xs text-gray-400 mt-8 tracking-widest">
-          IMMAGINI RAPPRESENTATIVE DEL NOSTRO ARTIGIANATO
+          OPERE REALIZZATE PER LA MOSTRA GIARDINI DEL SALENTO
         </p>
       </section>
 
@@ -369,7 +353,7 @@ export default function SanteseArtWebsite() {
       {/* CONTATTI */}
       <section id="contatti" className="max-w-5xl mx-auto px-6 py-20">
         <div className="text-center mb-14">
-          <div className="uppercase tracking-[4px] text-xs text-gray-500 mb-2">VENITE A TROVARCI</div>
+          <div className="uppercase tracking-[4px] text-xs text-gray-500 mb-2">VENITE A TROVARCI ALLA MOSTRA</div>
           <h2 className="font-serif text-6xl tracking-[-2px]">Contatti</h2>
         </div>
 
@@ -494,7 +478,7 @@ export default function SanteseArtWebsite() {
           <div className="flex gap-x-6">
             <span>Oria, Brindisi — Puglia, Italia</span>
             <span className="hidden md:inline">•</span>
-            <span>Artigianato italiano di eccellenza</span>
+            <span>Artigianato italiano di eccellenza — Giardini del Salento</span>
           </div>
         </div>
       </footer>
