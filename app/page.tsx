@@ -156,14 +156,14 @@ export default function SanteseArtWebsite() {
         </div>
       </nav>
 
-      {/* HERO SECTION - Focused on Giardini del Salento exhibition */}
+      {/* HERO SECTION - Focused on Giardini del Salento exhibition (good as is) */}
       <section className="relative h-[100dvh] min-h-[640px] flex items-center justify-center pt-20">
         <div className="hero-bg absolute inset-0 z-0" />
         
         <div className="relative z-10 max-w-5xl mx-auto px-6 text-center text-white">
           <div className="mb-4 flex justify-center">
             <div className="inline-flex items-center gap-2 px-5 py-1.5 rounded-full bg-white/10 backdrop-blur border border-white/20 text-xs tracking-[4px] font-medium">
-              MOSTRA • GIARDINI DEL SALENTO
+              MOSTRA ATTUALE • GIARDINI DEL SALENTO
             </div>
           </div>
           
@@ -182,13 +182,13 @@ export default function SanteseArtWebsite() {
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <button 
               onClick={() => scrollToSection('galleria')}
-              className="btn-secondary border-white text-white hover:bg-white hover:text-black px-8 py-4 rounded-full text-sm font-medium tracking-widest"
+              className="px-8 py-4 rounded-full text-sm font-medium tracking-widest border border-white text-white hover:bg-white hover:text-black transition-all"
             >
               SCOPRI LE OPERE
             </button>
             <button 
               onClick={() => scrollToSection('contatti')}
-              className="btn-primary border border-white/30 px-8 py-4 rounded-full text-sm font-medium tracking-widest"
+              className="px-8 py-4 rounded-full text-sm font-medium tracking-widest bg-white text-black hover:bg-gray-100 transition-all"
             >
               PRENOTA UN APPUNTAMENTO
             </button>
@@ -202,22 +202,25 @@ export default function SanteseArtWebsite() {
         </div>
       </section>
 
-      {/* CHI SIAMO */}
+      {/* CHI SIAMO - Ebanisteria first, exhibition second */}
       <section id="chi-siamo" className="max-w-6xl mx-auto px-6 pt-20 pb-16">
         <div className="grid md:grid-cols-12 gap-x-12 items-center">
           <div className="md:col-span-7">
-            <div className="uppercase text-xs tracking-[3px] text-gray-500 mb-3">DAL 1980 • ORIA — MOSTRA GIARDINI DEL SALENTO</div>
+            <div className="uppercase text-xs tracking-[3px] text-gray-500 mb-3">DAL 1980 • ORIA — PUGLIA</div>
             <h2 className="font-serif text-6xl md:text-7xl tracking-[-2.5px] leading-none mb-8">
-              La tradizione<br />dell'ebanisteria<br />pugliese<br />in giardino.
+              Ebanisteria<br />artistica<br />di tradizione<br />pugliese.
             </h2>
           </div>
           
           <div className="md:col-span-5 text-lg leading-relaxed text-gray-600">
             <p className="mb-6">
-              Per la mostra <span className="font-medium text-black">Giardini del Salento</span> presentiamo una selezione di opere d’arte in legno pensate per giardini, terrazzi e spazi esterni.
+              <span className="font-medium text-black">Santese Art</span> è l’ebanisteria artistica di Rocco Santese a Oria. Da oltre 40 anni realizziamo intagli, intarsi, restauri e mobili su misura con tecniche artigianali tramandate nel tempo.
+            </p>
+            <p className="mb-6">
+              Attualmente esponiamo una selezione di opere dedicate ai <span className="font-medium text-black">Giardini del Salento</span>: intagli e installazioni artistiche pensate per giardini, terrazzi e spazi esterni.
             </p>
             <p>
-              Intagli artistici, sculture e installazioni che uniscono la maestria artigianale di Rocco Santese alla bellezza del paesaggio salentino.
+              Ogni pezzo è unico, realizzato a mano con legni pregiati italiani.
             </p>
           </div>
         </div>
@@ -228,7 +231,7 @@ export default function SanteseArtWebsite() {
             <div className="text-gray-500">Maestro ebanista</div>
           </div>
           <div>
-            <div className="font-medium mb-1 tracking-wide">MOSTRA</div>
+            <div className="font-medium mb-1 tracking-wide">MOSTRA ATTUALE</div>
             <div className="text-gray-500">Giardini del Salento</div>
           </div>
           <div>
@@ -265,7 +268,7 @@ export default function SanteseArtWebsite() {
 
       <div className="section-divider max-w-6xl mx-auto" />
 
-      {/* GALLERIA - Ready for Giardini del Salento photos */}
+      {/* GALLERIA */}
       <section id="galleria" className="max-w-7xl mx-auto px-6 py-20">
         <div className="flex justify-between items-end mb-10">
           <div>
@@ -295,7 +298,7 @@ export default function SanteseArtWebsite() {
                 <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/70 to-transparent p-6">
                   <p className="text-white text-sm tracking-wide opacity-90 group-hover:opacity-100 transition-opacity">
                     {image.caption}
-                </p>
+                  </p>
               </div>
               </a>
             ))}
@@ -324,7 +327,7 @@ export default function SanteseArtWebsite() {
       {/* CONTATTI */}
       <section id="contatti" className="max-w-5xl mx-auto px-6 py-20">
         <div className="text-center mb-14">
-          <div className="uppercase tracking-[4px] text-xs text-gray-500 mb-2">VENITE A TROVARCI ALLA MOSTRA</div>
+          <div className="uppercase tracking-[4px] text-xs text-gray-500 mb-2">VENITE A TROVARCI</div>
           <h2 className="font-serif text-6xl tracking-[-2px]">Contatti</h2>
         </div>
 
@@ -449,7 +452,7 @@ export default function SanteseArtWebsite() {
           <div className="flex gap-x-6">
             <span>Oria, Brindisi — Puglia, Italia</span>
             <span className="hidden md:inline">•</span>
-            <span>Artigianato italiano di eccellenza — Giardini del Salento</span>
+            <span>Artigianato italiano di eccellenza</span>
           </div>
         </div>
       </footer>
