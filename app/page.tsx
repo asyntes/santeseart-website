@@ -8,10 +8,13 @@ interface Service {
   icon: React.ReactNode;
 }
 
-interface GalleryImage {
-  url: string;
-  alt: string;
-  caption: string;
+interface Exhibit {
+  id: number;
+  titleIt: string;
+  titleEn: string;
+  dimensions: string;
+  descriptionIt: string;
+  descriptionEn: string;
 }
 
 const services: Service[] = [
@@ -71,13 +74,98 @@ const services: Service[] = [
   }
 ];
 
-// Gallery temporarily empty - waiting for your photos of the "Giardini del Salento" exhibition
-const galleryImages: GalleryImage[] = [];
+// Exhibition pieces from "Giardini del Salento" show - complete bilingual content from the official cards
+const exhibits: Exhibit[] = [
+  {
+    id: 1,
+    titleIt: "Lampada Wormhole",
+    titleEn: "Wormhole Lamp",
+    dimensions: "25 cm Ø × 16.5 cm h",
+    descriptionIt: "Lampada Wormhole in frassino con inserti di noce mansonia e base in noce nazionale ebanizzato. La radica centrale emette una luce blu che fuoriesce anche dalla base. Un portale di luce e legno tra i mondi.",
+    descriptionEn: "Wormhole lamp in ash with mansonia walnut inlays and ebonized national walnut base. The central burl emits blue light that also glows from under the base. A portal of light and wood between worlds."
+  },
+  {
+    id: 2,
+    titleIt: "Tris di Radiche",
+    titleEn: "Trio of Burls",
+    dimensions: "25 cm Ø × 16 cm h (max)",
+    descriptionIt: "Trio di lampade in radica di ulivo con coni in noce nazionale ebanizzato. Una presenta inserti di gelso e pero. La radica si libra sospesa in un abbraccio di luce e ombra.",
+    descriptionEn: "Trio of lamps in olive burl with ebonized national walnut cones. One features inlays of mulberry and pear. The burl floats suspended in an embrace of light and shadow."
+  },
+  {
+    id: 3,
+    titleIt: "Centrotavola di Radiche",
+    titleEn: "Olive Burl Centerpiece",
+    dimensions: "24 cm Ø × 12 cm h",
+    descriptionIt: "Centrotavola in radica di ulivo con bordo a segmenti di paduk, noce nazionale, limone e wengé. Le venature della radica centrale danzano con i colori del bordo. Un cerchio di essenze che celebra il Salento.",
+    descriptionEn: "Centerpiece in olive burl with segmented rim in paduk, national walnut, lemon and wengé. The central burl grains dance with the colors of the rim. A circle of essences celebrating Salento."
+  },
+  {
+    id: 4,
+    titleIt: "Raggiera Solare",
+    titleEn: "Solar Sunburst Bowl",
+    dimensions: "38 cm Ø × 9 cm h",
+    descriptionIt: "Ciotola con spettacolare raggiera di intarsi in ulivo, frassino, limone, pero, noce nazionale e ciliegio. Il motivo centrale scolpito esalta le venature fluide del legno. Un inno alla luce e alla materia dei giardini del Salento.",
+    descriptionEn: "Bowl featuring a spectacular sunburst inlay of olive, ash, lemon, pear, national walnut and cherry. The carved central motif highlights the flowing wood grains. An ode to the light and matter of the Salento gardens."
+  },
+  {
+    id: 5,
+    titleIt: "Tris di Fiori",
+    titleEn: "Trio of Flower Holders",
+    dimensions: "11 cm Ø × 30 cm h (max)",
+    descriptionIt: "Trio di porta fiori in noce nazionale con inserti circolari di gelso. I due più grandi accolgono fiori secchi mediterranei, il piccolo una candela. Un inno alla semplicità e alla luce del Salento.",
+    descriptionEn: "Trio of flower holders in national walnut with circular inlays of mulberry. The two larger ones hold dried Mediterranean flowers, the small one a candle. An ode to simplicity and light of Salento."
+  },
+  {
+    id: 6,
+    titleIt: "Saturno di Radiche",
+    titleEn: "Saturn of Burls",
+    dimensions: "16 cm Ø × 20 cm h",
+    descriptionIt: "Porta gioie a forma di Saturno in ulivo e pero, con anello in radica di ulivo. La sfera centrale ruota delicatamente tra le braccia della radica. Un piccolo universo di legno sospeso tra luce e memoria.",
+    descriptionEn: "Saturn-shaped jewelry holder in olive and pear wood, with ring in olive burl. The central sphere rotates gently within the arms of the burl. A small wooden universe suspended between light and memory."
+  },
+  {
+    id: 7,
+    titleIt: "Quintetto di Essenze",
+    titleEn: "Quintet of Essences",
+    dimensions: "36 cm Ø × 9 cm h",
+    descriptionIt: "Ciottola tornita con intarsi di ulivo, noce nazionale, limone e albicocca; fondo in frassino. Le venature fluide celebrano l'armonia delle essenze mediterranee.",
+    descriptionEn: "Turned bowl with inlays of olive, national walnut, lemon and apricot; ash base. Fluid grains celebrate the harmony of Mediterranean essences."
+  },
+  {
+    id: 8,
+    titleIt: "Scrigno di Radiche",
+    titleEn: "Burl Treasure Chest",
+    dimensions: "27 cm Ø × 20 cm h",
+    descriptionIt: "Cofanetto in radica di ulivo con coperchio in noce nazionale e raffinati inserti circolari di ulivo, paduk, gelso e noce. Pomolo in radice di ulivo. Un dialogo tra radica e noce ispirato ai giardini del Salento.",
+    descriptionEn: "Lidded vessel in olive burl with national walnut lid featuring refined circular inlays of olive, paduk, mulberry and walnut. Turned knob in olive root. A dialogue between burl and walnut inspired by the gardens of Salento."
+  },
+  {
+    id: 9,
+    titleIt: "Quartetto di Radiche",
+    titleEn: "Quartet of Burls",
+    dimensions: "8 cm Ø × 24 cm h (max)",
+    descriptionIt: "Quartetto di portagioie in radica di ulivo, noce ebanizzato e limone. Ogni pezzo racconta una storia diversa di forma e venature. Un inno alla varietà e alla poesia del legno del Salento.",
+    descriptionEn: "Quartet of jewelry holders in olive burl, ebonized walnut and lemon wood. Each piece tells a different story of form and grain. An ode to the variety and poetry of Salento wood."
+  },
+  {
+    id: 10,
+    titleIt: "Cerchi di Luce",
+    titleEn: "Circles of Light",
+    dimensions: "28 cm Ø × 10 cm h",
+    descriptionIt: "Lampada in noce nazionale di recupero con base decorata da raffinati inserti circolari di paduk e gelso. Le venature antiche si fondono con i cerchi da cui filtra la luce. Un gioco di luce tra le venature del legno recuperato.",
+    descriptionEn: "Lamp in reclaimed national walnut with base decorated by refined circular inlays of paduk and mulberry. The ancient wood grains blend with the circles through which light filters. A play of light through the grains of the reclaimed wood."
+  }
+];
+
+// Note: High-res product photos extracted from the official 14x14cm cards are available in /home/workdir/artifacts/exhibition_images/
+// TODO: Upload them to public/exhibition/ (e.g. lampada-wormhole.jpg) and update cards to use <img src=...> for rich visual gallery.
 
 export default function SanteseArtWebsite() {
   const [formData, setFormData] = useState({ name: '', email: '', message: '' });
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [selectedExhibit, setSelectedExhibit] = useState<Exhibit | null>(null);
 
   const scrollToSection = (id: string) => {
     const element = document.getElementById(id);
@@ -88,7 +176,6 @@ export default function SanteseArtWebsite() {
       const offsetPosition = elementPosition - bodyRect - offset;
       window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
     }
-    // Close mobile menu if open
     if (isMobileMenuOpen) {
       setIsMobileMenuOpen(false);
     }
@@ -108,7 +195,6 @@ export default function SanteseArtWebsite() {
     
     window.location.href = mailtoLink;
     
-    // Show success state
     setIsSubmitted(true);
     setTimeout(() => {
       setIsSubmitted(false);
@@ -126,10 +212,9 @@ export default function SanteseArtWebsite() {
 
   return (
     <div className="min-h-screen bg-white text-black overflow-x-hidden">
-      {/* Elegant Minimal Navbar - Fully responsive with mobile hamburger */}
+      {/* Elegant Minimal Navbar */}
       <nav className="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-md border-b border-gray-200">
         <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
-          {/* Logo with official brand mark */}
           <div 
             onClick={() => { window.scrollTo({ top: 0, behavior: 'smooth' }); closeMobileMenu(); }}
             className="flex items-center gap-3.5 cursor-pointer group"
@@ -145,9 +230,7 @@ export default function SanteseArtWebsite() {
             </div>
           </div>
 
-          {/* Desktop Navigation + CTA + Mobile Hamburger */}
           <div className="flex items-center gap-4">
-            {/* Desktop Navigation */}
             <div className="hidden md:flex items-center gap-10 text-sm font-medium tracking-wide">
               <button onClick={() => scrollToSection('chi-siamo')} className="nav-link">Chi siamo</button>
               <button onClick={() => scrollToSection('servizi')} className="nav-link">Servizi</button>
@@ -155,7 +238,6 @@ export default function SanteseArtWebsite() {
               <button onClick={() => scrollToSection('contatti')} className="nav-link">Contatti</button>
             </div>
 
-            {/* CTA Button Desktop */}
             <div className="hidden md:block">
               <button 
                 onClick={() => scrollToSection('contatti')}
@@ -165,7 +247,6 @@ export default function SanteseArtWebsite() {
               </button>
             </div>
 
-            {/* Mobile Hamburger Button */}
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
               className="md:hidden p-2 -mr-1 text-black hover:text-gray-700 transition-colors"
@@ -185,51 +266,21 @@ export default function SanteseArtWebsite() {
           </div>
         </div>
 
-        {/* Mobile Menu Dropdown */}
         {isMobileMenuOpen && (
           <>
-            {/* Backdrop */}
             <div 
               className="fixed inset-0 bg-black/10 z-30 md:hidden" 
               style={{ top: '80px' }}
               onClick={closeMobileMenu}
             />
-            
-            {/* Menu Panel */}
             <div className="md:hidden absolute top-20 left-0 right-0 bg-white border-b border-gray-200 z-40 mobile-menu shadow-lg">
               <div className="max-w-7xl mx-auto px-6 py-8 flex flex-col gap-y-1 text-base font-medium">
-                <button 
-                  onClick={() => scrollToSection('chi-siamo')} 
-                  className="nav-link text-left py-3.5 px-1 border-b border-gray-100 last:border-none"
-                >
-                  Chi siamo
-                </button>
-                <button 
-                  onClick={() => scrollToSection('servizi')} 
-                  className="nav-link text-left py-3.5 px-1 border-b border-gray-100 last:border-none"
-                >
-                  Servizi
-                </button>
-                <button 
-                  onClick={() => scrollToSection('galleria')} 
-                  className="nav-link text-left py-3.5 px-1 border-b border-gray-100 last:border-none"
-                >
-                  Galleria
-                </button>
-                <button 
-                  onClick={() => scrollToSection('contatti')} 
-                  className="nav-link text-left py-3.5 px-1 border-b border-gray-100 last:border-none"
-                >
-                  Contatti
-                </button>
-                
+                <button onClick={() => scrollToSection('chi-siamo')} className="nav-link text-left py-3.5 px-1 border-b border-gray-100 last:border-none">Chi siamo</button>
+                <button onClick={() => scrollToSection('servizi')} className="nav-link text-left py-3.5 px-1 border-b border-gray-100 last:border-none">Servizi</button>
+                <button onClick={() => scrollToSection('galleria')} className="nav-link text-left py-3.5 px-1 border-b border-gray-100 last:border-none">Galleria</button>
+                <button onClick={() => scrollToSection('contatti')} className="nav-link text-left py-3.5 px-1 border-b border-gray-100 last:border-none">Contatti</button>
                 <div className="pt-6 mt-2">
-                  <button 
-                    onClick={() => scrollToSection('contatti')}
-                    className="btn-primary w-full py-4 rounded-2xl text-sm font-medium tracking-[2px]"
-                  >
-                    CONTATTACI
-                  </button>
+                  <button onClick={() => scrollToSection('contatti')} className="btn-primary w-full py-4 rounded-2xl text-sm font-medium tracking-[2px]">CONTATTACI</button>
                 </div>
               </div>
             </div>
@@ -237,7 +288,7 @@ export default function SanteseArtWebsite() {
         )}
       </nav>
 
-      {/* HERO SECTION - Focused on Giardini del Salento exhibition (good as is) */}
+      {/* HERO SECTION */}
       <section className="relative h-[100dvh] min-h-[640px] flex items-center justify-center pt-20">
         <div className="hero-bg absolute inset-0 z-0" />
         
@@ -276,14 +327,13 @@ export default function SanteseArtWebsite() {
           </div>
         </div>
 
-        {/* Scroll indicator */}
         <div className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center text-white/60 text-xs tracking-[2px]">
           <span>SCROLL</span>
           <div className="h-px w-8 bg-white/40 mt-2" />
         </div>
       </section>
 
-      {/* CHI SIAMO - Ebanisteria first, exhibition second */}
+      {/* CHI SIAMO */}
       <section id="chi-siamo" className="max-w-6xl mx-auto px-6 pt-20 pb-16">
         <div className="grid md:grid-cols-12 gap-x-12 items-center">
           <div className="md:col-span-7">
@@ -349,57 +399,62 @@ export default function SanteseArtWebsite() {
 
       <div className="section-divider max-w-6xl mx-auto" />
 
-      {/* GALLERIA */}
+      {/* GALLERIA - Now the main exhibition content with all 10 pieces */}
       <section id="galleria" className="max-w-7xl mx-auto px-6 py-20">
-        <div className="flex justify-between items-end mb-10">
+        <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-y-4 mb-10">
           <div>
             <div className="uppercase tracking-[3px] text-xs text-gray-500">IL NOSTRO LAVORO</div>
-            <h2 className="font-serif text-6xl tracking-[-2px]">Galleria — Giardini del Salento</h2>
+            <h2 className="font-serif text-5xl md:text-6xl tracking-[-2px]">Galleria — Giardini del Salento</h2>
           </div>
-          <p className="hidden md:block max-w-xs text-right text-sm text-gray-500">
-            Le opere esposte nella mostra dedicata ai giardini del Salento.
+          <p className="max-w-md text-sm text-gray-500">
+            Dieci opere uniche in legno mediterraneo. Ogni pezzo racconta una storia di luce, materia e memoria del Salento.
           </p>
         </div>
 
-        {galleryImages.length > 0 ? (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-            {galleryImages.map((image, index) => (
-              <a 
-                key={index} 
-                href={image.url} 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="group relative aspect-[4/3] overflow-hidden rounded-3xl bg-gray-100 block"
-              >
-                <img 
-                  src={image.url} 
-                  alt={image.alt}
-                  className="gallery-img absolute inset-0 w-full h-full object-cover"
-                />
-                <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/70 to-transparent p-6">
-                  <p className="text-white text-sm tracking-wide opacity-90 group-hover:opacity-100 transition-opacity">
-                    {image.caption}
-                  </p>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+          {exhibits.map((exhibit) => (
+            <div 
+              key={exhibit.id}
+              onClick={() => setSelectedExhibit(exhibit)}
+              className="group bg-white rounded-3xl border border-gray-100 overflow-hidden cursor-pointer hover:border-gray-300 hover:shadow-xl transition-all duration-300 flex flex-col h-full"
+            >
+              {/* Elegant visual placeholder - replace with real photo */}
+              <div className="aspect-[16/10] bg-gradient-to-br from-[#f8f1e3] via-[#f4ebdf] to-[#f8f1e3] relative flex items-center justify-center overflow-hidden">
+                <div className="absolute inset-0 bg-[radial-gradient(#c9b896_0.6px,transparent_1px)] bg-[length:3.5px_3.5px] opacity-40"></div>
+                <div className="relative z-10 text-center px-8">
+                  <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-2xl bg-white/90 shadow-sm">
+                    <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8 text-[#8B5E3C]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.6} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+                    </svg>
+                  </div>
+                  <div className="text-[10px] tracking-[3px] text-[#8B5E3C]/60 font-medium">OPERA UNICA • SALENTO</div>
+                </div>
+                <div className="absolute top-4 right-4 px-3.5 py-1 bg-white/95 text-xs tracking-widest rounded-full text-gray-600 font-mono shadow-sm">
+                  {exhibit.dimensions}
+                </div>
               </div>
-              </a>
-            ))}
-          </div>
-        ) : (
-          <div className="text-center py-20 border border-dashed border-gray-300 rounded-3xl">
-            <div className="mx-auto mb-6 h-16 w-16 rounded-full bg-gray-100 flex items-center justify-center">
-              <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
-              </svg>
+
+              <div className="p-6 flex flex-col flex-1">
+                <div className="mb-4">
+                  <h3 className="font-serif text-[21px] leading-[1.1] tracking-[-0.4px] mb-1 pr-1">{exhibit.titleIt}</h3>
+                  <p className="text-xs uppercase tracking-[1.5px] text-gray-400">{exhibit.titleEn}</p>
+                </div>
+                
+                <p className="text-gray-600 text-[13px] leading-relaxed line-clamp-4 flex-1">
+                  {exhibit.descriptionIt}
+                </p>
+
+                <div className="mt-auto pt-5 border-t border-gray-100 flex items-center justify-between">
+                  <span className="text-xs tracking-[2px] text-gray-400 group-hover:text-[#8B5E3C] transition-colors">VEDI DETTAGLI</span>
+                  <span className="text-[#8B5E3C] text-lg leading-none group-hover:translate-x-0.5 transition-transform">→</span>
+                </div>
+              </div>
             </div>
-            <h3 className="font-serif text-2xl tracking-tight mb-2">Foto in arrivo</h3>
-            <p className="text-gray-500 max-w-md mx-auto">
-              Le immagini delle opere della mostra <span className="font-medium">Giardini del Salento</span> saranno caricate a breve.
-            </p>
-          </div>
-        )}
+          ))}
+        </div>
         
-        <p className="text-center text-xs text-gray-400 mt-8 tracking-widest">
-          OPERE REALIZZATE PER LA MOSTRA GIARDINI DEL SALENTO
+        <p className="text-center text-xs text-gray-400 mt-10 tracking-widest">
+          TUTTE LE OPERE SONO REALIZZATE A MANO CON LEGNI PREGIATI DEL SALENTO • PEZZI UNICI
         </p>
       </section>
 
@@ -413,7 +468,6 @@ export default function SanteseArtWebsite() {
         </div>
 
         <div className="grid md:grid-cols-5 gap-x-16 gap-y-12">
-          {/* Info */}
           <div className="md:col-span-2 space-y-10">
             <div>
               <div className="text-xs tracking-[2px] text-gray-500 mb-2">SEDE</div>
@@ -451,7 +505,6 @@ export default function SanteseArtWebsite() {
             </div>
           </div>
 
-          {/* Contact Form */}
           <div className="md:col-span-3">
             <div className="bg-gray-50 rounded-3xl p-8 md:p-10">
               <h3 className="font-serif text-4xl tracking-tight mb-2">Richiedi informazioni</h3>
@@ -537,6 +590,71 @@ export default function SanteseArtWebsite() {
           </div>
         </div>
       </footer>
+
+      {/* Modal for selected exhibit - main detailed view */}
+      {selectedExhibit && (
+        <div 
+          className="fixed inset-0 z-[100] flex items-center justify-center bg-black/70 p-4 md:p-8" 
+          onClick={() => setSelectedExhibit(null)}
+        >
+          <div 
+            className="bg-white rounded-3xl w-full max-w-4xl max-h-[92vh] overflow-hidden shadow-2xl" 
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div className="p-8 md:p-12 overflow-auto max-h-[92vh]">
+              <div className="flex items-start justify-between gap-4 mb-8">
+                <div>
+                  <div className="inline-block px-4 py-1 rounded-full bg-[#f5f0e6] text-[#8B5E3C] text-xs tracking-[3px] mb-3">GIARDINI DEL SALENTO</div>
+                  <h3 className="font-serif text-4xl md:text-[42px] tracking-[-1.8px] leading-none">{selectedExhibit.titleIt}</h3>
+                  <p className="mt-2 text-xl text-gray-500 tracking-tight">{selectedExhibit.titleEn}</p>
+                </div>
+                <button 
+                  onClick={() => setSelectedExhibit(null)}
+                  className="mt-1 p-3 text-gray-400 hover:text-black transition-colors"
+                  aria-label="Chiudi"
+                >
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.25} d="M6 18L18 6M6 6l12 12" />
+                  </svg>
+                </button>
+              </div>
+
+              <div className="mb-8">
+                <span className="inline-block font-mono text-sm tracking-widest bg-gray-100 px-5 py-2 rounded-2xl text-gray-600">{selectedExhibit.dimensions}</span>
+              </div>
+
+              <div className="grid md:grid-cols-2 gap-x-12 gap-y-10 text-[15px] leading-[1.65]">
+                <div>
+                  <div className="uppercase tracking-[2.5px] text-xs text-gray-500 mb-4">DESCRIZIONE ITALIANO</div>
+                  <p className="text-gray-700">{selectedExhibit.descriptionIt}</p>
+                </div>
+                <div className="md:pl-8 md:border-l border-gray-100">
+                  <div className="uppercase tracking-[2.5px] text-xs text-gray-500 mb-4">ENGLISH DESCRIPTION</div>
+                  <p className="text-gray-700">{selectedExhibit.descriptionEn}</p>
+                </div>
+              </div>
+
+              <div className="mt-10 pt-8 border-t border-gray-200 flex flex-col sm:flex-row gap-4">
+                <button 
+                  onClick={() => {
+                    setSelectedExhibit(null);
+                    setTimeout(() => scrollToSection('contatti'), 100);
+                  }}
+                  className="btn-primary flex-1 py-4 rounded-2xl text-sm font-medium tracking-[2px]"
+                >
+                  RICHIEDI INFO O PREVENTIVO PER QUESTO PEZZO
+                </button>
+                <button 
+                  onClick={() => setSelectedExhibit(null)}
+                  className="flex-1 py-4 rounded-2xl text-sm font-medium tracking-[2px] border border-gray-300 hover:bg-gray-50 transition-colors"
+                >
+                  CHIUDI SCHEDA
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
