@@ -75,7 +75,6 @@ const services: Service[] = [
 const galleryImages: GalleryImage[] = [];
 
 export default function SanteseArtWebsite() {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [formData, setFormData] = useState({ name: '', email: '', message: '' });
   const [isSubmitted, setIsSubmitted] = useState(false);
 
@@ -88,7 +87,6 @@ export default function SanteseArtWebsite() {
       const offsetPosition = elementPosition - bodyRect - offset;
       window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
     }
-    setIsMenuOpen(false);
   };
 
   const handleFormChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -119,7 +117,7 @@ export default function SanteseArtWebsite() {
 
   return (
     <div className="min-h-screen bg-white text-black overflow-x-hidden">
-      {/* Elegant Minimal Navbar - Mobile First */}
+      {/* Elegant Minimal Navbar - Mobile First (desktop only for now) */}
       <nav className="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-md border-b border-gray-200">
         <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
           {/* Logo with official brand mark */}
@@ -155,40 +153,7 @@ export default function SanteseArtWebsite() {
               CONTATTACI
             </button>
           </div>
-
-          {/* Mobile Menu Button */}
-          <button 
-            onClick={() => setIsMenuOpen(!isMenuOpen)}
-            className="md:hidden p-2"
-            aria-label="Toggle menu"
-          >
-            <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              {isMenuOpen ? (
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-              ) : (
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-              )}
-            </svg>
-          </button>
         </div>
-
-        {/* Mobile Menu */}
-        {isMenuOpen && (
-          <div className="md:hidden mobile-menu border-t border-gray-200 bg-white px-6 py-8 flex flex-col gap-6 text-lg font-medium">
-            <button onClick={() => scrollToSection('chi-siamo')} className="text-left py-1">Chi siamo</button>
-            <button onClick={() => scrollToSection('servizi')} className="text-left py-1">Servizi</button>
-            <button onClick={() => scrollToSection('galleria')} className="text-left py-1">Galleria</button>
-            <button onClick={() => scrollToSection('contatti')} className="text-left py-1">Contatti</button>
-            
-            <div className="pt-4 border-t border-gray-200">
-              <button 
-                onClick={() => scrollToSection('contatti')}
-                className="btn-primary w-full py-3.5 rounded-full text-sm font-medium tracking-widest"
-              >
-                CONTATTACI
-            </button>
-          </div>
-        )}
       </nav>
 
       {/* HERO SECTION - Focused on Giardini del Salento exhibition */}
