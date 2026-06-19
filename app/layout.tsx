@@ -24,14 +24,8 @@ const instrumentSerif = Instrument_Serif({
 export const metadata: Metadata = {
   title: "Santese Art | Ebanisteria & Falegnameria Artistica",
   description: "Ebanisteria e falegnameria artistica di Rocco Santese a Oria (BR). Specializzati in intaglio, intarsio, restauro di oggetti antichi d'arte e manufatti artigianali su misura.",
-  icons: {
-    icon: "/logo_santeseart.svg",
-  },
-  openGraph: {
-    title: "Santese Art - Ebanisteria Artistica",
-    description: "Intaglio, intarsio e restauro di oggetti d'arte. Mobili, porte e manufatti artigianali su misura a Oria, Brindisi.",
-    // images: [{ url: "/og-image.jpg" }], // Add a real OG image later for better sharing
-  },
+  // Using default favicon for now to avoid potential build issues with complex SVG
+  // icons: { icon: "/logo_santeseart.svg" },
 };
 
 export default function RootLayout({
