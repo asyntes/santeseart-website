@@ -3,6 +3,7 @@
 import React, { useLayoutEffect, useState } from "react";
 import { HeroMosaic } from "@/components/HeroMosaic";
 import { LocaleSwitcher } from "@/components/LocaleSwitcher";
+import { LogoMonochrome } from "@/components/LogoMonochrome";
 import { ServiceIcon } from "@/components/ServiceIcons";
 import { useLocale } from "@/context/LocaleContext";
 import type { Locale } from "@/lib/i18n";
@@ -143,11 +144,7 @@ export default function SanteseArtWebsite() {
             }}
             className="flex items-center cursor-pointer group"
           >
-            <img
-              src="/logo_santeseart.svg"
-              alt="Santese Art"
-              className="site-nav-logo transition-transform group-hover:scale-[1.02] brightness-0"
-            />
+            <LogoMonochrome className="site-nav-logo transition-transform group-hover:scale-[1.02]" />
           </div>
 
           <div className="flex items-center gap-4">
@@ -397,11 +394,7 @@ export default function SanteseArtWebsite() {
 
       <footer className="border-t border-gray-200 bg-white">
         <div className="max-w-6xl mx-auto px-6 py-16 flex flex-col items-center text-center">
-          <img
-            src="/logo_santeseart.svg"
-            alt="Santese Art"
-            className="h-28 md:h-40 w-auto brightness-0 mb-10"
-          />
+          <LogoMonochrome className="h-28 md:h-40 w-auto mb-10" />
           <div className="text-xs text-gray-500 flex flex-col md:flex-row items-center gap-y-3 md:gap-x-6">
             <span>© {new Date().getFullYear()} Santese Art — Rocco Santese. {t.footer.rights}</span>
             <span className="hidden md:inline">•</span>

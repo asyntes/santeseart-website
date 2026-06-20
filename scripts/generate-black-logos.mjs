@@ -1,9 +1,25 @@
+import sharp from "sharp";
 import { readFileSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
-import { ROSE_VIEWBOX } from "./rose-constants.mjs";
+import { FULL_LOGO_VIEWBOX_WIDTH, ROSE_VIEWBOX } from "./rose-constants.mjs";
 import { renderRosePng } from "./render-rose.mjs";
 
 export { ROSE_VIEWBOX } from "./rose-constants.mjs";
+
+const FULL_LOGO_VIEWBOX_HEIGHT = 529;
+
+async function renderFullLogoPng(root, outputWidth, renderWidth) {
+  const fullSvg = readFileSync(join(root, "public", "logo-full-black.svg"));
+  const density = Math.ceil((renderWidth * 72) / FULL_LOGO_VIEWBOX_WIDTH);
+  const outputHeight = Math.round(
+    (outputWidth * FULL_LOGO_VIEWBOX_HEIGHT) / FULL_LOGO_VIEWBOX_WIDTH,
+  );
+
+  return sharp(fullSvg, { density })
+    .resize(outputWidth, outputHeight, { kernel: sharp.kernel.lanczos3 })
+    .png()
+    .toBuffer();
+}
 
 export async function generateBlackLogos(root) {
   const logo = readFileSync(join(root, "public", "logo_santeseart.svg"), "utf8");
@@ -38,6 +54,12 @@ ${toBlackFilter}
 
   const iconPng = await renderRosePng(root, 512, 512, 7200);
   writeFileSync(join(root, "public", "icon-rose-black.png"), iconPng);
+
+  // Raster fallback for mobile zoom: SVG masks misalign on WebKit when pinch-zooming.
+  const monochromePng = await renderFullLogoPng(root, 800, 4800);
+  const monochromePng2x = await renderFullLogoPng(root, 1600, 7200);
+  writeFileSync(join(root, "public", "logo-monochrome.png"), monochromePng);
+  writeFileSync(join(root, "public", "logo-monochrome@2x.png"), monochromePng2x);
 }
 
 if (process.argv[1]?.endsWith("generate-black-logos.mjs")) {
@@ -45,5 +67,7 @@ if (process.argv[1]?.endsWith("generate-black-logos.mjs")) {
   const { fileURLToPath } = await import("node:url");
   const root = join(dirname(fileURLToPath(import.meta.url)), "..");
   await generateBlackLogos(root);
-  console.log("Generated logo-full-black.svg, icon-rose-black.svg and icon-rose-black.png");
+  console.log(
+    "Generated logo-full-black.svg, icon-rose-black.svg, icon-rose-black.png, logo-monochrome.png and logo-monochrome@2x.png",
+  );
 }
