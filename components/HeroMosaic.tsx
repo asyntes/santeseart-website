@@ -10,18 +10,37 @@ type ExhibitLike = {
 };
 
 const ROTATION_INTERVAL_MS = 5000;
-const FADE_DURATION_MS = 600;
 
 function getAlt(exhibits: ExhibitLike[], image: string, locale: Locale) {
   const exhibit = exhibits.find((item) => item.image === image);
   return exhibit ? (locale === "it" ? exhibit.titleIt : exhibit.titleEn) : image;
 }
 
-function pickReplacement(current: string[], cellIndex: number, pool: string[]): string {
-  const used = new Set(current.filter((_, i) => i !== cellIndex));
-  const available = pool.filter((img) => !used.has(img));
-  const options = available.length > 0 ? available : pool.filter((img) => img !== current[cellIndex]);
-  return options[Math.floor(Math.random() * options.length)];
+function nextImageInPool(
+  pool: string[],
+  used: Set<string>,
+  current: string,
+  poolIndex: number,
+): { image: string; nextIndex: number } {
+  if (pool.length === 0) return { image: current, nextIndex: poolIndex };
+
+  for (let i = 0; i < pool.length; i++) {
+    const index = (poolIndex + i) % pool.length;
+    const candidate = pool[index];
+    if (!used.has(candidate) && candidate !== current) {
+      return { image: candidate, nextIndex: index + 1 };
+    }
+  }
+
+  for (let i = 0; i < pool.length; i++) {
+    const index = (poolIndex + i) % pool.length;
+    const candidate = pool[index];
+    if (candidate !== current) {
+      return { image: candidate, nextIndex: index + 1 };
+    }
+  }
+
+  return { image: current, nextIndex: poolIndex + 1 };
 }
 
 interface HeroMosaicProps {
@@ -33,28 +52,45 @@ interface HeroMosaicProps {
 
 export function HeroMosaic({ initialImages, imagePool, exhibits, locale }: HeroMosaicProps) {
   const [images, setImages] = useState(initialImages);
-  const imagesRef = useRef(images);
-  imagesRef.current = images;
+  const poolRef = useRef(imagePool);
+  const poolIndexRef = useRef(0);
+  const cellIndexRef = useRef(0);
+
+  useEffect(() => {
+    poolRef.current = imagePool;
+  }, [imagePool]);
 
   useEffect(() => {
     const mediaQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
     if (mediaQuery.matches) return;
 
     const interval = setInterval(() => {
-      const current = imagesRef.current;
-      const cellIndex = Math.floor(Math.random() * current.length);
-      const nextImage = pickReplacement(current, cellIndex, imagePool);
-      if (nextImage === current[cellIndex]) return;
+      const pool = poolRef.current;
+      if (pool.length === 0) return;
 
       setImages((prev) => {
+        const cell = cellIndexRef.current;
+        const used = new Set(prev.filter((_, i) => i !== cell));
+        const { image, nextIndex } = nextImageInPool(
+          pool,
+          used,
+          prev[cell],
+          poolIndexRef.current,
+        );
+
+        poolIndexRef.current = nextIndex;
+        cellIndexRef.current = (cell + 1) % prev.length;
+
+        if (image === prev[cell]) return prev;
+
         const next = [...prev];
-        next[cellIndex] = nextImage;
+        next[cell] = image;
         return next;
       });
     }, ROTATION_INTERVAL_MS);
 
     return () => clearInterval(interval);
-  }, [imagePool]);
+  }, []);
 
   return (
     <div className="hero-mosaic">
@@ -82,26 +118,14 @@ function MosaicCell({
   index: number;
   eager: boolean;
 }) {
-  const [src, setSrc] = useState(image);
-  const [visible, setVisible] = useState(true);
-
-  useEffect(() => {
-    if (image === src) return;
-    setVisible(false);
-    const timer = setTimeout(() => {
-      setSrc(image);
-      setVisible(true);
-    }, FADE_DURATION_MS);
-    return () => clearTimeout(timer);
-  }, [image, src]);
-
   return (
     <div className={`hero-mosaic-cell hero-mosaic-cell-${index + 1}`}>
       <img
-        src={`/exhibition/${src}`}
+        key={image}
+        src={`/exhibition/${image}`}
         alt={alt}
         loading={eager ? "eager" : "lazy"}
-        className={visible ? undefined : "hero-mosaic-fade-out"}
+        className="hero-mosaic-cell-img"
       />
     </div>
   );
