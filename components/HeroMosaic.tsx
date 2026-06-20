@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import type { Locale } from "@/lib/i18n";
 
 type ExhibitLike = {
   image: string;
@@ -11,9 +10,9 @@ type ExhibitLike = {
 
 const ROTATION_INTERVAL_MS = 5000;
 
-function getAlt(exhibits: ExhibitLike[], image: string, locale: Locale) {
+function getAlt(exhibits: ExhibitLike[], image: string) {
   const exhibit = exhibits.find((item) => item.image === image);
-  return exhibit ? (locale === "it" ? exhibit.titleIt : exhibit.titleEn) : image;
+  return exhibit ? exhibit.titleIt : image;
 }
 
 function nextImageInPool(
@@ -47,10 +46,9 @@ interface HeroMosaicProps {
   initialImages: string[];
   imagePool: string[];
   exhibits: ExhibitLike[];
-  locale: Locale;
 }
 
-export function HeroMosaic({ initialImages, imagePool, exhibits, locale }: HeroMosaicProps) {
+export function HeroMosaic({ initialImages, imagePool, exhibits }: HeroMosaicProps) {
   const [images, setImages] = useState(initialImages);
   const poolRef = useRef(imagePool);
   const poolIndexRef = useRef(0);
@@ -98,7 +96,7 @@ export function HeroMosaic({ initialImages, imagePool, exhibits, locale }: HeroM
         <MosaicCell
           key={index}
           image={image}
-          alt={getAlt(exhibits, image, locale)}
+          alt={getAlt(exhibits, image)}
           index={index}
           eager={index < 2}
         />

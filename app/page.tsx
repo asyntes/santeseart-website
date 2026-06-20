@@ -18,8 +18,8 @@ interface Exhibit {
   image: string;
 }
 
-function getExhibitTitle(exhibit: Exhibit, locale: Locale) {
-  return locale === "it" ? exhibit.titleIt : exhibit.titleEn;
+function getExhibitTitle(exhibit: Exhibit) {
+  return exhibit.titleIt;
 }
 
 function getExhibitDescription(exhibit: Exhibit, locale: Locale) {
@@ -191,7 +191,6 @@ export default function SanteseArtWebsite() {
               .map((exhibit) => exhibit.image)
               .filter((image) => !MOSAIC_EXCLUDED_IMAGES.has(image))}
             exhibits={exhibits}
-            locale={locale}
           />
 
           <div className="hero-content">
@@ -285,16 +284,16 @@ export default function SanteseArtWebsite() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
           {[...exhibits]
             .sort((a, b) =>
-              getExhibitTitle(a, locale).localeCompare(getExhibitTitle(b, locale), locale)
+              getExhibitTitle(a).localeCompare(getExhibitTitle(b), "it")
             )
             .map((exhibit) => (
             <div key={exhibit.id} onClick={() => setSelectedExhibit(exhibit)} className="group bg-white rounded-3xl border border-gray-100 overflow-hidden cursor-pointer hover:border-gray-300 hover:shadow-xl transition-all duration-300 flex flex-col h-full">
               <div className="aspect-[16/10] relative overflow-hidden bg-gray-100">
-                <img src={`/exhibition/${exhibit.image}`} alt={getExhibitTitle(exhibit, locale)} className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.06]" loading="lazy" />
+                <img src={`/exhibition/${exhibit.image}`} alt={getExhibitTitle(exhibit)} className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.06]" loading="lazy" />
               </div>
               <div className="p-6 flex flex-col flex-1">
                 <div className="mb-4">
-                  <h3 className="font-serif text-[21px] leading-[1.1] tracking-[-0.4px] mb-2.5 pr-1">{getExhibitTitle(exhibit, locale)}</h3>
+                  <h3 className="font-serif text-[21px] leading-[1.1] tracking-[-0.4px] mb-2.5 pr-1">{getExhibitTitle(exhibit)}</h3>
                   <p className="font-mono text-xs tracking-widest text-gray-500">{exhibit.dimensions}</p>
                 </div>
                 <p className="text-gray-600 text-[13px] leading-relaxed line-clamp-4 flex-1">{getExhibitDescription(exhibit, locale)}</p>
@@ -412,14 +411,14 @@ export default function SanteseArtWebsite() {
               <div className="flex items-start justify-between gap-4 mb-8">
                 <div>
                   <div className="inline-block px-4 py-1 rounded-full bg-[#f5f0e6] text-[#8B5E3C] text-xs tracking-[3px] mb-3">{t.gallery.modalBadge}</div>
-                  <h3 className="font-serif text-4xl md:text-[42px] tracking-[-1.8px] leading-none">{getExhibitTitle(selectedExhibit, locale)}</h3>
+                  <h3 className="font-serif text-4xl md:text-[42px] tracking-[-1.8px] leading-none">{getExhibitTitle(selectedExhibit)}</h3>
                 </div>
                 <button onClick={() => setSelectedExhibit(null)} className="mt-1 p-3 text-gray-400 hover:text-black" aria-label={t.gallery.closeAria}>✕</button>
               </div>
               <div className="mb-8 rounded-2xl overflow-hidden bg-gray-50 aspect-[16/10] relative">
                 <img
                   src={`/exhibition/${selectedExhibit.image}`}
-                  alt={getExhibitTitle(selectedExhibit, locale)}
+                  alt={getExhibitTitle(selectedExhibit)}
                   className="absolute inset-0 w-full h-full object-contain"
                 />
               </div>

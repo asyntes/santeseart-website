@@ -7,9 +7,9 @@ export const messagesEn = {
     contactUs: "CONTACT US",
   },
   hero: {
-    badge: "CURRENT EXHIBITION • GARDENS OF SALENTO",
-    titleLine1: "Gardens",
-    titleLine2: "of Salento",
+    badge: "CURRENT EXHIBITION • GIARDINI DEL SALENTO",
+    titleLine1: "Giardini",
+    titleLine2: "del Salento",
     subtitle: "by Rocco Santese",
     event: "July 1 • Palazzo Martini, Oria",
     description:
@@ -26,7 +26,7 @@ export const messagesEn = {
     titleLine4: "of Puglia.",
     p1: "is Rocco Santese's artistic cabinetmaking workshop in Oria. For over 40 years we have crafted carvings, inlays, restorations and bespoke furniture using time-honoured artisan techniques.",
     p2: "From July 1 we are exhibiting at Palazzo Martini in Oria a selection of works dedicated to the",
-    p2Highlight: "Gardens of Salento",
+    p2Highlight: "Giardini del Salento",
     p2End: ": carvings and artistic installations designed for gardens, terraces and outdoor spaces.",
     p3: "Each piece is unique, handcrafted from fine Italian woods.",
     brand: "Santese Art",
@@ -76,14 +76,14 @@ export const messagesEn = {
   },
   gallery: {
     eyebrow: "OUR WORK",
-    title: "Gardens of Salento",
+    title: "Giardini del Salento",
     eventInfo: "July 1 • Palazzo Martini, Oria",
     description:
       "Ten unique works in Mediterranean wood. Each piece tells a story of light, matter and memory of Salento.",
     viewDetails: "VIEW DETAILS",
     footer:
       "ALL WORKS ARE HANDCRAFTED FROM FINE SALENTO WOODS • UNIQUE PIECES",
-    modalBadge: "GARDENS OF SALENTO",
+    modalBadge: "GIARDINI DEL SALENTO",
     modalDescription: "DESCRIPTION",
     modalCta: "REQUEST INFO OR QUOTE",
     modalClose: "CLOSE",
