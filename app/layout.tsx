@@ -60,8 +60,11 @@ export const metadata: Metadata = {
     images: ["/og-image.png"],
   },
   icons: {
-    icon: [{ url: "/icon-rose-black.svg", type: "image/svg+xml" }],
-    apple: "/icon-rose-black.svg",
+    icon: [
+      { url: "/icon-rose-black.png", sizes: "512x512", type: "image/png" },
+      { url: "/icon-rose-black.svg", type: "image/svg+xml" },
+    ],
+    apple: "/icon-rose-black.png",
   },
 };
 

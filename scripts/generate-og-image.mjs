@@ -2,11 +2,14 @@ import sharp from "sharp";
 import { readFileSync } from "node:fs";
 import { fileURLToPath } from "node:url";
 import { dirname, join } from "node:path";
+import { generateBlackLogos } from "./generate-black-logos.mjs";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const root = join(__dirname, "..");
-const svg = readFileSync(join(root, "public", "logo-full-black.svg"));
 
+await generateBlackLogos(root);
+
+const svg = readFileSync(join(root, "public", "logo-full-black.svg"));
 const logoPng = await sharp(svg, { density: 300 })
   .resize(1000, null, { fit: "inside" })
   .png()

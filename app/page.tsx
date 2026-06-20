@@ -131,9 +131,8 @@ export default function SanteseArtWebsite() {
               <button onClick={() => scrollToSection("contatti")} className="nav-link">{t.nav.contact}</button>
             </div>
 
-            <div className="hidden md:flex items-center gap-4">
+            <div className="hidden md:flex items-center">
               <LocaleSwitcher />
-              <button onClick={() => scrollToSection("contatti")} className="btn-primary px-6 py-2.5 rounded-full text-sm font-medium tracking-wide">{t.nav.contactUs}</button>
             </div>
 
             <div className="flex md:hidden items-center gap-2">
@@ -154,9 +153,6 @@ export default function SanteseArtWebsite() {
                 <button onClick={() => scrollToSection("servizi")} className="nav-link text-left py-3.5 px-1 border-b border-gray-100 last:border-none">{t.nav.services}</button>
                 <button onClick={() => scrollToSection("galleria")} className="nav-link text-left py-3.5 px-1 border-b border-gray-100 last:border-none">{t.nav.gallery}</button>
                 <button onClick={() => scrollToSection("contatti")} className="nav-link text-left py-3.5 px-1 border-b border-gray-100 last:border-none">{t.nav.contact}</button>
-                <div className="pt-6 mt-2">
-                  <button onClick={() => scrollToSection("contatti")} className="btn-primary w-full py-4 rounded-2xl text-sm font-medium tracking-[2px]">{t.nav.contactUs}</button>
-                </div>
               </div>
             </div>
           </>
@@ -212,7 +208,7 @@ export default function SanteseArtWebsite() {
         <div className="grid md:grid-cols-12 gap-x-12 items-center">
           <div className="md:col-span-7">
             <div className="uppercase text-xs tracking-[3px] text-gray-500 mb-3">{t.about.eyebrow}</div>
-            <h2 className="font-serif text-6xl md:text-7xl tracking-[-2.5px] leading-none mb-8">
+            <h2 className="font-serif text-[clamp(2.125rem,8vw,3.75rem)] md:text-7xl tracking-[-1.5px] md:tracking-[-2.5px] leading-none mb-8 text-balance">
               {t.about.titleLine1}<br />{t.about.titleLine2}<br />{t.about.titleLine3}<br />{t.about.titleLine4}
             </h2>
           </div>

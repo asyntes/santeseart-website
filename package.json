@@ -7,7 +7,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
-    "generate:og": "node scripts/generate-og-image.mjs"
+    "generate:og": "node scripts/generate-og-image.mjs",
+    "generate:logos": "node scripts/generate-black-logos.mjs"
   },
   "dependencies": {
     "next": "16.2.9",
