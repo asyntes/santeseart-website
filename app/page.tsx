@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useLayoutEffect, useState } from "react";
 import { HeroMosaic } from "@/components/HeroMosaic";
 import { LocaleSwitcher } from "@/components/LocaleSwitcher";
 import { ServiceIcon } from "@/components/ServiceIcons";
@@ -105,6 +105,33 @@ export default function SanteseArtWebsite() {
     setIsMobileMenuOpen(false);
   };
 
+  useLayoutEffect(() => {
+    const nav = document.querySelector<HTMLElement>(".site-nav");
+    if (!nav) return;
+
+    const syncHeaderOffset = () => {
+      const height = Math.ceil(nav.getBoundingClientRect().height);
+      document.documentElement.style.setProperty("--header-offset", `${height}px`);
+    };
+
+    syncHeaderOffset();
+
+    const observer = new ResizeObserver(syncHeaderOffset);
+    observer.observe(nav);
+
+    const visualViewport = window.visualViewport;
+    visualViewport?.addEventListener("resize", syncHeaderOffset);
+    visualViewport?.addEventListener("scroll", syncHeaderOffset);
+    window.addEventListener("orientationchange", syncHeaderOffset);
+
+    return () => {
+      observer.disconnect();
+      visualViewport?.removeEventListener("resize", syncHeaderOffset);
+      visualViewport?.removeEventListener("scroll", syncHeaderOffset);
+      window.removeEventListener("orientationchange", syncHeaderOffset);
+    };
+  }, []);
+
   return (
     <div className="min-h-screen bg-white text-black overflow-x-hidden">
       <nav className="site-nav fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-md border-b border-gray-200">
@@ -183,6 +210,9 @@ export default function SanteseArtWebsite() {
               <p className="hero-subtitle tracking-tight text-gray-600 font-light">
                 {t.hero.subtitle}
               </p>
+              <p className="hero-event text-[#8B5E3C] font-medium tracking-wide text-sm md:text-base mb-3">
+                {t.hero.event}
+              </p>
               <p className="hero-description text-gray-500 leading-relaxed">
                 {t.hero.description}
               </p>
@@ -251,6 +281,7 @@ export default function SanteseArtWebsite() {
           <div>
             <div className="uppercase tracking-[3px] text-xs text-gray-500">{t.gallery.eyebrow}</div>
             <h2 className="font-serif text-5xl md:text-6xl tracking-[-2px]">{t.gallery.title}</h2>
+            <p className="mt-3 text-[#8B5E3C] font-medium tracking-wide text-sm">{t.gallery.eventInfo}</p>
           </div>
           <p className="max-w-md text-sm text-gray-500">{t.gallery.description}</p>
         </div>

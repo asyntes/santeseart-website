@@ -11,9 +11,9 @@ const OG_WIDTH = 1200;
 const OG_HEIGHT = 630;
 const ROSE_VIEWBOX_WIDTH = 240;
 const ROSE_VIEWBOX_HEIGHT = 210;
-const ROSE_HEIGHT = 580;
+const ROSE_HEIGHT = 500;
 const ROSE_WIDTH = Math.round(ROSE_HEIGHT * (ROSE_VIEWBOX_WIDTH / ROSE_VIEWBOX_HEIGHT));
-const SUPERSAMPLE = 4;
+const SUPERSAMPLE = 6;
 
 await generateBlackLogos(root);
 

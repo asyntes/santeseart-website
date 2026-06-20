@@ -16,7 +16,9 @@
   --color-gray-600: #525252;
   --color-gray-800: #262626;
   --color-gray-900: #171717;
-  --nav-height: 5rem;
+  --nav-bar-height: 5rem;
+  --safe-area-top: env(safe-area-inset-top, 0px);
+  --header-offset: calc(var(--nav-bar-height) + var(--safe-area-top));
 }
 
 @theme inline {
@@ -66,8 +68,12 @@ html {
 }
 
 /* Navbar */
+.site-nav {
+  padding-top: var(--safe-area-top);
+}
+
 .site-nav-inner {
-  height: var(--nav-height);
+  height: var(--nav-bar-height);
 }
 
 .site-nav-logo {
@@ -76,11 +82,11 @@ html {
 }
 
 .mobile-menu-backdrop {
-  top: var(--nav-height);
+  top: var(--header-offset);
 }
 
 .mobile-menu-panel {
-  top: var(--nav-height);
+  top: var(--header-offset);
 }
 
 /* Hero */
@@ -90,7 +96,7 @@ html {
   flex-direction: column;
   height: 100dvh;
   overflow: hidden;
-  padding-top: var(--nav-height);
+  padding-top: var(--header-offset);
   background: #faf8f5;
 }
 
@@ -207,6 +213,10 @@ html {
 
 .hero-subtitle {
   font-size: clamp(1.0625rem, 3.5vw, 1.25rem);
+  margin-bottom: 0.75rem;
+}
+
+.hero-event {
   margin-bottom: 0.75rem;
 }
 
@@ -455,7 +465,7 @@ html {
 /* Mobile landscape: navbar compatta, hero affiancato senza sovrapposizioni */
 @media (orientation: landscape) and (max-height: 520px) {
   :root {
-    --nav-height: 3rem;
+    --nav-bar-height: 3rem;
   }
 
   .site-nav-inner {
@@ -471,7 +481,7 @@ html {
     height: 100dvh;
     min-height: 0;
     overflow: hidden;
-    padding-top: var(--nav-height);
+    padding-top: var(--header-offset);
   }
 
   .hero-layout {
