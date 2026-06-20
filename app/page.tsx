@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
+import { HeroMosaic } from "@/components/HeroMosaic";
 import { ServiceIcon } from "@/components/ServiceIcons";
 import { useLocale } from "@/context/LocaleContext";
 import type { Locale } from "@/lib/i18n";
@@ -100,14 +101,6 @@ export default function SanteseArtWebsite() {
     setIsMobileMenuOpen(false);
   };
 
-  const heroCollage = heroCollageImages.map((image) => {
-    const exhibit = exhibits.find((item) => item.image === image);
-    return {
-      image,
-      alt: exhibit ? getExhibitTitle(exhibit, locale) : image,
-    };
-  });
-
   return (
     <div className="min-h-screen bg-white text-black overflow-x-hidden">
       <nav className="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-md border-b border-gray-200">
@@ -164,13 +157,12 @@ export default function SanteseArtWebsite() {
 
       <section className="hero-section">
         <div className="hero-layout flex flex-1 min-h-0 w-full">
-          <div className="hero-mosaic">
-            {heroCollage.map((piece, index) => (
-              <div key={piece.image} className={`hero-mosaic-cell hero-mosaic-cell-${index + 1}`}>
-                <img src={`/exhibition/${piece.image}`} alt={piece.alt} loading={index < 2 ? "eager" : "lazy"} />
-              </div>
-            ))}
-          </div>
+          <HeroMosaic
+            initialImages={heroCollageImages}
+            imagePool={exhibits.map((exhibit) => exhibit.image)}
+            exhibits={exhibits}
+            locale={locale}
+          />
 
           <div className="hero-content">
             <div className="hero-content-inner">
