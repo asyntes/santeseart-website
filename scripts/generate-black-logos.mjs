@@ -1,9 +1,9 @@
 import { readFileSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
-import sharp from "sharp";
+import { ROSE_VIEWBOX } from "./rose-constants.mjs";
+import { renderRosePng } from "./render-rose.mjs";
 
-/** Crop around the rose emblem — extra padding at the bottom to avoid clipping the outer ring. */
-export const ROSE_VIEWBOX = { x: 674, y: 5, width: 252, height: 248 };
+export { ROSE_VIEWBOX } from "./rose-constants.mjs";
 
 export async function generateBlackLogos(root) {
   const logo = readFileSync(join(root, "public", "logo_santeseart.svg"), "utf8");
@@ -28,6 +28,7 @@ ${toBlackFilter}
 
   const roseBlack = `<?xml version="1.0" encoding="utf-8"?>
 <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="${ROSE_VIEWBOX.width}" height="${ROSE_VIEWBOX.height}"
   viewBox="${ROSE_VIEWBOX.x} ${ROSE_VIEWBOX.y} ${ROSE_VIEWBOX.width} ${ROSE_VIEWBOX.height}" xml:space="preserve">
 ${toBlackFilter}
 </svg>`;
@@ -35,20 +36,8 @@ ${toBlackFilter}
   writeFileSync(join(root, "public", "logo-full-black.svg"), fullBlack);
   writeFileSync(join(root, "public", "icon-rose-black.svg"), roseBlack);
 
-  const iconSize = 512;
-  const iconSupersample = 2;
-  const iconRender = iconSize * iconSupersample;
-  const iconDensity = Math.ceil((iconRender * 72) / ROSE_VIEWBOX.height);
-
-  await sharp(Buffer.from(roseBlack), { density: iconDensity })
-    .resize(iconRender, iconRender, {
-      fit: "contain",
-      kernel: sharp.kernel.lanczos3,
-      background: { r: 255, g: 255, b: 255, alpha: 0 },
-    })
-    .resize(iconSize, iconSize, { kernel: sharp.kernel.lanczos3 })
-    .png()
-    .toFile(join(root, "public", "icon-rose-black.png"));
+  const iconPng = await renderRosePng(root, 512, 512, 7200);
+  writeFileSync(join(root, "public", "icon-rose-black.png"), iconPng);
 }
 
 if (process.argv[1]?.endsWith("generate-black-logos.mjs")) {
