@@ -2,31 +2,6 @@ import { readFileSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
 import sharp from "sharp";
 
-const ROSE_VIEWBOX = "688 22 224 198";
-
-function extractPathData(logo, pattern) {
-  return [...logo.matchAll(pattern)].map((match) => match[1]);
-}
-
-/** Rose emblem only — solid black paths, no masks or color filters (crisp rasterization). */
-export function buildCleanRoseSvg(logo) {
-  const paths = [
-    ...extractPathData(logo, /<path class="st4" d="([^"]+)"/g),
-  ];
-
-  const rosaBlock = logo.match(/<g id="rosa-pieghe"[^>]*>([\s\S]*?)<\/g>/);
-  if (rosaBlock) {
-    paths.push(...extractPathData(rosaBlock[1], /<path class="st\d+" d="([^"]+)"/g));
-  }
-
-  const blackPaths = paths.map((d) => `<path fill="#000000" d="${d}"/>`).join("\n");
-
-  return `<?xml version="1.0" encoding="utf-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="${ROSE_VIEWBOX}">
-${blackPaths}
-</svg>`;
-}
-
 export async function generateBlackLogos(root) {
   const logo = readFileSync(join(root, "public", "logo_santeseart.svg"), "utf8");
 
@@ -48,17 +23,27 @@ export async function generateBlackLogos(root) {
 ${toBlackFilter}
 </svg>`;
 
-  const roseBlack = buildCleanRoseSvg(logo);
+  const roseBlack = `<?xml version="1.0" encoding="utf-8"?>
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  viewBox="680 15 240 210" xml:space="preserve">
+${toBlackFilter}
+</svg>`;
 
   writeFileSync(join(root, "public", "logo-full-black.svg"), fullBlack);
   writeFileSync(join(root, "public", "icon-rose-black.svg"), roseBlack);
 
-  await sharp(Buffer.from(roseBlack), { density: 600 })
-    .resize(512, 512, {
+  const iconSize = 512;
+  const iconSupersample = 2;
+  const iconRender = iconSize * iconSupersample;
+  const iconDensity = Math.ceil((iconRender * 72) / 210);
+
+  await sharp(Buffer.from(roseBlack), { density: iconDensity })
+    .resize(iconRender, iconRender, {
       fit: "contain",
       kernel: sharp.kernel.lanczos3,
       background: { r: 255, g: 255, b: 255, alpha: 0 },
     })
+    .resize(iconSize, iconSize, { kernel: sharp.kernel.lanczos3 })
     .png()
     .toFile(join(root, "public", "icon-rose-black.png"));
 }
