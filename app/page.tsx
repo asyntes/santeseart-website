@@ -37,6 +37,8 @@ const exhibits: Exhibit[] = [
   { id: 10, titleIt: "Cerchi di Luce", titleEn: "Circles of Light", dimensions: "28 cm Ø × 10 cm h", descriptionIt: "Lampada in noce nazionale di recupero con base decorata da raffinati inserti circolari di paduk e gelso. Le venature antiche si fondono con i cerchi da cui filtra la luce. Un gioco di luce tra le venature del legno recuperato.", descriptionEn: "Lamp in reclaimed national walnut with base decorated by refined circular inlays of paduk and mulberry. The ancient wood grains blend with the circles through which light filters. A play of light through the grains of the reclaimed wood.", image: "cerchi-di-luce.jpg" },
 ];
 
+const MOSAIC_EXCLUDED_IMAGES = new Set(["tris-di-radiche.jpg"]);
+
 const heroCollageImages = [
   "lampada-wormhole.jpg",
   "raggiera-solare.jpg",
@@ -159,7 +161,9 @@ export default function SanteseArtWebsite() {
         <div className="hero-layout flex flex-1 min-h-0 w-full">
           <HeroMosaic
             initialImages={heroCollageImages}
-            imagePool={exhibits.map((exhibit) => exhibit.image)}
+            imagePool={exhibits
+              .map((exhibit) => exhibit.image)
+              .filter((image) => !MOSAIC_EXCLUDED_IMAGES.has(image))}
             exhibits={exhibits}
             locale={locale}
           />
