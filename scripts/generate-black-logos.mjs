@@ -2,6 +2,9 @@ import { readFileSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
 import sharp from "sharp";
 
+/** Crop around the rose emblem — extra padding at the bottom to avoid clipping the outer ring. */
+export const ROSE_VIEWBOX = { x: 674, y: 5, width: 252, height: 248 };
+
 export async function generateBlackLogos(root) {
   const logo = readFileSync(join(root, "public", "logo_santeseart.svg"), "utf8");
 
@@ -25,7 +28,7 @@ ${toBlackFilter}
 
   const roseBlack = `<?xml version="1.0" encoding="utf-8"?>
 <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
-  viewBox="680 15 240 210" xml:space="preserve">
+  viewBox="${ROSE_VIEWBOX.x} ${ROSE_VIEWBOX.y} ${ROSE_VIEWBOX.width} ${ROSE_VIEWBOX.height}" xml:space="preserve">
 ${toBlackFilter}
 </svg>`;
 
@@ -35,7 +38,7 @@ ${toBlackFilter}
   const iconSize = 512;
   const iconSupersample = 2;
   const iconRender = iconSize * iconSupersample;
-  const iconDensity = Math.ceil((iconRender * 72) / 210);
+  const iconDensity = Math.ceil((iconRender * 72) / ROSE_VIEWBOX.height);
 
   await sharp(Buffer.from(roseBlack), { density: iconDensity })
     .resize(iconRender, iconRender, {
