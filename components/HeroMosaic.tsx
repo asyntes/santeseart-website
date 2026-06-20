@@ -118,14 +118,50 @@ function MosaicCell({
   index: number;
   eager: boolean;
 }) {
+  const [current, setCurrent] = useState(image);
+  const [previous, setPrevious] = useState<string | null>(null);
+  const [fadeIn, setFadeIn] = useState(false);
+  const currentRef = useRef(image);
+
+  useEffect(() => {
+    if (image === currentRef.current) return;
+
+    const prev = currentRef.current;
+    currentRef.current = image;
+
+    setPrevious(prev);
+    setCurrent(image);
+    setFadeIn(false);
+
+    let raf2 = 0;
+    const raf1 = requestAnimationFrame(() => {
+      raf2 = requestAnimationFrame(() => setFadeIn(true));
+    });
+
+    const cleanup = setTimeout(() => setPrevious(null), 1600);
+
+    return () => {
+      cancelAnimationFrame(raf1);
+      cancelAnimationFrame(raf2);
+      clearTimeout(cleanup);
+    };
+  }, [image]);
+
   return (
     <div className={`hero-mosaic-cell hero-mosaic-cell-${index + 1}`}>
+      {previous && (
+        <img
+          src={`/exhibition/${previous}`}
+          alt=""
+          aria-hidden
+          className={`hero-mosaic-cell-img hero-mosaic-cell-img-leaving${fadeIn ? " hero-mosaic-cell-img-leaving-out" : ""}`}
+        />
+      )}
       <img
-        key={image}
-        src={`/exhibition/${image}`}
+        src={`/exhibition/${current}`}
         alt={alt}
         loading={eager ? "eager" : "lazy"}
-        className="hero-mosaic-cell-img"
+        className={`hero-mosaic-cell-img${previous ? (fadeIn ? " hero-mosaic-cell-img-visible" : " hero-mosaic-cell-img-hidden") : ""}`}
       />
     </div>
   );
