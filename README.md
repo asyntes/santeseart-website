@@ -32,7 +32,12 @@ npm run dev
 Via Torre Santa Susanna, 124
 72024 Oria (BR) — Italia
 
-rocco.santese@pec.it
+santesearts@gmail.com
++39 329 215 1568
+
+- [Instagram](https://www.instagram.com/santeseart/)
+- [X](https://x.com/santeseart)
+- [Facebook](https://www.facebook.com/santeserocco)
 
 ## 📄 Licenza
 
