@@ -162,7 +162,7 @@ export default function SanteseArtWebsite() {
         )}
       </nav>
 
-      <section className="hero-section relative h-[100dvh] flex flex-col pt-20 overflow-hidden bg-[#faf8f5]">
+      <section className="hero-section">
         <div className="hero-layout flex flex-1 min-h-0 w-full">
           <div className="hero-mosaic">
             {heroCollage.map((piece, index) => (
@@ -179,7 +179,7 @@ export default function SanteseArtWebsite() {
                   {t.hero.badge}
                 </div>
               </div>
-              <h1 className="hero-title font-serif tracking-[-2.5px] leading-[0.92] text-black">
+              <h1 className="hero-title font-serif text-black">
                 {t.hero.titleLine1}<br />{t.hero.titleLine2}
               </h1>
               <p className="hero-subtitle tracking-tight text-gray-600 font-light">
@@ -189,10 +189,10 @@ export default function SanteseArtWebsite() {
                 {t.hero.description}
               </p>
               <div className="hero-actions">
-                <button onClick={() => scrollToSection("galleria")} className="btn-primary px-7 py-3.5 rounded-full text-sm font-medium tracking-widest">
+                <button onClick={() => scrollToSection("galleria")} className="btn-primary hero-cta rounded-full font-medium">
                   {t.hero.ctaGallery}
                 </button>
-                <button onClick={() => scrollToSection("contatti")} className="px-7 py-3.5 rounded-full text-sm font-medium tracking-widest border border-black text-black hover:bg-black hover:text-white transition-all">
+                <button onClick={() => scrollToSection("contatti")} className="hero-cta hero-cta-outline rounded-full font-medium border border-black text-black hover:bg-black hover:text-white transition-all">
                   {t.hero.ctaContact}
                 </button>
               </div>
