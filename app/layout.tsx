@@ -31,11 +31,11 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "/",
   },
-  title: "Santese Art | Ebanisteria & Falegnameria Artistica",
+  title: "Santese Art - Ebanisteria & Falegnameria Artistica",
   description:
     "Ebanisteria e falegnameria artistica di Rocco Santese a Oria (BR). Specializzati in intaglio, intarsio, restauro di oggetti antichi d'arte e manufatti artigianali su misura.",
   openGraph: {
-    title: "Santese Art | Ebanisteria & Falegnameria Artistica",
+    title: "Santese Art - Ebanisteria & Falegnameria Artistica",
     description:
       "Ebanisteria e falegnameria artistica di Rocco Santese a Oria (BR). Specializzati in intaglio, intarsio, restauro di oggetti antichi d'arte e manufatti artigianali su misura.",
     url: siteUrl,
@@ -54,7 +54,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Santese Art | Ebanisteria & Falegnameria Artistica",
+    title: "Santese Art - Ebanisteria & Falegnameria Artistica",
     description:
       "Ebanisteria e falegnameria artistica di Rocco Santese a Oria (BR). Specializzati in intaglio, intarsio, restauro di oggetti antichi d'arte e manufatti artigianali su misura.",
     images: ["/og-image.png?v=2"],
