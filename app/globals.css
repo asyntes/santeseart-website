@@ -126,6 +126,21 @@ html {
   margin-bottom: 1.25rem;
 }
 
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.375rem 0.875rem;
+  border-radius: 9999px;
+  background: #f5f0e6;
+  color: #8b5e3c;
+  font-size: 0.6875rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  line-height: 1.45;
+  max-width: 100%;
+  text-wrap: balance;
+}
+
 .hero-title {
   font-size: clamp(2.5rem, 8vw, 3.75rem);
   margin-bottom: 1rem;
@@ -152,6 +167,85 @@ html {
   .hero-actions {
     flex-direction: row;
     flex-wrap: wrap;
+  }
+}
+
+/* Mobile portrait: mosaico compatto, tipografia ridotta */
+@media (max-width: 767px) {
+  .hero-mosaic {
+    height: clamp(155px, 28svh, 205px);
+    min-height: 0;
+    max-height: 32svh;
+    gap: 3px;
+  }
+
+  .hero-content {
+    justify-content: center;
+    padding: 1.125rem 1.25rem 1.5rem;
+  }
+
+  .hero-badge-wrap {
+    margin-bottom: 0.625rem;
+  }
+
+  .hero-badge {
+    font-size: 0.5625rem;
+    letter-spacing: 0.06em;
+    padding: 0.3rem 0.625rem;
+  }
+
+  .hero-title {
+    font-size: clamp(1.75rem, 9vw, 2.5rem);
+    margin-bottom: 0.375rem;
+    letter-spacing: -0.05em;
+  }
+
+  .hero-subtitle {
+    font-size: clamp(0.9375rem, 3.6vw, 1.0625rem);
+    margin-bottom: 0.375rem;
+  }
+
+  .hero-description {
+    font-size: 0.8125rem;
+    line-height: 1.5;
+    margin-bottom: 1rem;
+  }
+
+  .hero-actions {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .hero-actions button {
+    width: 100%;
+    padding-top: 0.6875rem;
+    padding-bottom: 0.6875rem;
+    font-size: 0.6875rem;
+    letter-spacing: 0.1em;
+  }
+
+  .hero-scroll {
+    display: none;
+  }
+}
+
+@media (max-width: 767px) and (max-height: 700px) {
+  .hero-mosaic {
+    height: clamp(130px, 24svh, 170px);
+    max-height: 28svh;
+  }
+
+  .hero-content {
+    padding: 0.875rem 1.25rem 1.25rem;
+  }
+
+  .hero-title {
+    font-size: clamp(1.5rem, 8vw, 2rem);
+  }
+
+  .hero-description {
+    font-size: 0.75rem;
+    margin-bottom: 0.75rem;
   }
 }
 

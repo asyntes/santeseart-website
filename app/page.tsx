@@ -175,7 +175,7 @@ export default function SanteseArtWebsite() {
           <div className="hero-content">
             <div className="hero-content-inner">
               <div className="hero-badge-wrap">
-                <div className="inline-flex items-center px-4 py-1.5 rounded-full bg-[#f5f0e6] text-[#8B5E3C] text-xs tracking-[3px] font-medium">
+                <div className="hero-badge">
                   {t.hero.badge}
                 </div>
               </div>
@@ -261,11 +261,11 @@ export default function SanteseArtWebsite() {
             <div key={exhibit.id} onClick={() => setSelectedExhibit(exhibit)} className="group bg-white rounded-3xl border border-gray-100 overflow-hidden cursor-pointer hover:border-gray-300 hover:shadow-xl transition-all duration-300 flex flex-col h-full">
               <div className="aspect-[16/10] relative overflow-hidden bg-gray-100">
                 <img src={`/exhibition/${exhibit.image}`} alt={getExhibitTitle(exhibit, locale)} className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.06]" loading="lazy" />
-                <div className="absolute top-4 right-4 px-3.5 py-1 bg-white/95 text-xs tracking-widest rounded-full text-gray-600 font-mono shadow-sm">{exhibit.dimensions}</div>
               </div>
               <div className="p-6 flex flex-col flex-1">
                 <div className="mb-4">
-                  <h3 className="font-serif text-[21px] leading-[1.1] tracking-[-0.4px] mb-1 pr-1">{getExhibitTitle(exhibit, locale)}</h3>
+                  <h3 className="font-serif text-[21px] leading-[1.1] tracking-[-0.4px] mb-2.5 pr-1">{getExhibitTitle(exhibit, locale)}</h3>
+                  <p className="font-mono text-xs tracking-widest text-gray-500">{exhibit.dimensions}</p>
                 </div>
                 <p className="text-gray-600 text-[13px] leading-relaxed line-clamp-4 flex-1">{getExhibitDescription(exhibit, locale)}</p>
                 <div className="mt-auto pt-5 border-t border-gray-100 flex items-center justify-between">
