@@ -3,6 +3,8 @@
 import React, { createContext, useContext, useEffect, useState } from "react";
 import {
   detectLocaleFromNavigator,
+  isLocale,
+  LOCALE_STORAGE_KEY,
   messages,
   type Locale,
   type Messages,
@@ -11,6 +13,7 @@ import {
 interface LocaleContextValue {
   locale: Locale;
   t: Messages;
+  setLocale: (locale: Locale) => void;
 }
 
 const LocaleContext = createContext<LocaleContextValue | null>(null);
@@ -22,16 +25,28 @@ export function LocaleProvider({
   initialLocale: Locale;
   children: React.ReactNode;
 }) {
-  const [locale, setLocale] = useState<Locale>(initialLocale);
+  const [locale, setLocaleState] = useState<Locale>(initialLocale);
+
+  const setLocale = (next: Locale) => {
+    setLocaleState(next);
+    localStorage.setItem(LOCALE_STORAGE_KEY, next);
+    document.documentElement.lang = next;
+  };
 
   useEffect(() => {
+    const stored = localStorage.getItem(LOCALE_STORAGE_KEY);
+    if (isLocale(stored)) {
+      setLocaleState(stored);
+      document.documentElement.lang = stored;
+      return;
+    }
     const browserLocale = detectLocaleFromNavigator();
-    setLocale(browserLocale);
+    setLocaleState(browserLocale);
     document.documentElement.lang = browserLocale;
   }, []);
 
   return (
-    <LocaleContext.Provider value={{ locale, t: messages[locale] }}>
+    <LocaleContext.Provider value={{ locale, t: messages[locale], setLocale }}>
       {children}
     </LocaleContext.Provider>
   );

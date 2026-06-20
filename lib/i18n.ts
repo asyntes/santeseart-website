@@ -2,6 +2,12 @@ import { messagesIt } from "./messages/it";
 import { messagesEn } from "./messages/en";
 
 export type Locale = "it" | "en";
+
+export const LOCALE_STORAGE_KEY = "santeseart-locale";
+
+export function isLocale(value: string | null | undefined): value is Locale {
+  return value === "it" || value === "en";
+}
 export type Messages = typeof messagesIt | typeof messagesEn;
 
 export const messages: Record<Locale, Messages> = {

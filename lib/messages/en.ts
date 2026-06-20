@@ -83,7 +83,7 @@ export const messagesEn = {
       "ALL WORKS ARE HANDCRAFTED FROM FINE SALENTO WOODS • UNIQUE PIECES",
     modalBadge: "GARDENS OF SALENTO",
     modalDescription: "DESCRIPTION",
-    modalCta: "REQUEST INFO OR A QUOTE FOR THIS PIECE",
+    modalCta: "REQUEST INFO OR QUOTE",
     modalClose: "CLOSE",
     closeAria: "Close",
   },

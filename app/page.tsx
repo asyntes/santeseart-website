@@ -2,6 +2,7 @@
 
 import React, { useState } from "react";
 import { HeroMosaic } from "@/components/HeroMosaic";
+import { LocaleSwitcher } from "@/components/LocaleSwitcher";
 import { ServiceIcon } from "@/components/ServiceIcons";
 import { useLocale } from "@/context/LocaleContext";
 import type { Locale } from "@/lib/i18n";
@@ -67,7 +68,8 @@ export default function SanteseArtWebsite() {
   const scrollToSection = (id: string) => {
     const element = document.getElementById(id);
     if (element) {
-      const offset = 80;
+      const nav = document.querySelector<HTMLElement>(".site-nav");
+      const offset = nav?.getBoundingClientRect().height ?? 80;
       const bodyRect = document.body.getBoundingClientRect().top;
       const elementPosition = element.getBoundingClientRect().top;
       const offsetPosition = elementPosition - bodyRect - offset;
@@ -105,8 +107,8 @@ export default function SanteseArtWebsite() {
 
   return (
     <div className="min-h-screen bg-white text-black overflow-x-hidden">
-      <nav className="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-md border-b border-gray-200">
-        <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+      <nav className="site-nav fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-md border-b border-gray-200">
+        <div className="site-nav-inner max-w-7xl mx-auto px-6 flex items-center justify-between">
           <div
             onClick={() => {
               window.scrollTo({ top: 0, behavior: "smooth" });
@@ -117,7 +119,7 @@ export default function SanteseArtWebsite() {
             <img
               src="/logo_santeseart.svg"
               alt="Santese Art"
-              className="h-14 w-auto transition-transform group-hover:scale-[1.02] brightness-0"
+              className="site-nav-logo transition-transform group-hover:scale-[1.02] brightness-0"
             />
           </div>
 
@@ -129,20 +131,24 @@ export default function SanteseArtWebsite() {
               <button onClick={() => scrollToSection("contatti")} className="nav-link">{t.nav.contact}</button>
             </div>
 
-            <div className="hidden md:block">
+            <div className="hidden md:flex items-center gap-4">
+              <LocaleSwitcher />
               <button onClick={() => scrollToSection("contatti")} className="btn-primary px-6 py-2.5 rounded-full text-sm font-medium tracking-wide">{t.nav.contactUs}</button>
             </div>
 
-            <button onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)} className="md:hidden p-2 -mr-1">
+            <div className="flex md:hidden items-center gap-2">
+              <LocaleSwitcher />
+              <button onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)} className="p-2 -mr-1">
               {isMobileMenuOpen ? "✕" : "☰"}
             </button>
+            </div>
           </div>
         </div>
 
         {isMobileMenuOpen && (
           <>
-            <div className="fixed inset-0 bg-black/10 z-30 md:hidden" style={{ top: "80px" }} onClick={closeMobileMenu} />
-            <div className="md:hidden absolute top-20 left-0 right-0 bg-white border-b border-gray-200 z-40 mobile-menu shadow-lg">
+            <div className="mobile-menu-backdrop fixed inset-0 bg-black/10 z-30 md:hidden" onClick={closeMobileMenu} />
+            <div className="mobile-menu-panel md:hidden absolute left-0 right-0 bg-white border-b border-gray-200 z-40 mobile-menu shadow-lg">
               <div className="max-w-7xl mx-auto px-6 py-8 flex flex-col gap-y-1 text-base font-medium">
                 <button onClick={() => scrollToSection("chi-siamo")} className="nav-link text-left py-3.5 px-1 border-b border-gray-100 last:border-none">{t.nav.about}</button>
                 <button onClick={() => scrollToSection("servizi")} className="nav-link text-left py-3.5 px-1 border-b border-gray-100 last:border-none">{t.nav.services}</button>

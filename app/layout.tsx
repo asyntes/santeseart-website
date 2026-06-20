@@ -24,12 +24,13 @@ const playfair = Playfair_Display({
   style: ["normal", "italic"],
 });
 
-const siteUrl =
-  process.env.NEXT_PUBLIC_SITE_URL ??
-  (process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : "https://santeseart.vercel.app");
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://www.santeseart.com";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
+  alternates: {
+    canonical: "/",
+  },
   title: "Santese Art | Ebanisteria & Falegnameria Artistica",
   description:
     "Ebanisteria e falegnameria artistica di Rocco Santese a Oria (BR). Specializzati in intaglio, intarsio, restauro di oggetti antichi d'arte e manufatti artigianali su misura.",
@@ -47,6 +48,7 @@ export const metadata: Metadata = {
         width: 1200,
         height: 630,
         alt: "Santese Art — logo",
+        type: "image/png",
       },
     ],
   },
@@ -58,8 +60,8 @@ export const metadata: Metadata = {
     images: ["/og-image.png"],
   },
   icons: {
-    icon: "/logo_santeseart.svg",
-    apple: "/og-image.png",
+    icon: [{ url: "/icon-rose-black.svg", type: "image/svg+xml" }],
+    apple: "/icon-rose-black.svg",
   },
 };
 
