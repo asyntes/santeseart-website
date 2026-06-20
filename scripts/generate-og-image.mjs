@@ -9,9 +9,12 @@ const root = join(__dirname, "..");
 
 await generateBlackLogos(root);
 
-const svg = readFileSync(join(root, "public", "logo-full-black.svg"));
-const logoPng = await sharp(svg, { density: 300 })
-  .resize(1000, null, { fit: "inside" })
+const svg = readFileSync(join(root, "public", "icon-rose-black.svg"));
+const rosePng = await sharp(svg, { density: 400 })
+  .resize(420, 420, {
+    fit: "contain",
+    background: { r: 0, g: 0, b: 0, alpha: 0 },
+  })
   .png()
   .toBuffer();
 
@@ -23,8 +26,8 @@ await sharp({
     background: { r: 255, g: 255, b: 255 },
   },
 })
-  .composite([{ input: logoPng, gravity: "center" }])
+  .composite([{ input: rosePng, gravity: "center" }])
   .png()
   .toFile(join(root, "public", "og-image.png"));
 
-console.log("Generated public/og-image.png (1200x630, black logo on white)");
+console.log("Generated public/og-image.png (1200x630, black rose on white)");
