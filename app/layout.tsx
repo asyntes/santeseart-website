@@ -72,6 +72,9 @@ export const metadata: Metadata = {
     ],
     apple: "/icon-rose-black.png",
   },
+  other: {
+    google: "notranslate",
+  },
 };
 
 export default async function RootLayout({
@@ -85,8 +88,9 @@ export default async function RootLayout({
   return (
     <html
       lang={locale}
+      translate="no"
       suppressHydrationWarning
-      className={`${geistSans.variable} ${geistMono.variable} ${playfair.variable} h-full antialiased minimal-scrollbar`}
+      className={`notranslate ${geistSans.variable} ${geistMono.variable} ${playfair.variable} h-full antialiased minimal-scrollbar`}
     >
       <body className="min-h-full flex flex-col bg-white text-black">
         <LocaleProvider initialLocale={locale}>{children}</LocaleProvider>
