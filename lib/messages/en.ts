@@ -1,4 +1,7 @@
 export const messagesEn = {
+  brand: {
+    motto: "The art of knowing how to carve wood",
+  },
   nav: {
     about: "About us",
     services: "Services",
@@ -80,6 +83,7 @@ export const messagesEn = {
     eventInfo: "July 1–31 • Palazzo Martini, Oria",
     description:
       "Ten unique works in Mediterranean wood. Each piece tells a story of light, matter and memory of Salento.",
+    priceLabel: "Price",
     viewDetails: "VIEW DETAILS",
     footer:
       "ALL WORKS ARE HANDCRAFTED FROM FINE SALENTO WOODS • UNIQUE PIECES",
@@ -119,6 +123,5 @@ export const messagesEn = {
   footer: {
     rights: "All rights reserved.",
     location: "Oria, Brindisi — Puglia, Italy",
-    tagline: "Italian craftsmanship of excellence",
   },
 } as const;

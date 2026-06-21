@@ -1,4 +1,7 @@
 export const messagesIt = {
+  brand: {
+    motto: "L'arte di saper intagliare il legno",
+  },
   nav: {
     about: "Chi siamo",
     services: "Servizi",
@@ -80,6 +83,7 @@ export const messagesIt = {
     eventInfo: "1–31 luglio • Palazzo Martini, Oria",
     description:
       "Dieci opere uniche in legno mediterraneo. Ogni pezzo racconta una storia di luce, materia e memoria del Salento.",
+    priceLabel: "Prezzo",
     viewDetails: "VEDI DETTAGLI",
     footer:
       "TUTTE LE OPERE SONO REALIZZATE A MANO CON LEGNI PREGIATI DEL SALENTO • PEZZI UNICI",
@@ -119,6 +123,5 @@ export const messagesIt = {
   footer: {
     rights: "Tutti i diritti riservati.",
     location: "Oria, Brindisi — Puglia, Italia",
-    tagline: "Artigianato italiano di eccellenza",
   },
 } as const;
