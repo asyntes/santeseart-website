@@ -4,6 +4,7 @@ import {
   TbChisel,
   TbDoor,
   TbGrid3X3,
+  TbSchool,
 } from "react-icons/tb";
 
 const icons = [
@@ -13,6 +14,7 @@ const icons = [
   RiArchiveDrawerLine,
   TbDoor,
   RiPencilRulerLine,
+  TbSchool,
 ] as const;
 
 export function ServiceIcon({ index }: { index: number }) {

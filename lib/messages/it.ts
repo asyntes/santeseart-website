@@ -75,6 +75,11 @@ export const messagesIt = {
         description:
           "Consulenza personalizzata e progettazione di soluzioni artigianali per interni ed esterni.",
       },
+      {
+        title: "Corsi di Ebanisteria Artistica",
+        description:
+          "Lezioni pratiche per apprendere tecniche di ebanisteria artistica sotto la guida di maestri artigiani.",
+      },
     ],
   },
   gallery: {

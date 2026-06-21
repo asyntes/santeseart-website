@@ -462,7 +462,7 @@ export default function SanteseArtWebsite() {
             >
               <span className="text-lg leading-none" aria-hidden>✕</span>
             </button>
-            <div className="p-8 md:p-12 pt-14 md:pt-16 overflow-auto max-h-[92vh]">
+            <div className="p-8 md:p-12 pt-14 md:pt-16 overflow-auto max-h-[92vh] minimal-scrollbar">
               <div className="mb-8 pr-12">
                 <div className="inline-block px-4 py-1 rounded-full bg-[#f5f0e6] text-[#8B5E3C] text-xs tracking-[3px] mb-4">{t.gallery.modalBadge}</div>
                 <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between sm:gap-8">

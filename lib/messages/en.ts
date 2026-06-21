@@ -75,6 +75,11 @@ export const messagesEn = {
         description:
           "Personalised consultation and design of artisan solutions for indoor and outdoor spaces.",
       },
+      {
+        title: "Artistic Woodworking Courses",
+        description:
+          "Hands-on lessons to learn artistic woodworking techniques under the guidance of master craftsmen.",
+      },
     ],
   },
   gallery: {
