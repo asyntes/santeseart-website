@@ -7,19 +7,10 @@ import io
 
 EXHIBITION_DIR = os.path.join(os.path.dirname(__file__), "..", "public", "exhibition")
 
-# PDF filename stem -> website image filename
-PDF_TO_IMAGE = {
-    "Lampada_Wormhole": "lampada-wormhole.jpg",
-    "Tris_di_Radiche": "tris-di-radiche.jpg",
-    "Centrotavola_di_Radiche": "centrotavola-di-radiche.jpg",
-    "Raggiera_Solare": "raggiera-solare.jpg",
-    "Tris_di_Fiori": "tris-di-fiori.jpg",
-    "Saturno_di_Radiche": "saturno-di-radiche.jpg",
-    "Quintetto_di_Essenze": "quintetto-di-essenze.jpg",
-    "Scrigno_di_Radiche": "scrigno-di-radiche.jpg",
-    "Quartetto_di_Radiche": "quartetto-di-radiche.jpg",
-    "Cerchi_di_Luce": "cerchi-di-luce.jpg",
-}
+
+def stem_to_image(stem: str) -> str:
+    s = stem.replace("'", "").replace("\u2019", "")
+    return s.replace("_", "-").lower() + ".jpg"
 
 
 def pdf_stem(filename: str) -> str | None:
@@ -65,11 +56,11 @@ def main() -> None:
             continue
 
         stem = pdf_stem(filename)
-        if not stem or stem not in PDF_TO_IMAGE:
-            print(f"SKIP (no mapping): {filename}")
+        if not stem:
+            print(f"SKIP (not a card PDF): {filename}")
             continue
 
-        out_name = PDF_TO_IMAGE[stem]
+        out_name = stem_to_image(stem)
         pdf_path = os.path.join(exhibition_dir, filename)
         out_path = os.path.join(exhibition_dir, out_name)
 
