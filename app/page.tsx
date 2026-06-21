@@ -442,7 +442,7 @@ export default function SanteseArtWebsite() {
       <footer className="border-t border-gray-200 bg-white">
         <div className="max-w-6xl mx-auto px-6 py-16 flex flex-col items-center text-center">
           <LogoMonochrome className="h-28 md:h-40 w-auto mb-6" />
-          <p className="font-serif italic text-lg md:text-xl text-[#8B5E3C] mb-10 tracking-wide">{t.brand.motto}</p>
+          <p className="font-serif italic text-lg md:text-xl text-black mb-10 tracking-wide">{t.brand.motto}</p>
           <div className="text-xs text-gray-500 flex flex-col md:flex-row items-center gap-y-3 md:gap-x-6">
             <span>© {new Date().getFullYear()} Santese Art — Rocco Santese. {t.footer.rights}</span>
             <span className="hidden md:inline">•</span>

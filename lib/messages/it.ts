@@ -82,7 +82,7 @@ export const messagesIt = {
     title: "Giardini del Salento",
     eventInfo: "1–31 luglio • Palazzo Martini, Oria",
     description:
-      "Dieci opere uniche in legno mediterraneo. Ogni pezzo racconta una storia di luce, materia e memoria del Salento.",
+      "Opere uniche in legno mediterraneo. Ogni pezzo racconta una storia di luce, materia e memoria del Salento.",
     priceLabel: "Prezzo",
     viewDetails: "VEDI DETTAGLI",
     footer:

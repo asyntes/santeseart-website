@@ -82,7 +82,7 @@ export const messagesEn = {
     title: "Giardini del Salento",
     eventInfo: "July 1–31 • Palazzo Martini, Oria",
     description:
-      "Ten unique works in Mediterranean wood. Each piece tells a story of light, matter and memory of Salento.",
+      "Unique works in Mediterranean wood. Each piece tells a story of light, matter and memory of Salento.",
     priceLabel: "Price",
     viewDetails: "VIEW DETAILS",
     footer:
