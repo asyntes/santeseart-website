@@ -89,7 +89,7 @@ export const messagesIt = {
       "TUTTE LE OPERE SONO REALIZZATE A MANO CON LEGNI PREGIATI DEL SALENTO • PEZZI UNICI",
     modalBadge: "GIARDINI DEL SALENTO",
     modalDescription: "DESCRIZIONE",
-    modalCta: "RICHIEDI INFO O PREVENTIVO",
+    modalCta: "RICHIEDI INFORMAZIONI",
     modalClose: "CHIUDI SCHEDA",
     zoomImageAria: "Ingrandisci immagine",
     closeAria: "Chiudi",

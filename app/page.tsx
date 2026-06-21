@@ -453,19 +453,30 @@ export default function SanteseArtWebsite() {
 
       {selectedExhibit && (
         <div className="fixed inset-0 z-[100] flex items-center justify-center bg-black/70 p-4 md:p-8" onClick={closeExhibitModal}>
-          <div className="bg-white rounded-3xl w-full max-w-4xl max-h-[92vh] overflow-hidden shadow-2xl" onClick={(e) => e.stopPropagation()}>
-            <div className="p-8 md:p-12 overflow-auto max-h-[92vh]">
-              <div className="flex items-start justify-between gap-4 mb-8">
-                <div>
-                  <div className="inline-block px-4 py-1 rounded-full bg-[#f5f0e6] text-[#8B5E3C] text-xs tracking-[3px] mb-3">{t.gallery.modalBadge}</div>
+          <div className="relative bg-white rounded-3xl w-full max-w-4xl max-h-[92vh] overflow-hidden shadow-2xl" onClick={(e) => e.stopPropagation()}>
+            <button
+              type="button"
+              onClick={closeExhibitModal}
+              className="absolute top-4 right-4 z-10 flex h-10 w-10 items-center justify-center rounded-full bg-gray-100 text-gray-500 hover:bg-gray-200 hover:text-black transition-colors"
+              aria-label={t.gallery.closeAria}
+            >
+              <span className="text-lg leading-none" aria-hidden>✕</span>
+            </button>
+            <div className="p-8 md:p-12 pt-14 md:pt-16 overflow-auto max-h-[92vh]">
+              <div className="mb-8 pr-12">
+                <div className="inline-block px-4 py-1 rounded-full bg-[#f5f0e6] text-[#8B5E3C] text-xs tracking-[3px] mb-4">{t.gallery.modalBadge}</div>
+                <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between sm:gap-8">
                   <h3 className="font-serif text-4xl md:text-[42px] tracking-[-1.8px] leading-none">{getExhibitTitle(selectedExhibit)}</h3>
+                  <div className="sm:text-right shrink-0">
+                    <div className="uppercase tracking-[2.5px] text-[10px] text-gray-500 mb-1">{t.gallery.priceLabel}</div>
+                    <p className="font-serif text-3xl md:text-4xl tracking-tight text-[#8B5E3C] leading-none">{formatExhibitPrice(selectedExhibit.price, locale)}</p>
+                  </div>
                 </div>
-                <button onClick={closeExhibitModal} className="mt-1 p-3 text-gray-400 hover:text-black" aria-label={t.gallery.closeAria}>✕</button>
               </div>
               <button
                 type="button"
                 onClick={() => setIsImageEnlarged(true)}
-                className="group mb-8 rounded-2xl overflow-hidden bg-gray-50 aspect-[16/10] relative w-full cursor-zoom-in focus:outline-none focus-visible:ring-2 focus-visible:ring-[#8B5E3C] focus-visible:ring-offset-2"
+                className="group mb-6 rounded-2xl overflow-hidden bg-gray-50 aspect-[16/10] relative w-full cursor-zoom-in focus:outline-none focus-visible:ring-2 focus-visible:ring-[#8B5E3C] focus-visible:ring-offset-2"
                 aria-label={t.gallery.zoomImageAria}
               >
                 <img
@@ -479,9 +490,8 @@ export default function SanteseArtWebsite() {
                   </svg>
                 </span>
               </button>
-              <div className="mb-8 flex flex-wrap items-center gap-3">
+              <div className="mb-8">
                 <span className="inline-block font-mono text-sm tracking-widest bg-gray-100 px-5 py-2 rounded-2xl text-gray-600">{selectedExhibit.dimensions}</span>
-                <span className="inline-block font-serif text-2xl tracking-tight text-[#8B5E3C] px-1">{formatExhibitPrice(selectedExhibit.price, locale)}</span>
               </div>
               <div className="text-[15px] leading-[1.65]">
                 <div className="uppercase tracking-[2.5px] text-xs text-gray-500 mb-4">{t.gallery.modalDescription}</div>
@@ -504,20 +514,21 @@ export default function SanteseArtWebsite() {
           aria-modal="true"
           aria-label={getExhibitTitle(selectedExhibit)}
         >
-          <button
-            type="button"
-            onClick={() => setIsImageEnlarged(false)}
-            className="absolute top-4 right-4 p-3 text-white/70 hover:text-white transition-colors"
-            aria-label={t.gallery.closeAria}
-          >
-            ✕
-          </button>
-          <img
-            src={`/exhibition/${selectedExhibit.image}`}
-            alt={getExhibitTitle(selectedExhibit)}
-            className="max-w-full max-h-[92vh] object-contain"
-            onClick={(e) => e.stopPropagation()}
-          />
+          <div className="relative inline-flex max-w-full max-h-[92vh]" onClick={(e) => e.stopPropagation()}>
+            <button
+              type="button"
+              onClick={() => setIsImageEnlarged(false)}
+              className="absolute top-3 right-3 z-10 flex h-10 w-10 items-center justify-center rounded-full bg-black/55 text-white hover:bg-black/75 transition-colors backdrop-blur-sm"
+              aria-label={t.gallery.closeAria}
+            >
+              <span className="text-lg leading-none" aria-hidden>✕</span>
+            </button>
+            <img
+              src={`/exhibition/${selectedExhibit.image}`}
+              alt={getExhibitTitle(selectedExhibit)}
+              className="max-w-full max-h-[92vh] object-contain rounded-lg"
+            />
+          </div>
         </div>
       )}
     </div>
