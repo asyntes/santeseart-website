@@ -1,6 +1,6 @@
 export const messagesEn = {
   brand: {
-    motto: "The art of knowing how to carve wood",
+    motto: "The art of knowing how to model wood",
   },
   nav: {
     about: "About us",
