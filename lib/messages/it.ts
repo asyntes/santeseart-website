@@ -91,6 +91,7 @@ export const messagesIt = {
     modalDescription: "DESCRIZIONE",
     modalCta: "RICHIEDI INFO O PREVENTIVO",
     modalClose: "CHIUDI SCHEDA",
+    zoomImageAria: "Ingrandisci immagine",
     closeAria: "Chiudi",
   },
   contact: {

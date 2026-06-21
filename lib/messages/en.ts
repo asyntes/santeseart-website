@@ -91,6 +91,7 @@ export const messagesEn = {
     modalDescription: "DESCRIPTION",
     modalCta: "REQUEST INFO OR QUOTE",
     modalClose: "CLOSE",
+    zoomImageAria: "Enlarge image",
     closeAria: "Close",
   },
   contact: {

@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useLayoutEffect, useState } from "react";
+import React, { useEffect, useLayoutEffect, useState } from "react";
 import { HeroMosaic } from "@/components/HeroMosaic";
 import { LocaleSwitcher } from "@/components/LocaleSwitcher";
 import { LogoMonochrome } from "@/components/LogoMonochrome";
@@ -92,6 +92,23 @@ export default function SanteseArtWebsite() {
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [selectedExhibit, setSelectedExhibit] = useState<Exhibit | null>(null);
+  const [isImageEnlarged, setIsImageEnlarged] = useState(false);
+
+  const closeExhibitModal = () => {
+    setIsImageEnlarged(false);
+    setSelectedExhibit(null);
+  };
+
+  useEffect(() => {
+    if (!selectedExhibit) return;
+    const onKeyDown = (e: KeyboardEvent) => {
+      if (e.key !== "Escape") return;
+      if (isImageEnlarged) setIsImageEnlarged(false);
+      else closeExhibitModal();
+    };
+    window.addEventListener("keydown", onKeyDown);
+    return () => window.removeEventListener("keydown", onKeyDown);
+  }, [selectedExhibit, isImageEnlarged]);
 
   const scrollToSection = (id: string) => {
     const element = document.getElementById(id);
@@ -435,7 +452,7 @@ export default function SanteseArtWebsite() {
       </footer>
 
       {selectedExhibit && (
-        <div className="fixed inset-0 z-[100] flex items-center justify-center bg-black/70 p-4 md:p-8" onClick={() => setSelectedExhibit(null)}>
+        <div className="fixed inset-0 z-[100] flex items-center justify-center bg-black/70 p-4 md:p-8" onClick={closeExhibitModal}>
           <div className="bg-white rounded-3xl w-full max-w-4xl max-h-[92vh] overflow-hidden shadow-2xl" onClick={(e) => e.stopPropagation()}>
             <div className="p-8 md:p-12 overflow-auto max-h-[92vh]">
               <div className="flex items-start justify-between gap-4 mb-8">
@@ -443,15 +460,25 @@ export default function SanteseArtWebsite() {
                   <div className="inline-block px-4 py-1 rounded-full bg-[#f5f0e6] text-[#8B5E3C] text-xs tracking-[3px] mb-3">{t.gallery.modalBadge}</div>
                   <h3 className="font-serif text-4xl md:text-[42px] tracking-[-1.8px] leading-none">{getExhibitTitle(selectedExhibit)}</h3>
                 </div>
-                <button onClick={() => setSelectedExhibit(null)} className="mt-1 p-3 text-gray-400 hover:text-black" aria-label={t.gallery.closeAria}>✕</button>
+                <button onClick={closeExhibitModal} className="mt-1 p-3 text-gray-400 hover:text-black" aria-label={t.gallery.closeAria}>✕</button>
               </div>
-              <div className="mb-8 rounded-2xl overflow-hidden bg-gray-50 aspect-[16/10] relative">
+              <button
+                type="button"
+                onClick={() => setIsImageEnlarged(true)}
+                className="group mb-8 rounded-2xl overflow-hidden bg-gray-50 aspect-[16/10] relative w-full cursor-zoom-in focus:outline-none focus-visible:ring-2 focus-visible:ring-[#8B5E3C] focus-visible:ring-offset-2"
+                aria-label={t.gallery.zoomImageAria}
+              >
                 <img
                   src={`/exhibition/${selectedExhibit.image}`}
                   alt={getExhibitTitle(selectedExhibit)}
-                  className="absolute inset-0 w-full h-full object-contain"
+                  className="absolute inset-0 w-full h-full object-contain transition-transform duration-300 group-hover:scale-[1.02]"
                 />
-              </div>
+                <span className="absolute bottom-3 right-3 flex h-10 w-10 items-center justify-center rounded-full bg-black/50 text-white opacity-0 transition-opacity duration-200 group-hover:opacity-100 pointer-events-none">
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden>
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7" />
+                  </svg>
+                </span>
+              </button>
               <div className="mb-8 flex flex-wrap items-center gap-3">
                 <span className="inline-block font-mono text-sm tracking-widest bg-gray-100 px-5 py-2 rounded-2xl text-gray-600">{selectedExhibit.dimensions}</span>
                 <span className="inline-block font-serif text-2xl tracking-tight text-[#8B5E3C] px-1">{formatExhibitPrice(selectedExhibit.price, locale)}</span>
@@ -461,11 +488,36 @@ export default function SanteseArtWebsite() {
                 <p className="text-gray-700">{getExhibitDescription(selectedExhibit, locale)}</p>
               </div>
               <div className="mt-10 pt-8 border-t border-gray-200 flex flex-col sm:flex-row gap-4">
-                <button onClick={() => { setSelectedExhibit(null); setTimeout(() => scrollToSection("contatti"), 100); }} className="btn-primary flex-1 py-4 rounded-2xl text-sm font-medium tracking-[2px]">{t.gallery.modalCta}</button>
-                <button onClick={() => setSelectedExhibit(null)} className="flex-1 py-4 rounded-2xl text-sm font-medium tracking-[2px] border border-gray-300 hover:bg-gray-50 transition-colors">{t.gallery.modalClose}</button>
+                <button onClick={() => { closeExhibitModal(); setTimeout(() => scrollToSection("contatti"), 100); }} className="btn-primary flex-1 py-4 rounded-2xl text-sm font-medium tracking-[2px]">{t.gallery.modalCta}</button>
+                <button onClick={closeExhibitModal} className="flex-1 py-4 rounded-2xl text-sm font-medium tracking-[2px] border border-gray-300 hover:bg-gray-50 transition-colors">{t.gallery.modalClose}</button>
               </div>
             </div>
           </div>
+        </div>
+      )}
+
+      {selectedExhibit && isImageEnlarged && (
+        <div
+          className="fixed inset-0 z-[110] flex items-center justify-center bg-black/92 p-4 md:p-8"
+          onClick={() => setIsImageEnlarged(false)}
+          role="dialog"
+          aria-modal="true"
+          aria-label={getExhibitTitle(selectedExhibit)}
+        >
+          <button
+            type="button"
+            onClick={() => setIsImageEnlarged(false)}
+            className="absolute top-4 right-4 p-3 text-white/70 hover:text-white transition-colors"
+            aria-label={t.gallery.closeAria}
+          >
+            ✕
+          </button>
+          <img
+            src={`/exhibition/${selectedExhibit.image}`}
+            alt={getExhibitTitle(selectedExhibit)}
+            className="max-w-full max-h-[92vh] object-contain"
+            onClick={(e) => e.stopPropagation()}
+          />
         </div>
       )}
     </div>
