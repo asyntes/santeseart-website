@@ -16,7 +16,7 @@ export const messagesEn = {
     subtitle: "by Rocco Santese",
     event: "July 1–31 • Palazzo Martini, Oria",
     description:
-      "Wood art for gardens and outdoor spaces. Carving, sculptures and artistic installations handcrafted in Puglia.",
+      "Wood art for indoor and outdoor spaces. Lamps, carvings, inlays and artistic installations handcrafted in Puglia.",
     ctaGallery: "VIEW THE WORKS",
     ctaContact: "BOOK AN APPOINTMENT",
     scroll: "SCROLL",
@@ -30,7 +30,7 @@ export const messagesEn = {
     p1: "is Rocco Santese's artistic cabinetmaking workshop in Oria. For over 40 years we have crafted carvings, inlays, restorations and bespoke furniture using time-honoured artisan techniques.",
     p2: "From July 1 to 31 we are exhibiting at Palazzo Martini in Oria a selection of works dedicated to the",
     p2Highlight: "Giardini del Salento",
-    p2End: ": carvings and artistic installations designed for gardens, terraces and outdoor spaces.",
+    p2End: ": lamps, carvings and artistic installations for the home, garden and open-air spaces.",
     p3: "Each piece is unique, handcrafted from fine Italian woods.",
     brand: "Santese Art",
     stat1Label: "MASTER CABINETMAKER",
@@ -87,7 +87,7 @@ export const messagesEn = {
     title: "Giardini del Salento",
     eventInfo: "July 1–31 • Palazzo Martini, Oria",
     description:
-      "Unique works in Mediterranean wood. Each piece tells a story of light, matter and memory of Salento.",
+      "Unique works for indoor and outdoor settings. Each piece tells a story of light, matter and memory of Salento.",
     priceLabel: "Price",
     viewDetails: "VIEW DETAILS",
     footer:

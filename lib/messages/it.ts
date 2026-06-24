@@ -16,7 +16,7 @@ export const messagesIt = {
     subtitle: "di Rocco Santese",
     event: "1–31 luglio • Palazzo Martini, Oria",
     description:
-      "Opere d'arte in legno per giardini e spazi esterni. Intaglio, sculture e installazioni artistiche realizzate a mano in Puglia.",
+      "Opere d'arte in legno per interni ed esterni. Lampade, intagli, intarsi e installazioni artistiche realizzate a mano in Puglia.",
     ctaGallery: "SCOPRI LE OPERE",
     ctaContact: "PRENOTA UN APPUNTAMENTO",
     scroll: "SCROLL",
@@ -30,7 +30,7 @@ export const messagesIt = {
     p1: "è l'ebanisteria artistica di Rocco Santese a Oria. Da oltre 40 anni realizziamo intagli, intarsi, restauri e mobili su misura con tecniche artigianali tramandate nel tempo.",
     p2: "Dal 1° al 31 luglio esponiamo a Palazzo Martini di Oria una selezione di opere dedicate ai",
     p2Highlight: "Giardini del Salento",
-    p2End: ": intagli e installazioni artistiche pensate per giardini, terrazzi e spazi esterni.",
+    p2End: ": lampade, intagli e installazioni artistiche per la casa, il giardino e gli spazi all'aperto.",
     p3: "Ogni pezzo è unico, realizzato a mano con legni pregiati italiani.",
     brand: "Santese Art",
     stat1Label: "MAESTRO EBANISTA",
@@ -87,7 +87,7 @@ export const messagesIt = {
     title: "Giardini del Salento",
     eventInfo: "1–31 luglio • Palazzo Martini, Oria",
     description:
-      "Opere uniche in legno mediterraneo. Ogni pezzo racconta una storia di luce, materia e memoria del Salento.",
+      "Opere uniche per ambienti interni ed esterni. Ogni pezzo racconta una storia di luce, materia e memoria del Salento.",
     priceLabel: "Prezzo",
     viewDetails: "VEDI DETTAGLI",
     footer:
