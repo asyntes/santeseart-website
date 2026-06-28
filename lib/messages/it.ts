@@ -32,6 +32,7 @@ export const messagesIt = {
     p2Highlight: "Giardini del Salento",
     p2End: ": lampade, intagli e installazioni artistiche per la casa, il giardino e gli spazi all'aperto.",
     p3: "Ogni pezzo è unico, realizzato a mano con legni pregiati italiani.",
+    ctaGallery: "VAI ALLE OPERE",
     brand: "Santese Art",
     stat1Label: "MAESTRO EBANISTA",
     stat1Value: "Rocco Santese",

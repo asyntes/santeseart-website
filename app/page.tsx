@@ -316,7 +316,10 @@ export default function SanteseArtWebsite() {
           <div className="md:col-span-5 text-lg leading-relaxed text-gray-600">
             <p className="mb-6"><span className="font-medium text-black">{t.about.brand}</span> {t.about.p1}</p>
             <p className="mb-6">{t.about.p2} <span className="font-medium text-black">{t.about.p2Highlight}</span>{t.about.p2End}</p>
-            <p>{t.about.p3}</p>
+            <p className="mb-8">{t.about.p3}</p>
+            <button onClick={() => scrollToSection("galleria")} className="btn-primary rounded-full font-medium tracking-[2px] text-sm px-8 py-3.5">
+              {t.about.ctaGallery}
+            </button>
           </div>
         </div>
         <div className="mt-16 pt-12 border-t border-gray-200 grid md:grid-cols-3 gap-8 text-sm">

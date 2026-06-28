@@ -32,6 +32,7 @@ export const messagesEn = {
     p2Highlight: "Giardini del Salento",
     p2End: ": lamps, carvings and artistic installations for the home, garden and open-air spaces.",
     p3: "Each piece is unique, handcrafted from fine Italian woods.",
+    ctaGallery: "VIEW THE WORKS",
     brand: "Santese Art",
     stat1Label: "MASTER CABINETMAKER",
     stat1Value: "Rocco Santese",
