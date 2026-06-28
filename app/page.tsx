@@ -49,7 +49,7 @@ function ExhibitPriceBlock({
       : "text-xs tracking-wide text-gray-400 mt-1";
 
   return (
-    <div className="text-right shrink-0">
+    <div className={variant === "card" ? "text-right shrink-0" : "shrink-0"}>
       <p className={priceClass}>{formatExhibitPrice(exhibit.price, locale)}</p>
       {exhibit.soldAsSet && <p className={noteClass}>{setNote}</p>}
     </div>
@@ -496,14 +496,12 @@ export default function SanteseArtWebsite() {
               <span className="text-lg leading-none" aria-hidden>✕</span>
             </button>
             <div className="p-8 md:p-12 pt-14 md:pt-16 overflow-auto max-h-[92vh] minimal-scrollbar">
-              <div className="mb-8 pr-12">
-                <div className="inline-block px-4 py-1 rounded-full bg-[#f5f0e6] text-[#8B5E3C] text-xs tracking-[3px] mb-4">{t.gallery.modalBadge}</div>
-                <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between sm:gap-8">
-                  <h3 className="font-serif text-4xl md:text-[42px] tracking-[-1.8px] leading-none">{getExhibitTitle(selectedExhibit)}</h3>
-                  <div className="flex flex-col items-end shrink-0">
-                    <div className="uppercase tracking-[2.5px] text-[10px] text-gray-500 mb-1">{t.gallery.priceLabel}</div>
-                    <ExhibitPriceBlock exhibit={selectedExhibit} locale={locale} setNote={t.gallery.priceSetNote} variant="modal" />
-                  </div>
+              <div className="mb-8 pr-12 flex flex-col gap-4">
+                <div className="inline-block px-4 py-1 rounded-full bg-[#f5f0e6] text-[#8B5E3C] text-xs tracking-[3px]">{t.gallery.modalBadge}</div>
+                <h3 className="font-serif text-4xl md:text-[42px] tracking-[-1.8px] leading-none">{getExhibitTitle(selectedExhibit)}</h3>
+                <div>
+                  <div className="uppercase tracking-[2.5px] text-[10px] text-gray-500 mb-1">{t.gallery.priceLabel}</div>
+                  <ExhibitPriceBlock exhibit={selectedExhibit} locale={locale} setNote={t.gallery.priceSetNote} variant="modal" />
                 </div>
               </div>
               <button
