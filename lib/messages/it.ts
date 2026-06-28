@@ -89,6 +89,7 @@ export const messagesIt = {
     description:
       "Opere uniche per ambienti interni ed esterni. Ogni pezzo racconta una storia di luce, materia e memoria del Salento.",
     priceLabel: "Prezzo",
+    priceSetNote: "(insieme)",
     viewDetails: "VEDI DETTAGLI",
     footer:
       "TUTTE LE OPERE SONO REALIZZATE A MANO CON LEGNI PREGIATI DEL SALENTO • PEZZI UNICI",
