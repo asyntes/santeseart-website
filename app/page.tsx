@@ -500,7 +500,7 @@ export default function SanteseArtWebsite() {
                 <div className="inline-block px-4 py-1 rounded-full bg-[#f5f0e6] text-[#8B5E3C] text-xs tracking-[3px] mb-4">{t.gallery.modalBadge}</div>
                 <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between sm:gap-8">
                   <h3 className="font-serif text-4xl md:text-[42px] tracking-[-1.8px] leading-none">{getExhibitTitle(selectedExhibit)}</h3>
-                  <div className="sm:text-right shrink-0">
+                  <div className="flex flex-col items-end shrink-0">
                     <div className="uppercase tracking-[2.5px] text-[10px] text-gray-500 mb-1">{t.gallery.priceLabel}</div>
                     <ExhibitPriceBlock exhibit={selectedExhibit} locale={locale} setNote={t.gallery.priceSetNote} variant="modal" />
                   </div>
