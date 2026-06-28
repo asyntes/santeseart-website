@@ -26,6 +26,7 @@ TITLE_EN = {
     "Regno delle Due Sicilie": "Kingdom of the Two Sicilies",
     "Sentinella del Bosco": "Sentinel of the Forest",
     "Torre di Ulivo": "Olive Tower",
+    "Volute del Bosco": "Forest Scrolls",
 }
 
 EN_START = re.compile(
