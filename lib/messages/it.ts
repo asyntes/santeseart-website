@@ -1,6 +1,6 @@
 export const messagesIt = {
   brand: {
-    motto: "L'arte di saper modellare il legno",
+    motto: "L'arte di modellare il legno",
   },
   nav: {
     about: "Chi siamo",

@@ -12,6 +12,7 @@ TITLE_EN = {
     "Abbraccio di Luce": "Embrace of Light",
     "Aurora Rustica": "Rustic Dawn",
     "Calice Selvaggio": "Wild Chalice",
+    "Campana del Bosco": "Bell of the Forest",
     "Cavalli del Tempo": "Horses of Time",
     "Cimasa di Fiori": "Floral Cornice",
     "Corona di Fuoco": "Crown of Fire",
