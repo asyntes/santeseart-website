@@ -18,6 +18,7 @@ interface Exhibit {
   image: string;
   price: number;
   soldAsSet?: boolean;
+  sold?: boolean;
 }
 
 function formatExhibitPrice(price: number, locale: Locale) {
@@ -32,17 +33,23 @@ function ExhibitPriceBlock({
   exhibit,
   locale,
   setNote,
+  soldLabel,
   variant,
 }: {
   exhibit: Exhibit;
   locale: Locale;
   setNote: string;
+  soldLabel: string;
   variant: "card" | "modal";
 }) {
   const priceClass =
     variant === "card"
       ? "font-serif text-lg tracking-tight text-[#8B5E3C]"
       : "font-serif text-3xl md:text-4xl tracking-tight text-[#8B5E3C] leading-none";
+  const soldClass =
+    variant === "card"
+      ? "font-serif text-sm tracking-[2px] uppercase text-gray-400"
+      : "font-serif text-2xl md:text-3xl tracking-[2px] uppercase text-gray-400 leading-none";
   const noteClass =
     variant === "card"
       ? "text-[10px] tracking-wide text-gray-400 mt-0.5"
@@ -50,8 +57,14 @@ function ExhibitPriceBlock({
 
   return (
     <div className={variant === "card" ? "text-right shrink-0" : "shrink-0"}>
-      <p className={priceClass}>{formatExhibitPrice(exhibit.price, locale)}</p>
-      {exhibit.soldAsSet && <p className={noteClass}>{setNote}</p>}
+      {exhibit.sold ? (
+        <p className={soldClass}>{soldLabel}</p>
+      ) : (
+        <>
+          <p className={priceClass}>{formatExhibitPrice(exhibit.price, locale)}</p>
+          {exhibit.soldAsSet && <p className={noteClass}>{setNote}</p>}
+        </>
+      )}
     </div>
   );
 }
@@ -96,7 +109,7 @@ const exhibits: Exhibit[] = [
   { id: 28, titleIt: "Volute del Bosco", titleEn: "Forest Scrolls", dimensions: "31 × 31 cm, spessore 6 cm", descriptionIt: "Coppia di mensole in frassino con intaglio barocco a volute e foglie. Il motivo scolpito evoca la grazia e la forza dei giardini del Salento. Un inno alla tradizione e alla bellezza del legno.", descriptionEn: "Pair of ash wood corbels with baroque scroll and leaf carvings. The sculpted motif evokes the grace and strength of the Salento gardens. An ode to tradition and the beauty of wood.", image: "volute-del-bosco.jpg", price: 340, soldAsSet: true },
   { id: 29, titleIt: "Campana del Bosco", titleEn: "Bell of the Forest", dimensions: "20 × 20 cm", descriptionIt: "Lampada a sospensione in noce nazionale ebanizzato con inserti circolari in ulivo e paduk. La forma a campana e i fori laterali creano un gioco di luce unico. Un inno alla luce e alla materia dei giardini del Salento.", descriptionEn: "Hanging lamp in ebonized national walnut with circular inlays in olive and paduk. The bell shape and side holes create a unique play of light. An ode to light and the matter of the Salento gardens.", image: "campana-del-bosco.jpg", price: 520 },
   { id: 30, titleIt: "Dorso di Cavallo Selvatico", titleEn: "Wild Horse Back", dimensions: "20 × 20 cm", descriptionIt: "Lampada da tavolo in ulivo, gelso e paduk con base ondulata a dorso di cavallo e paralume bianco. Il movimento della base evoca la forza e la grazia del bosco. Un inno alla luce e alla materia dei giardini del Salento.", descriptionEn: "Table lamp in olive, mulberry and paduk with undulating horse-back base and white shade. The flowing base evokes the strength and grace of the forest. An ode to light and the matter of the Salento gardens.", image: "dorso-di-cavallo-selvatico.jpg", price: 450 },
-  { id: 31, titleIt: "Goccia d'Oro", titleEn: "Golden Drop", dimensions: "20 × 20 cm", descriptionIt: "Lampada da tavolo in ulivo e noce nazionale con paralume giallo. La base sferica in radica esalta le venature del legno. Un inno alla luce e alla materia dei giardini del Salento.", descriptionEn: "Table lamp in olive and national walnut with yellow shade. The spherical base in burl highlights the wood grains. An ode to light and the matter of the Salento gardens.", image: "goccia-d-oro.jpg", price: 450 },
+  { id: 31, titleIt: "Goccia d'Oro", titleEn: "Golden Drop", dimensions: "20 × 20 cm", descriptionIt: "Lampada da tavolo in ulivo e noce nazionale con paralume giallo. La base sferica in radica esalta le venature del legno. Un inno alla luce e alla materia dei giardini del Salento.", descriptionEn: "Table lamp in olive and national walnut with yellow shade. The spherical base in burl highlights the wood grains. An ode to light and the matter of the Salento gardens.", image: "goccia-d-oro.jpg", price: 450, sold: true },
 ];
 
 const MOSAIC_EXCLUDED_IMAGES = new Set(["tris-di-radiche.jpg"]);
@@ -370,14 +383,19 @@ export default function SanteseArtWebsite() {
             .map((exhibit) => (
             <div key={exhibit.id} onClick={() => setSelectedExhibit(exhibit)} className="group bg-white rounded-3xl border border-gray-100 overflow-hidden cursor-pointer hover:border-gray-300 hover:shadow-xl transition-all duration-300 flex flex-col h-full">
               <div className="aspect-[16/10] relative overflow-hidden bg-gray-100">
-                <img src={`/exhibition/${exhibit.image}`} alt={getExhibitTitle(exhibit)} className="absolute inset-0 w-full h-full object-contain" loading="lazy" />
+                <img src={`/exhibition/${exhibit.image}`} alt={getExhibitTitle(exhibit)} className={`absolute inset-0 w-full h-full object-contain${exhibit.sold ? " opacity-60" : ""}`} loading="lazy" />
+                {exhibit.sold && (
+                  <span className="absolute top-3 left-3 px-3 py-1 rounded-full bg-white/90 text-[10px] tracking-[2px] uppercase text-gray-500 font-medium backdrop-blur-sm">
+                    {t.gallery.soldLabel}
+                  </span>
+                )}
               </div>
               <div className="p-6 flex flex-col flex-1">
                 <div className="mb-4">
                   <h3 className="font-serif text-[21px] leading-[1.1] tracking-[-0.4px] mb-2.5 pr-1">{getExhibitTitle(exhibit)}</h3>
                   <div className="flex items-baseline justify-between gap-3">
                     <p className="font-mono text-xs tracking-widest text-gray-500">{exhibit.dimensions}</p>
-                    <ExhibitPriceBlock exhibit={exhibit} locale={locale} setNote={t.gallery.priceSetNote} variant="card" />
+                    <ExhibitPriceBlock exhibit={exhibit} locale={locale} setNote={t.gallery.priceSetNote} soldLabel={t.gallery.soldLabel} variant="card" />
                   </div>
                 </div>
                 <p className="text-gray-600 text-[13px] leading-relaxed line-clamp-4 flex-1">{getExhibitDescription(exhibit, locale)}</p>
@@ -504,7 +522,7 @@ export default function SanteseArtWebsite() {
                 <h3 className="font-serif text-4xl md:text-[42px] tracking-[-1.8px] leading-none">{getExhibitTitle(selectedExhibit)}</h3>
                 <div>
                   <div className="uppercase tracking-[2.5px] text-[10px] text-gray-500 mb-1">{t.gallery.priceLabel}</div>
-                  <ExhibitPriceBlock exhibit={selectedExhibit} locale={locale} setNote={t.gallery.priceSetNote} variant="modal" />
+                  <ExhibitPriceBlock exhibit={selectedExhibit} locale={locale} setNote={t.gallery.priceSetNote} soldLabel={t.gallery.soldLabel} variant="modal" />
                 </div>
               </div>
               <button
