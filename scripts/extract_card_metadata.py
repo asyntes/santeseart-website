@@ -16,10 +16,12 @@ TITLE_EN = {
     "Cavalli del Tempo": "Horses of Time",
     "Cimasa di Fiori": "Floral Cornice",
     "Corona di Fuoco": "Crown of Fire",
+    "Dorso di Cavallo Selvatico": "Wild Horse Back",
     "Essenza Antica": "Ancient Essence",
     "Fenice d'Ulivo": "Olive Phoenix",
     "Fiammella del Bosco": "Little Flame of the Forest",
     "Fiori e Luce": "Flowers and Light",
+    "Goccia d'Oro": "Golden Drop",
     "La Druida": "The Druid",
     "Lanterna del Viandante": "Wayfarer's Lantern",
     "Luce dell'Ulivo": "Olive Light",
@@ -32,7 +34,7 @@ TITLE_EN = {
 
 EN_START = re.compile(
     r"(?:^|\n)("
-    r"Door insert|Rustic Dawn|Wild Chalice|Hand-carved|Cimasa in chestnut|"
+    r"Door insert|Rustic Dawn|Wild Chalice|Hand-carved|Cimasa in chestnut|Table lamp|"
     r"Crown of Fire|Floor lamp|Lamp in olive|Little Flame|Pair of|The Druid|"
     r"Lantern in|Electric lamp|Kingdom of|Jewelry holder"
     r")"
