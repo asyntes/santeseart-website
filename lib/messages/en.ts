@@ -91,6 +91,7 @@ export const messagesEn = {
       "Unique works for indoor and outdoor settings. Each piece tells a story of light, matter and memory of Salento.",
     priceLabel: "Price",
     priceSetNote: "(together)",
+    soldLabel: "Sold",
     viewDetails: "VIEW DETAILS",
     footer:
       "ALL WORKS ARE HANDCRAFTED FROM FINE SALENTO WOODS • UNIQUE PIECES",
