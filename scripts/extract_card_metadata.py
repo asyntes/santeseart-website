@@ -21,6 +21,7 @@ TITLE_EN = {
     "Fenice d'Ulivo": "Olive Phoenix",
     "Fiammella del Bosco": "Little Flame of the Forest",
     "Fiori e Luce": "Flowers and Light",
+    "Gemma del Salento": "Salento Gem",
     "Goccia d'Oro": "Golden Drop",
     "La Druida": "The Druid",
     "Lanterna del Viandante": "Wayfarer's Lantern",
