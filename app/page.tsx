@@ -33,23 +33,17 @@ function ExhibitPriceBlock({
   exhibit,
   locale,
   setNote,
-  soldLabel,
   variant,
 }: {
   exhibit: Exhibit;
   locale: Locale;
   setNote: string;
-  soldLabel: string;
   variant: "card" | "modal";
 }) {
   const priceClass =
     variant === "card"
       ? "font-serif text-lg tracking-tight text-[#8B5E3C]"
       : "font-serif text-3xl md:text-4xl tracking-tight text-[#8B5E3C] leading-none";
-  const soldClass =
-    variant === "card"
-      ? "font-serif text-sm tracking-[2px] uppercase text-gray-400"
-      : "font-serif text-2xl md:text-3xl tracking-[2px] uppercase text-gray-400 leading-none";
   const noteClass =
     variant === "card"
       ? "text-[10px] tracking-wide text-gray-400 mt-0.5"
@@ -57,14 +51,8 @@ function ExhibitPriceBlock({
 
   return (
     <div className={variant === "card" ? "text-right shrink-0" : "shrink-0"}>
-      {exhibit.sold ? (
-        <p className={soldClass}>{soldLabel}</p>
-      ) : (
-        <>
-          <p className={priceClass}>{formatExhibitPrice(exhibit.price, locale)}</p>
-          {exhibit.soldAsSet && <p className={noteClass}>{setNote}</p>}
-        </>
-      )}
+      <p className={priceClass}>{formatExhibitPrice(exhibit.price, locale)}</p>
+      {exhibit.soldAsSet && <p className={noteClass}>{setNote}</p>}
     </div>
   );
 }
@@ -396,7 +384,7 @@ export default function SanteseArtWebsite() {
                   <h3 className="font-serif text-[21px] leading-[1.1] tracking-[-0.4px] mb-2.5 pr-1">{getExhibitTitle(exhibit)}</h3>
                   <div className="flex items-baseline justify-between gap-3">
                     <p className="font-mono text-xs tracking-widest text-gray-500">{exhibit.dimensions}</p>
-                    <ExhibitPriceBlock exhibit={exhibit} locale={locale} setNote={t.gallery.priceSetNote} soldLabel={t.gallery.soldLabel} variant="card" />
+                    <ExhibitPriceBlock exhibit={exhibit} locale={locale} setNote={t.gallery.priceSetNote} variant="card" />
                   </div>
                 </div>
                 <p className="text-gray-600 text-[13px] leading-relaxed line-clamp-4 flex-1">{getExhibitDescription(exhibit, locale)}</p>
@@ -523,7 +511,7 @@ export default function SanteseArtWebsite() {
                 <h3 className="font-serif text-4xl md:text-[42px] tracking-[-1.8px] leading-none">{getExhibitTitle(selectedExhibit)}</h3>
                 <div>
                   <div className="uppercase tracking-[2.5px] text-[10px] text-gray-500 mb-1">{t.gallery.priceLabel}</div>
-                  <ExhibitPriceBlock exhibit={selectedExhibit} locale={locale} setNote={t.gallery.priceSetNote} soldLabel={t.gallery.soldLabel} variant="modal" />
+                  <ExhibitPriceBlock exhibit={selectedExhibit} locale={locale} setNote={t.gallery.priceSetNote} variant="modal" />
                 </div>
               </div>
               <button
