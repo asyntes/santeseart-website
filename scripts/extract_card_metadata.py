@@ -16,6 +16,7 @@ TITLE_EN = {
     "Cavalli del Tempo": "Horses of Time",
     "Cimasa di Fiori": "Floral Cornice",
     "Corona di Fuoco": "Crown of Fire",
+    "Cuore di Gelso": "Mulberry Heart",
     "Dorso di Cavallo Selvatico": "Wild Horse Back",
     "Essenza Antica": "Ancient Essence",
     "Fenice d'Ulivo": "Olive Phoenix",
