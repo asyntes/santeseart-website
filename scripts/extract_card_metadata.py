@@ -28,6 +28,7 @@ TITLE_EN = {
     "Lanterna del Viandante": "Wayfarer's Lantern",
     "Luce dell'Ulivo": "Olive Light",
     "L'alba del legno": "The Dawn of Wood",
+    "Pala di Luce": "Paddle of Light",
     "Regno delle Due Sicilie": "Kingdom of the Two Sicilies",
     "Sentinella del Bosco": "Sentinel of the Forest",
     "Torre di Ulivo": "Olive Tower",
@@ -38,7 +39,7 @@ EN_START = re.compile(
     r"(?:^|\n)("
     r"Door insert|Rustic Dawn|Wild Chalice|Hand-carved|Cimasa in chestnut|Table lamp|"
     r"Crown of Fire|Floor lamp|Lamp in olive|Little Flame|Pair of|The Druid|"
-    r"Lantern in|Electric lamp|Kingdom of|Jewelry holder"
+    r"Lantern in|Electric lamp|Kingdom of|Jewelry holder|Touch and rechargeable"
     r")"
 )
 
