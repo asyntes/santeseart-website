@@ -16,9 +16,15 @@ interface Exhibit {
   descriptionIt: string;
   descriptionEn: string;
   image: string;
+  /** Additional photos shown in the detail modal (after `image`). */
+  extraImages?: string[];
   price: number;
   soldAsSet?: boolean;
   sold?: boolean;
+}
+
+function getExhibitImages(exhibit: Exhibit): string[] {
+  return [exhibit.image, ...(exhibit.extraImages ?? [])];
 }
 
 function formatExhibitPrice(price: number, locale: Locale) {
@@ -97,7 +103,7 @@ const exhibits: Exhibit[] = [
   { id: 28, titleIt: "Volute del Bosco", titleEn: "Forest Scrolls", dimensions: "31 × 31 cm, spessore 6 cm", descriptionIt: "Coppia di mensole in frassino con intaglio barocco a volute e foglie. Il motivo scolpito evoca la grazia e la forza dei giardini del Salento. Un inno alla tradizione e alla bellezza del legno.", descriptionEn: "Pair of ash wood corbels with baroque scroll and leaf carvings. The sculpted motif evokes the grace and strength of the Salento gardens. An ode to tradition and the beauty of wood.", image: "volute-del-bosco.jpg", price: 340, soldAsSet: true },
   { id: 29, titleIt: "Campana del Bosco", titleEn: "Bell of the Forest", dimensions: "20 × 20 cm", descriptionIt: "Lampada a sospensione in noce nazionale ebanizzato con inserti circolari in ulivo e paduk. La forma a campana e i fori laterali creano un gioco di luce unico. Un inno alla luce e alla materia dei giardini del Salento.", descriptionEn: "Hanging lamp in ebonized national walnut with circular inlays in olive and paduk. The bell shape and side holes create a unique play of light. An ode to light and the matter of the Salento gardens.", image: "campana-del-bosco.jpg", price: 520 },
   { id: 30, titleIt: "Dorso di Cavallo Selvatico", titleEn: "Wild Horse Back", dimensions: "25 cm h × 50 cm Ø", descriptionIt: "Lampada da tavolo in ulivo, gelso e paduk con base ondulata a dorso di cavallo e paralume bianco. Il movimento della base evoca la forza e la grazia del bosco. Un inno alla luce e alla materia dei giardini del Salento.", descriptionEn: "Table lamp in olive, mulberry and paduk with undulating horse-back base and white shade. The flowing base evokes the strength and grace of the forest. An ode to light and the matter of the Salento gardens.", image: "dorso-di-cavallo-selvatico.jpg", price: 450 },
-  { id: 31, titleIt: "Goccia d'Oro", titleEn: "Golden Drop", dimensions: "45 cm h × 30 cm Ø", descriptionIt: "Lampada da tavolo in ulivo e noce nazionale con paralume giallo. La base sferica in radica esalta le venature del legno. Un inno alla luce e alla materia dei giardini del Salento.", descriptionEn: "Table lamp in olive and national walnut with yellow shade. The spherical base in burl highlights the wood grains. An ode to light and the matter of the Salento gardens.", image: "goccia-d-oro.jpg", price: 450, sold: true },
+  { id: 31, titleIt: "Goccia d'Oro", titleEn: "Golden Drop", dimensions: "45 cm h × 30 cm Ø", descriptionIt: "Lampada da tavolo in ulivo e noce nazionale con paralume giallo. La base sferica in radica esalta le venature del legno. Un inno alla luce e alla materia dei giardini del Salento.", descriptionEn: "Table lamp in olive and national walnut with yellow shade. The spherical base in burl highlights the wood grains. An ode to light and the matter of the Salento gardens.", image: "goccia-d-oro.jpg", extraImages: ["goccia-d-oro-2.jpg"], price: 450, sold: true },
   { id: 32, titleIt: "Gemma del Salento", titleEn: "Salento Gem", dimensions: "33 cm h × 19 cm Ø", descriptionIt: "Porta gioie in ulivo con coperchio e guglia. La forma a calice con venature fluide celebra la bellezza del legno mediterraneo. Un inno alla tradizione e alla materia dei giardini del Salento.", descriptionEn: "Jewelry holder in olive wood with lid and finial. The chalice shape with flowing grains celebrates the beauty of Mediterranean wood. An ode to tradition and the matter of the Salento gardens.", image: "gemma-del-salento.jpg", price: 290, sold: true },
   { id: 33, titleIt: "Petalo di Fuoco", titleEn: "Fire Petal", dimensions: "20 cm Ø × 9.5 cm h", descriptionIt: "Piatto in ulivo e ciliegio a forma di petalo di fuoco. Le venature fluide e la forma organica celebrano la passione e la bellezza del Salento. Un inno alla natura e alla maestria dei giardini mediterranei.", descriptionEn: "Plate in olive and cherry wood shaped like a fire petal. Fluid grains and organic form celebrate the passion and beauty of Salento. An ode to nature and the mastery of Mediterranean gardens.", image: "petalo-di-fuoco.jpg", price: 180 },
   { id: 34, titleIt: "Cuore di Gelso", titleEn: "Mulberry Heart", dimensions: "45 cm h × 20 cm Ø", descriptionIt: "Lampada da tavolo in castagno ebanizzato con intarsio verticale in gelso. Il contrasto tra il nero profondo e la calda luce del gelso crea un effetto di luce rivelata dall'interno, mentre il paralume plissettato diffonde una luce soffusa e accogliente. Un inno alla luce e alla materia dei giardini del Salento.", descriptionEn: "Table lamp in ebonized chestnut with vertical mulberry inlay. The contrast between deep black and the warm glow of the mulberry creates an effect of light revealed from within, while the pleated shade diffuses a soft and welcoming glow. An ode to light and the matter of the Salento gardens.", image: "cuore-di-gelso.jpg", price: 450 },
@@ -131,22 +137,54 @@ export default function SanteseArtWebsite() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [selectedExhibit, setSelectedExhibit] = useState<Exhibit | null>(null);
   const [isImageEnlarged, setIsImageEnlarged] = useState(false);
+  const [selectedImageIndex, setSelectedImageIndex] = useState(0);
 
   const closeExhibitModal = () => {
     setIsImageEnlarged(false);
+    setSelectedImageIndex(0);
     setSelectedExhibit(null);
   };
+
+  const openExhibit = (exhibit: Exhibit) => {
+    setSelectedImageIndex(0);
+    setIsImageEnlarged(false);
+    setSelectedExhibit(exhibit);
+  };
+
+  const exhibitImages = selectedExhibit ? getExhibitImages(selectedExhibit) : [];
+  const activeImage = exhibitImages[selectedImageIndex] ?? selectedExhibit?.image;
+  const hasMultipleImages = exhibitImages.length > 1;
+
+  const showPrevImage = () => {
+    setSelectedImageIndex((i) => (i - 1 + exhibitImages.length) % exhibitImages.length);
+  };
+  const showNextImage = () => {
+    setSelectedImageIndex((i) => (i + 1) % exhibitImages.length);
+  };
+
+  const imageOfLabel = (current: number, total: number) =>
+    t.gallery.imageOf.replace("{current}", String(current)).replace("{total}", String(total));
 
   useEffect(() => {
     if (!selectedExhibit) return;
     const onKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "ArrowLeft" && hasMultipleImages) {
+        e.preventDefault();
+        showPrevImage();
+        return;
+      }
+      if (e.key === "ArrowRight" && hasMultipleImages) {
+        e.preventDefault();
+        showNextImage();
+        return;
+      }
       if (e.key !== "Escape") return;
       if (isImageEnlarged) setIsImageEnlarged(false);
       else closeExhibitModal();
     };
     window.addEventListener("keydown", onKeyDown);
     return () => window.removeEventListener("keydown", onKeyDown);
-  }, [selectedExhibit, isImageEnlarged]);
+  }, [selectedExhibit, isImageEnlarged, hasMultipleImages, exhibitImages.length]);
 
   const scrollToSection = (id: string) => {
     const element = document.getElementById(id);
@@ -373,7 +411,7 @@ export default function SanteseArtWebsite() {
               getExhibitTitle(a).localeCompare(getExhibitTitle(b), "it")
             )
             .map((exhibit) => (
-            <div key={exhibit.id} onClick={() => setSelectedExhibit(exhibit)} className="group bg-white rounded-3xl border border-gray-100 overflow-hidden cursor-pointer hover:border-gray-300 hover:shadow-xl transition-all duration-300 flex flex-col h-full">
+            <div key={exhibit.id} onClick={() => openExhibit(exhibit)} className="group bg-white rounded-3xl border border-gray-100 overflow-hidden cursor-pointer hover:border-gray-300 hover:shadow-xl transition-all duration-300 flex flex-col h-full">
               <div className="aspect-[16/10] relative overflow-hidden bg-gray-100">
                 <img src={`/exhibition/${exhibit.image}`} alt={getExhibitTitle(exhibit)} className={`absolute inset-0 w-full h-full object-contain${exhibit.sold ? " opacity-60" : ""}`} loading="lazy" />
                 {exhibit.sold && (
@@ -517,23 +555,76 @@ export default function SanteseArtWebsite() {
                   <ExhibitPriceBlock exhibit={selectedExhibit} locale={locale} setNote={t.gallery.priceSetNote} variant="modal" />
                 </div>
               </div>
-              <button
-                type="button"
-                onClick={() => setIsImageEnlarged(true)}
-                className="group mb-6 rounded-2xl overflow-hidden bg-gray-50 aspect-[16/10] relative w-full cursor-zoom-in focus:outline-none focus-visible:ring-2 focus-visible:ring-[#8B5E3C] focus-visible:ring-offset-2"
-                aria-label={t.gallery.zoomImageAria}
-              >
-                <img
-                  src={`/exhibition/${selectedExhibit.image}`}
-                  alt={getExhibitTitle(selectedExhibit)}
-                  className="absolute inset-0 w-full h-full object-contain transition-transform duration-300 group-hover:scale-[1.02]"
-                />
-                <span className="absolute bottom-3 right-3 flex h-10 w-10 items-center justify-center rounded-full bg-black/50 text-white opacity-0 transition-opacity duration-200 group-hover:opacity-100 pointer-events-none">
-                  <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden>
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7" />
-                  </svg>
-                </span>
-              </button>
+              <div className="mb-6">
+                <div className="relative">
+                  <button
+                    type="button"
+                    onClick={() => setIsImageEnlarged(true)}
+                    className="group relative w-full cursor-zoom-in overflow-hidden rounded-2xl bg-gray-50 aspect-[16/10] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#8B5E3C] focus-visible:ring-offset-2"
+                    aria-label={t.gallery.zoomImageAria}
+                  >
+                    <img
+                      src={`/exhibition/${activeImage}`}
+                      alt={getExhibitTitle(selectedExhibit)}
+                      className="absolute inset-0 h-full w-full object-contain transition-transform duration-300 group-hover:scale-[1.02]"
+                    />
+                    <span className="pointer-events-none absolute bottom-3 right-3 flex h-10 w-10 items-center justify-center rounded-full bg-black/50 text-white opacity-0 transition-opacity duration-200 group-hover:opacity-100">
+                      <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden>
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7" />
+                      </svg>
+                    </span>
+                  </button>
+                  {hasMultipleImages && (
+                    <>
+                      <button
+                        type="button"
+                        onClick={showPrevImage}
+                        className="absolute left-3 top-1/2 z-10 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full bg-white/90 text-gray-700 shadow-sm hover:bg-white"
+                        aria-label={t.gallery.prevImageAria}
+                      >
+                        <span aria-hidden>‹</span>
+                      </button>
+                      <button
+                        type="button"
+                        onClick={showNextImage}
+                        className="absolute right-3 top-1/2 z-10 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full bg-white/90 text-gray-700 shadow-sm hover:bg-white"
+                        aria-label={t.gallery.nextImageAria}
+                      >
+                        <span aria-hidden>›</span>
+                      </button>
+                    </>
+                  )}
+                </div>
+                {hasMultipleImages && (
+                  <div className="mt-3 flex flex-col items-center gap-2">
+                    <div className="flex gap-2" role="tablist" aria-label={imageOfLabel(selectedImageIndex + 1, exhibitImages.length)}>
+                      {exhibitImages.map((img, index) => (
+                        <button
+                          key={img}
+                          type="button"
+                          role="tab"
+                          aria-selected={index === selectedImageIndex}
+                          onClick={() => setSelectedImageIndex(index)}
+                          className={`h-14 w-14 overflow-hidden rounded-xl border transition-colors ${
+                            index === selectedImageIndex
+                              ? "border-[#8B5E3C] ring-1 ring-[#8B5E3C]"
+                              : "border-gray-200 hover:border-gray-300"
+                          }`}
+                        >
+                          <img
+                            src={`/exhibition/${img}`}
+                            alt=""
+                            className="h-full w-full object-cover"
+                          />
+                        </button>
+                      ))}
+                    </div>
+                    <p className="text-[10px] tracking-[2px] uppercase text-gray-400">
+                      {imageOfLabel(selectedImageIndex + 1, exhibitImages.length)}
+                    </p>
+                  </div>
+                )}
+              </div>
               <div className="mb-8">
                 <span className="inline-block font-mono text-sm tracking-widest bg-gray-100 px-5 py-2 rounded-2xl text-gray-600">{selectedExhibit.dimensions}</span>
               </div>
@@ -550,7 +641,7 @@ export default function SanteseArtWebsite() {
         </div>
       )}
 
-      {selectedExhibit && isImageEnlarged && (
+      {selectedExhibit && isImageEnlarged && activeImage && (
         <div
           className="fixed inset-0 z-[110] flex items-center justify-center bg-black/92 p-4 md:p-8"
           onClick={() => setIsImageEnlarged(false)}
@@ -558,20 +649,45 @@ export default function SanteseArtWebsite() {
           aria-modal="true"
           aria-label={getExhibitTitle(selectedExhibit)}
         >
-          <div className="relative inline-flex max-w-full max-h-[92vh]" onClick={(e) => e.stopPropagation()}>
+          <div className="relative inline-flex max-h-[92vh] max-w-full" onClick={(e) => e.stopPropagation()}>
             <button
               type="button"
               onClick={() => setIsImageEnlarged(false)}
-              className="absolute top-3 right-3 z-10 flex h-10 w-10 items-center justify-center rounded-full bg-black/55 text-white hover:bg-black/75 transition-colors backdrop-blur-sm"
+              className="absolute top-3 right-3 z-10 flex h-10 w-10 items-center justify-center rounded-full bg-black/55 text-white backdrop-blur-sm transition-colors hover:bg-black/75"
               aria-label={t.gallery.closeAria}
             >
               <span className="text-lg leading-none" aria-hidden>✕</span>
             </button>
+            {hasMultipleImages && (
+              <>
+                <button
+                  type="button"
+                  onClick={showPrevImage}
+                  className="absolute left-3 top-1/2 z-10 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full bg-black/55 text-2xl text-white backdrop-blur-sm transition-colors hover:bg-black/75"
+                  aria-label={t.gallery.prevImageAria}
+                >
+                  <span aria-hidden>‹</span>
+                </button>
+                <button
+                  type="button"
+                  onClick={showNextImage}
+                  className="absolute right-3 top-1/2 z-10 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full bg-black/55 text-2xl text-white backdrop-blur-sm transition-colors hover:bg-black/75"
+                  aria-label={t.gallery.nextImageAria}
+                >
+                  <span aria-hidden>›</span>
+                </button>
+              </>
+            )}
             <img
-              src={`/exhibition/${selectedExhibit.image}`}
+              src={`/exhibition/${activeImage}`}
               alt={getExhibitTitle(selectedExhibit)}
-              className="max-w-full max-h-[92vh] object-contain rounded-lg"
+              className="max-h-[92vh] max-w-full rounded-lg object-contain"
             />
+            {hasMultipleImages && (
+              <p className="pointer-events-none absolute bottom-3 left-1/2 -translate-x-1/2 rounded-full bg-black/55 px-3 py-1 text-[10px] tracking-[2px] uppercase text-white backdrop-blur-sm">
+                {imageOfLabel(selectedImageIndex + 1, exhibitImages.length)}
+              </p>
+            )}
           </div>
         </div>
       )}

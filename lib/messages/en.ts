@@ -101,6 +101,9 @@ export const messagesEn = {
     modalClose: "CLOSE",
     zoomImageAria: "Enlarge image",
     closeAria: "Close",
+    prevImageAria: "Previous photo",
+    nextImageAria: "Next photo",
+    imageOf: "Photo {current} of {total}",
   },
   contact: {
     eyebrow: "VISIT US",
