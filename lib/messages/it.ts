@@ -101,6 +101,9 @@ export const messagesIt = {
     modalClose: "CHIUDI SCHEDA",
     zoomImageAria: "Ingrandisci immagine",
     closeAria: "Chiudi",
+    prevImageAria: "Foto precedente",
+    nextImageAria: "Foto successiva",
+    imageOf: "Foto {current} di {total}",
   },
   contact: {
     eyebrow: "VENITE A TROVARCI",
