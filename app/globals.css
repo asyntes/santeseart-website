@@ -46,6 +46,16 @@ h1, h2, .font-serif {
 /* Smooth scroll */
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: var(--header-offset);
+}
+
+.legal-page {
+  padding-top: calc(var(--header-offset) + 3rem);
+}
+
+.legal-section {
+  margin-bottom: 2.75rem;
+  scroll-margin-top: calc(var(--header-offset) + 1.5rem);
 }
 
 /* Minimal scrollbars — thin, neutral, aligned with the B&W palette */

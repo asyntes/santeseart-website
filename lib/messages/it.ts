@@ -128,6 +128,7 @@ export const messagesIt = {
     formMessagePlaceholder: "Descrivici il tuo progetto o la richiesta...",
     formSubmit: "INVIA RICHIESTA",
     formNote: "VERRAI REINDIRIZZATO ALLA TUA APP DI POSTA",
+    formPrivacy: "Trattiamo questi dati solo per risponderti.",
     formSubject: "Richiesta informazioni da",
     successTitle: "Grazie! Il tuo client email si aprirà a breve.",
     successSubtitle: "O contattaci direttamente via email.",
@@ -135,5 +136,82 @@ export const messagesIt = {
   footer: {
     rights: "Tutti i diritti riservati.",
     location: "Oria, Brindisi — Puglia, Italia",
+    privacy: "Informativa privacy",
+  },
+  privacy: {
+    eyebrow: "TRASPARENZA",
+    title: "Informativa privacy",
+    updated: "Ultimo aggiornamento: 18 settembre 2026",
+    intro:
+      "Questa informativa descrive come Santese Art tratta i dati personali di chi visita il sito o ci contatta. Il testo riflette l'effettivo funzionamento del sito: vetrina senza account, senza acquisti online e senza strumenti di profilazione.",
+    controllerTitle: "1. Titolare del trattamento",
+    controllerBody:
+      "Il titolare è Santese Art di Rocco Santese, Via Torre Santa Susanna, 124, 72024 Oria (BR), Italia.",
+    controllerContactBefore: "Per richieste sui dati personali:",
+    controllerContactAfter: ".",
+    backHome: "Torna al sito",
+    sections: [
+      {
+        id: "dati",
+        title: "2. Quali dati trattiamo e perché",
+        paragraphs: [
+          "Richieste di contatto: nome, indirizzo email e contenuto del messaggio. Il modulo non salva i dati sul sito: apre il programma di posta del dispositivo e ci invia il messaggio. Trattiamo quei dati per rispondere, inviare preventivi e, se richiesto, fissare un appuntamento.",
+          "Comunicazioni dirette: se ci scrivi o ci chiami, trattiamo i dati che ci comunichi per la stessa finalità.",
+          "Dati tecnici di navigazione: il fornitore di hosting può registrare per un tempo limitato dati come indirizzo IP, data e ora, pagine visitate e tipo di browser, per sicurezza, diagnostica e funzionamento del sito.",
+          "Preferenza di lingua: se scegli italiano o inglese, il sito memorizza quella scelta nel localStorage del browser (chiave santeseart-locale), solo sul tuo dispositivo.",
+        ],
+      },
+      {
+        id: "basi",
+        title: "3. Base giuridica",
+        paragraphs: [
+          "Esecuzione di misure precontrattuali su tua richiesta (art. 6, par. 1, lett. b GDPR), per esempio preventivi e appuntamenti.",
+          "Legittimo interesse a garantire sicurezza e funzionamento del sito (art. 6, par. 1, lett. f GDPR), per i log tecnici.",
+          "Adempimento di obblighi di legge, se applicabili (art. 6, par. 1, lett. c GDPR), per esempio conservazione della corrispondenza rilevante.",
+        ],
+      },
+      {
+        id: "destinatari",
+        title: "4. Destinatari e trasferimenti",
+        paragraphs: [
+          "I dati sono trattati dal titolare e da eventuali collaboratori autorizzati. Non vendiamo dati personali e non li usiamo per pubblicità di terzi.",
+          "Il sito è ospitato da Vercel, che può trattare dati tecnici di navigazione in qualità di fornitore. Le email di contatto arrivano alla casella Gmail del titolare: Google tratta quindi il contenuto della corrispondenza come fornitore del servizio di posta.",
+          "Questi fornitori possono avere server anche fuori dallo Spazio economico europeo. In quel caso il trasferimento avviene con le garanzie previste dal GDPR, come le clausole contrattuali standard o strumenti equivalenti.",
+        ],
+      },
+      {
+        id: "conservazione",
+        title: "5. Conservazione",
+        paragraphs: [
+          "Le richieste di contatto restano per il tempo necessario a gestirle e, se nasce un rapporto successivo, per la durata di quel rapporto. La corrispondenza con rilevanza fiscale o legale è conservata nei termini di legge.",
+          "I log tecnici seguono le politiche del fornitore di hosting, di norma per un periodo limitato. La preferenza di lingua resta sul dispositivo finché non cancelli i dati di navigazione.",
+        ],
+      },
+      {
+        id: "cookie",
+        title: "6. Cookie e storage tecnico",
+        paragraphs: [
+          "Il sito non usa cookie di profilazione, cookie analitici di terze parti, pixel pubblicitari né plugin social che tracciano la navigazione. Non è quindi richiesto un banner di consenso ai cookie.",
+          "Possono essere usati solo cookie o storage strettamente necessari: la preferenza di lingua in localStorage e, se previsti dal servizio di hosting, cookie tecnici per sicurezza o erogazione del sito.",
+          "I caratteri tipografici sono incorporati nel sito in fase di pubblicazione e non vengono scaricati da Google durante la visita.",
+        ],
+      },
+      {
+        id: "diritti",
+        title: "7. I tuoi diritti",
+        paragraphs: [
+          "Puoi chiedere accesso, rettifica, cancellazione, limitazione, portabilità e opposizione al trattamento, nei limiti degli artt. 15-22 GDPR. Per esercitarli scrivi a santesearts@gmail.com.",
+          "Hai anche il diritto di proporre reclamo al Garante per la protezione dei dati personali (www.garanteprivacy.it).",
+          "Non adottiamo decisioni automatizzate, compresa la profilazione, che producano effetti giuridici o analoghi nei tuoi confronti.",
+        ],
+      },
+      {
+        id: "aggiornamenti",
+        title: "8. Aggiornamenti",
+        paragraphs: [
+          "Questa informativa può essere aggiornata se cambia il sito o la normativa. La data in cima alla pagina indica la versione in vigore.",
+        ],
+      },
+    ],
   },
 } as const;

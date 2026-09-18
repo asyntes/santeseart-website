@@ -1,12 +1,15 @@
 "use client";
 
-import React, { useEffect, useLayoutEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
+import Link from "next/link";
 import { HeroMosaic } from "@/components/HeroMosaic";
-import { LocaleSwitcher } from "@/components/LocaleSwitcher";
-import { LogoMonochrome } from "@/components/LogoMonochrome";
 import { ServiceIcon } from "@/components/ServiceIcons";
+import { SiteFooter } from "@/components/SiteFooter";
+import { SiteHeader } from "@/components/SiteHeader";
 import { useLocale } from "@/context/LocaleContext";
 import type { Locale } from "@/lib/i18n";
+import { scrollToSection } from "@/lib/scroll";
+import { CONTACT_EMAIL, CONTACT_PHONE, CONTACT_PHONE_TEL, SOCIAL_LINKS } from "@/lib/site";
 
 interface Exhibit {
   id: number;
@@ -121,20 +124,10 @@ const heroCollageImages = [
   "saturno-di-radiche.jpg",
 ];
 
-const CONTACT_EMAIL = "santesearts@gmail.com";
-const CONTACT_PHONE = "+39 329 215 1568";
-const CONTACT_PHONE_TEL = "+393292151568";
-const SOCIAL_LINKS = [
-  { label: "Instagram", href: "https://www.instagram.com/santeseart/" },
-  { label: "X", href: "https://x.com/santeseart" },
-  { label: "Facebook", href: "https://www.facebook.com/santeserocco" },
-];
-
 export default function SanteseArtWebsite() {
   const { locale, t } = useLocale();
   const [formData, setFormData] = useState({ name: "", email: "", message: "" });
   const [isSubmitted, setIsSubmitted] = useState(false);
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [selectedExhibit, setSelectedExhibit] = useState<Exhibit | null>(null);
   const [isImageEnlarged, setIsImageEnlarged] = useState(false);
   const [selectedImageIndex, setSelectedImageIndex] = useState(0);
@@ -186,19 +179,6 @@ export default function SanteseArtWebsite() {
     return () => window.removeEventListener("keydown", onKeyDown);
   }, [selectedExhibit, isImageEnlarged, hasMultipleImages, exhibitImages.length]);
 
-  const scrollToSection = (id: string) => {
-    const element = document.getElementById(id);
-    if (element) {
-      const nav = document.querySelector<HTMLElement>(".site-nav");
-      const offset = nav?.getBoundingClientRect().height ?? 80;
-      const bodyRect = document.body.getBoundingClientRect().top;
-      const elementPosition = element.getBoundingClientRect().top;
-      const offsetPosition = elementPosition - bodyRect - offset;
-      window.scrollTo({ top: offsetPosition, behavior: "smooth" });
-    }
-    if (isMobileMenuOpen) setIsMobileMenuOpen(false);
-  };
-
   const handleFormChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
@@ -222,86 +202,22 @@ export default function SanteseArtWebsite() {
   const openPhone = () => {
     window.location.href = `tel:${CONTACT_PHONE_TEL}`;
   };
-  const closeMobileMenu = () => {
-    setIsMobileMenuOpen(false);
-  };
 
-  useLayoutEffect(() => {
-    const nav = document.querySelector<HTMLElement>(".site-nav");
-    if (!nav) return;
-
-    const syncHeaderOffset = () => {
-      const height = Math.ceil(nav.getBoundingClientRect().height);
-      document.documentElement.style.setProperty("--header-offset", `${height}px`);
+  useEffect(() => {
+    const scrollFromHash = () => {
+      const id = window.location.hash.replace(/^#/, "");
+      if (id) {
+        window.setTimeout(() => scrollToSection(id), 50);
+      }
     };
-
-    syncHeaderOffset();
-
-    const observer = new ResizeObserver(syncHeaderOffset);
-    observer.observe(nav);
-
-    const visualViewport = window.visualViewport;
-    visualViewport?.addEventListener("resize", syncHeaderOffset);
-    visualViewport?.addEventListener("scroll", syncHeaderOffset);
-    window.addEventListener("orientationchange", syncHeaderOffset);
-
-    return () => {
-      observer.disconnect();
-      visualViewport?.removeEventListener("resize", syncHeaderOffset);
-      visualViewport?.removeEventListener("scroll", syncHeaderOffset);
-      window.removeEventListener("orientationchange", syncHeaderOffset);
-    };
+    scrollFromHash();
+    window.addEventListener("hashchange", scrollFromHash);
+    return () => window.removeEventListener("hashchange", scrollFromHash);
   }, []);
 
   return (
     <div className="min-h-screen bg-white text-black overflow-x-hidden">
-      <nav className="site-nav fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-md border-b border-gray-200">
-        <div className="site-nav-inner max-w-7xl mx-auto px-6 flex items-center justify-between">
-          <div
-            onClick={() => {
-              window.scrollTo({ top: 0, behavior: "smooth" });
-              closeMobileMenu();
-            }}
-            className="flex items-center cursor-pointer group"
-          >
-            <LogoMonochrome className="site-nav-logo transition-transform group-hover:scale-[1.02]" />
-          </div>
-
-          <div className="flex items-center gap-4">
-            <div className="hidden md:flex items-center gap-10 text-sm font-medium tracking-wide">
-              <button onClick={() => scrollToSection("chi-siamo")} className="nav-link">{t.nav.about}</button>
-              <button onClick={() => scrollToSection("servizi")} className="nav-link">{t.nav.services}</button>
-              <button onClick={() => scrollToSection("galleria")} className="nav-link">{t.nav.gallery}</button>
-              <button onClick={() => scrollToSection("contatti")} className="nav-link">{t.nav.contact}</button>
-            </div>
-
-            <div className="hidden md:flex items-center">
-              <LocaleSwitcher />
-            </div>
-
-            <div className="flex md:hidden items-center gap-2">
-              <LocaleSwitcher />
-              <button onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)} className="p-2 -mr-1">
-              {isMobileMenuOpen ? "✕" : "☰"}
-            </button>
-            </div>
-          </div>
-        </div>
-
-        {isMobileMenuOpen && (
-          <>
-            <div className="mobile-menu-backdrop fixed inset-0 bg-black/10 z-30 md:hidden" onClick={closeMobileMenu} />
-            <div className="mobile-menu-panel md:hidden absolute left-0 right-0 bg-white border-b border-gray-200 z-40 mobile-menu shadow-lg">
-              <div className="max-w-7xl mx-auto px-6 py-8 flex flex-col gap-y-1 text-base font-medium">
-                <button onClick={() => scrollToSection("chi-siamo")} className="nav-link text-left py-3.5 px-1 border-b border-gray-100 last:border-none">{t.nav.about}</button>
-                <button onClick={() => scrollToSection("servizi")} className="nav-link text-left py-3.5 px-1 border-b border-gray-100 last:border-none">{t.nav.services}</button>
-                <button onClick={() => scrollToSection("galleria")} className="nav-link text-left py-3.5 px-1 border-b border-gray-100 last:border-none">{t.nav.gallery}</button>
-                <button onClick={() => scrollToSection("contatti")} className="nav-link text-left py-3.5 px-1 border-b border-gray-100 last:border-none">{t.nav.contact}</button>
-              </div>
-            </div>
-          </>
-        )}
-      </nav>
+      <SiteHeader />
 
       <section className="hero-section">
         <div className="hero-layout flex flex-1 min-h-0 w-full">
@@ -516,6 +432,12 @@ export default function SanteseArtWebsite() {
                   <div><label className="text-xs tracking-widest text-gray-500 block mb-1.5">{t.contact.formMessage}</label><textarea name="message" value={formData.message} onChange={handleFormChange} required rows={5} className="form-input w-full rounded-3xl px-5 py-4 bg-white text-base resize-y min-h-[120px] placeholder:text-gray-400" placeholder={t.contact.formMessagePlaceholder} /></div>
                   <button type="submit" className="btn-primary w-full py-4 rounded-2xl text-sm font-medium tracking-[2px] mt-2">{t.contact.formSubmit}</button>
                   <p className="text-[10px] text-center text-gray-400 tracking-widest pt-1">{t.contact.formNote}</p>
+                  <p className="text-[11px] text-center text-gray-500 pt-1">
+                    {t.contact.formPrivacy}{" "}
+                    <Link href="/privacy" className="text-gray-700 underline underline-offset-2 hover:text-black">
+                      {t.footer.privacy}
+                    </Link>
+                  </p>
                 </form>
               )}
             </div>
@@ -523,17 +445,7 @@ export default function SanteseArtWebsite() {
         </div>
       </section>
 
-      <footer className="border-t border-gray-200 bg-white">
-        <div className="max-w-6xl mx-auto px-6 py-16 flex flex-col items-center text-center">
-          <LogoMonochrome className="h-28 md:h-40 w-auto mb-6" />
-          <p className="font-serif italic text-lg md:text-xl text-black mb-10 tracking-wide">{t.brand.motto}</p>
-          <div className="text-xs text-gray-500 flex flex-col md:flex-row items-center gap-y-3 md:gap-x-6">
-            <span>© {new Date().getFullYear()} Santese Art — Rocco Santese. {t.footer.rights}</span>
-            <span className="hidden md:inline">•</span>
-            <span>{t.footer.location}</span>
-          </div>
-        </div>
-      </footer>
+      <SiteFooter />
 
       {selectedExhibit && (
         <div className="fixed inset-0 z-[100] flex items-center justify-center bg-black/70 p-4 md:p-8" onClick={closeExhibitModal}>
