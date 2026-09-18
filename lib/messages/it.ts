@@ -14,7 +14,7 @@ export const messagesIt = {
     titleLine1: "Giardini",
     titleLine2: "del Salento",
     subtitle: "di Rocco Santese",
-    event: "1 luglio – 15 agosto • Palazzo Martini, Oria",
+    event: "1 luglio - 15 agosto • Palazzo Martini, Oria",
     description:
       "Opere d'arte in legno per interni ed esterni. Lampade, intagli, intarsi e installazioni artistiche realizzate a mano in Puglia.",
     ctaGallery: "SCOPRI LE OPERE",
@@ -22,7 +22,7 @@ export const messagesIt = {
     scroll: "SCROLL",
   },
   about: {
-    eyebrow: "DAL 1980 • ORIA — PUGLIA",
+    eyebrow: "DAL 1980 • ORIA, PUGLIA",
     titleLine1: "Ebanisteria",
     titleLine2: "artistica",
     titleLine3: "di tradizione",
@@ -37,7 +37,7 @@ export const messagesIt = {
     stat1Label: "MAESTRO EBANISTA",
     stat1Value: "Rocco Santese",
     stat2Label: "DATA E SEDE",
-    stat2Value: "1 luglio – 15 agosto — Palazzo Martini, Oria",
+    stat2Value: "1 luglio - 15 agosto, Palazzo Martini, Oria",
     stat3Label: "MATERIALI",
     stat3Value: "Legni pregiati italiani",
   },
@@ -86,7 +86,7 @@ export const messagesIt = {
   gallery: {
     eyebrow: "IL NOSTRO LAVORO",
     title: "Giardini del Salento",
-    eventInfo: "1 luglio – 15 agosto • Palazzo Martini, Oria",
+    eventInfo: "1 luglio - 15 agosto • Palazzo Martini, Oria",
     description:
       "Opere uniche per ambienti interni ed esterni. Ogni pezzo racconta una storia di luce, materia e memoria del Salento.",
     priceLabel: "Prezzo",
@@ -110,10 +110,10 @@ export const messagesIt = {
     title: "Contatti",
     locationLabel: "SEDE",
     hoursLabel: "ORARI DI APERTURA",
-    weekdays: "Lunedì — Venerdì",
+    weekdays: "Lunedì - Venerdì",
     saturday: "Sabato",
-    morningHours: "08:00 — 13:00",
-    afternoonHours: "16:00 — 20:00",
+    morningHours: "08:00 - 13:00",
+    afternoonHours: "16:00 - 20:00",
     directLabel: "CONTATTO DIRETTO",
     emailHint: "Email • Scrivici per un preventivo",
     phoneHint: "Telefono • Chiamaci in orario di apertura",
@@ -135,7 +135,7 @@ export const messagesIt = {
   },
   footer: {
     rights: "Tutti i diritti riservati.",
-    location: "Oria, Brindisi — Puglia, Italia",
+    location: "Oria, Brindisi, Puglia, Italia",
     privacy: "Informativa privacy",
   },
   privacy: {

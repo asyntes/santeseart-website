@@ -14,7 +14,7 @@ export const messagesEn = {
     titleLine1: "Giardini",
     titleLine2: "del Salento",
     subtitle: "by Rocco Santese",
-    event: "July 1 – August 15 • Palazzo Martini, Oria",
+    event: "July 1 - August 15 • Palazzo Martini, Oria",
     description:
       "Wood art for indoor and outdoor spaces. Lamps, carvings, inlays and artistic installations handcrafted in Puglia.",
     ctaGallery: "VIEW THE WORKS",
@@ -22,7 +22,7 @@ export const messagesEn = {
     scroll: "SCROLL",
   },
   about: {
-    eyebrow: "SINCE 1980 • ORIA — PUGLIA",
+    eyebrow: "SINCE 1980 • ORIA, PUGLIA",
     titleLine1: "Artistic",
     titleLine2: "cabinetmaking",
     titleLine3: "in the tradition",
@@ -37,7 +37,7 @@ export const messagesEn = {
     stat1Label: "MASTER CABINETMAKER",
     stat1Value: "Rocco Santese",
     stat2Label: "DATE & VENUE",
-    stat2Value: "July 1 – August 15 — Palazzo Martini, Oria",
+    stat2Value: "July 1 - August 15, Palazzo Martini, Oria",
     stat3Label: "MATERIALS",
     stat3Value: "Fine Italian woods",
   },
@@ -86,7 +86,7 @@ export const messagesEn = {
   gallery: {
     eyebrow: "OUR WORK",
     title: "Giardini del Salento",
-    eventInfo: "July 1 – August 15 • Palazzo Martini, Oria",
+    eventInfo: "July 1 - August 15 • Palazzo Martini, Oria",
     description:
       "Unique works for indoor and outdoor settings. Each piece tells a story of light, matter and memory of Salento.",
     priceLabel: "Price",
@@ -110,10 +110,10 @@ export const messagesEn = {
     title: "Contact",
     locationLabel: "LOCATION",
     hoursLabel: "OPENING HOURS",
-    weekdays: "Monday — Friday",
+    weekdays: "Monday - Friday",
     saturday: "Saturday",
-    morningHours: "08:00 — 13:00",
-    afternoonHours: "16:00 — 20:00",
+    morningHours: "08:00 - 13:00",
+    afternoonHours: "16:00 - 20:00",
     directLabel: "DIRECT CONTACT",
     emailHint: "Email • Write to us for a quote",
     phoneHint: "Phone • Call us during opening hours",
@@ -135,7 +135,7 @@ export const messagesEn = {
   },
   footer: {
     rights: "All rights reserved.",
-    location: "Oria, Brindisi — Puglia, Italy",
+    location: "Oria, Brindisi, Puglia, Italy",
     privacy: "Privacy notice",
   },
   privacy: {

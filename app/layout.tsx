@@ -39,11 +39,11 @@ export const metadata: Metadata = {
   },
   title: "Santese Art - Ebanisteria & Falegnameria Artistica",
   description:
-    "Santese Art — L'arte di modellare il legno. Ebanisteria e falegnameria artistica di Rocco Santese a Oria (BR). Specializzati in intaglio, intarsio, restauro di oggetti antichi d'arte e manufatti artigianali su misura.",
+    "Santese Art. L'arte di modellare il legno. Ebanisteria e falegnameria artistica di Rocco Santese a Oria (BR). Specializzati in intaglio, intarsio, restauro di oggetti antichi d'arte e manufatti artigianali su misura.",
   openGraph: {
     title: "Santese Art - Ebanisteria & Falegnameria Artistica",
     description:
-      "Santese Art — L'arte di modellare il legno. Ebanisteria e falegnameria artistica di Rocco Santese a Oria (BR). Specializzati in intaglio, intarsio, restauro di oggetti antichi d'arte e manufatti artigianali su misura.",
+      "Santese Art. L'arte di modellare il legno. Ebanisteria e falegnameria artistica di Rocco Santese a Oria (BR). Specializzati in intaglio, intarsio, restauro di oggetti antichi d'arte e manufatti artigianali su misura.",
     url: siteUrl,
     siteName: "Santese Art",
     locale: "it_IT",
@@ -53,7 +53,7 @@ export const metadata: Metadata = {
         url: "/og-image.jpg?v=9",
         width: 1200,
         height: 630,
-        alt: "Santese Art — rosa",
+        alt: "Santese Art, rosa",
         type: "image/jpeg",
       },
     ],
@@ -62,7 +62,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Santese Art - Ebanisteria & Falegnameria Artistica",
     description:
-      "Santese Art — L'arte di modellare il legno. Ebanisteria e falegnameria artistica di Rocco Santese a Oria (BR). Specializzati in intaglio, intarsio, restauro di oggetti antichi d'arte e manufatti artigianali su misura.",
+      "Santese Art. L'arte di modellare il legno. Ebanisteria e falegnameria artistica di Rocco Santese a Oria (BR). Specializzati in intaglio, intarsio, restauro di oggetti antichi d'arte e manufatti artigianali su misura.",
     images: ["/og-image.jpg?v=9"],
   },
   icons: {

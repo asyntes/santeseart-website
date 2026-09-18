@@ -16,7 +16,7 @@ export function SiteFooter() {
         <p className="font-serif italic text-lg md:text-xl text-black mb-10 tracking-wide">{t.brand.motto}</p>
         <div className="text-xs text-gray-500 flex flex-col md:flex-row items-center gap-y-3 md:gap-x-6">
           <span>
-            © {new Date().getFullYear()} Santese Art — Rocco Santese. {t.footer.rights}
+            © {new Date().getFullYear()} Santese Art di Rocco Santese. {t.footer.rights}
           </span>
           <span className="hidden md:inline">•</span>
           <span>{t.footer.location}</span>
