@@ -365,7 +365,7 @@ export default function SanteseArtWebsite() {
         </div>
         <div className="grid md:grid-cols-5 gap-x-16 gap-y-12">
           <div className="md:col-span-2 space-y-10">
-            <div><div className="text-xs tracking-[2px] text-gray-500 mb-2">{t.contact.locationLabel}</div><div className="font-medium text-xl leading-tight">Via Torre Santa Susanna, 124<br />72024 Oria (BR) — Puglia</div></div>
+            <div><div className="text-xs tracking-[2px] text-gray-500 mb-2">{t.contact.locationLabel}</div><div className="font-medium text-xl leading-tight">Via Torre Santa Susanna, 124<br />72024 Oria (BR), Puglia</div></div>
             <div><div className="text-xs tracking-[2px] text-gray-500 mb-2">{t.contact.hoursLabel}</div><div className="space-y-1 text-[15px]"><div className="flex justify-between"><span>{t.contact.weekdays}</span> <span className="font-mono text-gray-500">{t.contact.morningHours}</span></div><div className="flex justify-between"><span></span> <span className="font-mono text-gray-500">{t.contact.afternoonHours}</span></div><div className="flex justify-between pt-1"><span>{t.contact.saturday}</span> <span className="font-mono text-gray-500">{t.contact.morningHours}</span></div></div></div>
             <div>
               <div className="text-xs tracking-[2px] text-gray-500 mb-3">{t.contact.directLabel}</div>

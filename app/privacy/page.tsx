@@ -30,7 +30,7 @@ export default function PrivacyPage() {
               <a href={`mailto:${CONTACT_EMAIL}`} className="text-black underline underline-offset-4">
                 {CONTACT_EMAIL}
               </a>
-              {" — "}
+              {" · "}
               <a href={`tel:${CONTACT_PHONE_TEL}`} className="text-black underline underline-offset-4">
                 {CONTACT_PHONE}
               </a>
